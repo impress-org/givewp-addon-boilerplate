@@ -40,7 +40,7 @@ function __give_addon_boilerplate_plugin_row_meta( $plugin_meta, $plugin_file ) 
 	$new_meta_links['setting'] = sprintf(
 		'<a href="%1$s">%2$s</a>',
 		admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=addons' ),
-		esc_html__( 'Settings', 'giveboilerplate' )
+		__( 'Settings', 'giveboilerplate' )
 	);
 
 	$new_meta_links['documentation'] = sprintf(
@@ -51,7 +51,7 @@ function __give_addon_boilerplate_plugin_row_meta( $plugin_meta, $plugin_file ) 
 				'utm_campaign' => 'admin',
 			), 'https://givewp.com/addons/' )
 		),
-		esc_html__( 'Add-ons', 'giveboilerplate' )
+		__( 'Add-ons', 'giveboilerplate' )
 	);
 
 	return array_merge( $plugin_meta, $new_meta_links );

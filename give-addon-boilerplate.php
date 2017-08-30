@@ -35,10 +35,10 @@ final class Give_Addon_Boilerplate {
 	 * Instance.
 	 *
 	 * @since
-	 * @access static
+	 * @access private
 	 * @var Give_Addon_Boilerplate
 	 */
-	static private $instance;
+	private static $instance;
 
 	/**
 	 * Singleton pattern.
@@ -54,11 +54,11 @@ final class Give_Addon_Boilerplate {
 	 * Get instance.
 	 *
 	 * @since
-	 * @access static
+	 * @access public
 	 *
 	 * @return Give_Addon_Boilerplate
 	 */
-	static function get_instance() {
+	public static function get_instance() {
 		if ( null === static::$instance ) {
 			self::$instance = new Give_Addon_Boilerplate();
 			self::$instance->setup();
@@ -165,7 +165,7 @@ final class Give_Addon_Boilerplate {
 			add_action( 'admin_notices', '__give_addon_boilerplate_dependency_notice' );
 
 			// Load plugin helper functions.
-			if( ! function_exists( 'deactivate_plugins') ) {
+			if ( ! function_exists( 'deactivate_plugins' ) ) {
 				require_once ABSPATH . '/wp-admin/includes/plugin.php';
 			}
 
