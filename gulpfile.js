@@ -6,7 +6,8 @@
 
 /* Modules (Can be installed with npm install command using package.json)
  ------------------------------------- */
-var gulp            = require( 'gulp' ),
+var sort = require('gulp-sort'),
+	gulp            = require( 'gulp' ),
 	checktextdomain = require( 'gulp-checktextdomain' ),
 	wpPot           = require( 'gulp-wp-pot' ),
 	watch           = require( 'gulp-watch' );
