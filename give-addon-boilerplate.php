@@ -91,7 +91,7 @@ final class Give_Addon_Boilerplate {
 	private function setup_constants() {
 		// Defines Addon directory for easy reference.
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_DIR' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_DIR', dirname( __FILE__ ) );
+			define( 'GIVE_ADDON_BOILERPLATE_DIR', trailingslashit( dirname( __FILE__ ) ) );
 		}
 
 		// Defines Addon Basename.
@@ -109,8 +109,9 @@ final class Give_Addon_Boilerplate {
 			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VER', '1.7' );
 		}
 
-		if ( ! defined( 'GIVE_RECURRING_MIN_GIVE_VERSION' ) ) {
-			define( 'GIVE_RECURRING_MIN_GIVE_VERSION', '1.8.13' );
+		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION' ) ) {
+			// Set it to latest.
+			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '1.8.13' );
 		}
 	}
 
@@ -140,6 +141,8 @@ final class Give_Addon_Boilerplate {
 		}
 
 		self::$instance->load_files();
+		self::$instance->setup_hooks();
+		self::$instance->load_license();
 	}
 
 
@@ -155,14 +158,19 @@ final class Give_Addon_Boilerplate {
 	 */
 	private function check_environment( $give ) {
 		// Min. Give. plugin version.
-		if ( defined( 'GIVE_VERSION' ) && version_compare( GIVE_VERSION, GIVE_RECURRING_MIN_GIVE_VERSION, '<' ) ) {
+		if ( defined( 'GIVE_VERSION' ) && version_compare( GIVE_VERSION, GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION, '<' ) ) {
 			require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/misc-functions.php';
 
 			// Show admin notice.
 			add_action( 'admin_notices', '__give_addon_boilerplate_dependency_notice' );
 
+			// Load plugin helper functions.
+			if( ! function_exists( 'deactivate_plugins') ) {
+				require_once ABSPATH . '/wp-admin/includes/plugin.php';
+			}
+
 			// Deactivate plugin.
-			deactivate_plugins( GIVE_RECURRING_PLUGIN_BASENAME );
+			deactivate_plugins( GIVE_ADDON_BOILERPLATE_BASENAME );
 
 			if ( isset( $_GET['activate'] ) ) {
 				unset( $_GET['activate'] );
@@ -184,9 +192,41 @@ final class Give_Addon_Boilerplate {
 	private function load_files() {
 		require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/misc-functions.php';
 
-		if( is_admin() ){
+		if ( is_admin() ) {
 			require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/admin/settings.php';
 		}
+	}
+
+
+	/**
+	 * Setup hooks
+	 *
+	 * @since
+	 * @access private
+	 */
+	private function setup_hooks() {
+		// Filters
+		add_filter( 'plugin_action_links_' . GIVE_ADDON_BOILERPLATE_BASENAME, '__give_addon_boilerplate_plugin_row_meta', 10, 2 );
+
+		// Actions
+		add_action( 'admin_init', '__give_addon_boilerplate_activation_banner' );
+	}
+
+
+	/**
+	 * Load license
+	 *
+	 * @since
+	 * @access private
+	 */
+	private function load_license() {
+		new Give_License(
+			__FILE__,
+			'Give Addon Boilerplate',
+			GIVE_ADDON_BOILERPLATE_VERSION,
+			'WordImpress',
+			'give_addon_boilerplate_license_key'
+		);
 	}
 }
 
