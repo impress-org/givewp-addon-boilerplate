@@ -15,34 +15,38 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/misc-functions.php:11
+#: includes/misc-functions.php:11, includes/misc-functions.php:37
 msgid "Activation Error:"
 msgstr ""
 
-#: inc/misc-functions.php:12
+#: includes/misc-functions.php:12, includes/misc-functions.php:38
 msgid "You must have"
 msgstr ""
 
-#: inc/misc-functions.php:14
+#: includes/misc-functions.php:14, includes/misc-functions.php:40
 msgid "Give"
 msgstr ""
 
-#: inc/misc-functions.php:15
+#: includes/misc-functions.php:15
 msgid "version"
 msgstr ""
 
-#: inc/misc-functions.php:17
+#: includes/misc-functions.php:17
 msgid "for the Give Addon Boilerplate add-on to activate"
 msgstr ""
 
-#: inc/misc-functions.php:43
+#: includes/misc-functions.php:41
+msgid " plugin installed and activated for the Give Addon Boilerplate add-on to activate"
+msgstr ""
+
+#: includes/misc-functions.php:62
 msgid "Settings"
 msgstr ""
 
-#: inc/misc-functions.php:54
+#: includes/misc-functions.php:73
 msgid "Add-ons"
 msgstr ""
 
-#: inc/misc-functions.php:81
+#: includes/misc-functions.php:100
 msgid "Boilerplate"
 msgstr ""

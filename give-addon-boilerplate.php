@@ -170,7 +170,7 @@ final class Give_Addon_Boilerplate {
 		}
 
 		// Load helper functions.
-		require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/misc-functions.php';
+		require_once GIVE_ADDON_BOILERPLATE_DIR . 'includes/misc-functions.php';
 
 		// Flag to check whether deactivate plugin or not.
 		$is_deactivate_plugin = false;
@@ -231,10 +231,10 @@ final class Give_Addon_Boilerplate {
 	 * @access private
 	 */
 	private function load_files() {
-		require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/misc-functions.php';
+		require_once GIVE_ADDON_BOILERPLATE_DIR . 'includes/misc-functions.php';
 
 		if ( is_admin() ) {
-			require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/admin/settings.php';
+			require_once GIVE_ADDON_BOILERPLATE_DIR . 'includes/admin/settings.php';
 		}
 	}
 
