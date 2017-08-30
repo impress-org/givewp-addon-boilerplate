@@ -8,18 +8,18 @@
  * Author URI:  https://wordimpress.com
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: giveboilerplate
+ * Text Domain: give-addon-boilerplate
  */
 
 
-/*
+/**
  * Our Globals for easy Reference.
  * You'll want to make sure you replace "GIVE_ADDON_BOILERPLATE"
  * with your own prefix throughout this whole plugin.
  *
  * Functions are prefixed with "give_boilerplate" and should be replaced as well.
  *
- * The text domain is giveboilerplate and should be replaced as well.
+ * The text domain is give-addon-boilerplate and should be replaced as well.
  */
 
 // Exit if accessed directly.

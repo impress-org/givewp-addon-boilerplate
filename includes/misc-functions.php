@@ -8,13 +8,13 @@ function __give_addon_boilerplate_dependency_notice() {
 	// Admin notice.
 	$message = sprintf(
 		'<strong>%1$s</strong> %2$s <a href="%3$s" target="_blank">%4$s</a>  %5$s %6$s+ %7$s.',
-		__( 'Activation Error:', 'giveboilerplate' ),
-		__( 'You must have', 'giveboilerplate' ),
+		__( 'Activation Error:', 'give-addon-boilerplate' ),
+		__( 'You must have', 'give-addon-boilerplate' ),
 		'https://givewp.com',
-		__( 'Give', 'giveboilerplate' ),
-		__( 'version', 'giveboilerplate' ),
+		__( 'Give', 'give-addon-boilerplate' ),
+		__( 'version', 'give-addon-boilerplate' ),
 		GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION,
-		__( 'for the Give Addon Boilerplate add-on to activate', 'giveboilerplate' )
+		__( 'for the Give Addon Boilerplate add-on to activate', 'give-addon-boilerplate' )
 	);
 
 	Give()->notices->register_notice( array(
@@ -34,11 +34,11 @@ function __give_addon_boilerplate_inactive_notice() {
 	// Admin notice.
 	$message = sprintf(
 		'<div class="notice notice-error"><p><strong>%1$s</strong> %2$s <a href="%3$s" target="_blank">%4$s</a> %5$s.</p></div>',
-		__( 'Activation Error:', 'giveboilerplate' ),
-		__( 'You must have', 'giveboilerplate' ),
+		__( 'Activation Error:', 'give-addon-boilerplate' ),
+		__( 'You must have', 'give-addon-boilerplate' ),
 		'https://givewp.com',
-		__( 'Give', 'giveboilerplate' ),
-		__( ' plugin installed and activated for the Give Addon Boilerplate add-on to activate', 'giveboilerplate' )
+		__( 'Give', 'give-addon-boilerplate' ),
+		__( ' plugin installed and activated for the Give Addon Boilerplate add-on to activate', 'give-addon-boilerplate' )
 	);
 
 	echo $message;
@@ -59,7 +59,7 @@ function __give_addon_boilerplate_plugin_row_meta( $plugin_meta, $plugin_file ) 
 	$new_meta_links['setting'] = sprintf(
 		'<a href="%1$s">%2$s</a>',
 		admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=addons' ),
-		__( 'Settings', 'giveboilerplate' )
+		__( 'Settings', 'give-addon-boilerplate' )
 	);
 
 	$new_meta_links['documentation'] = sprintf(
@@ -70,7 +70,7 @@ function __give_addon_boilerplate_plugin_row_meta( $plugin_meta, $plugin_file ) 
 				'utm_campaign' => 'admin',
 			), 'https://givewp.com/addons/' )
 		),
-		__( 'Add-ons', 'giveboilerplate' )
+		__( 'Add-ons', 'give-addon-boilerplate' )
 	);
 
 	return array_merge( $plugin_meta, $new_meta_links );
@@ -97,7 +97,7 @@ function __give_addon_boilerplate_activation_banner() {
 	// Only runs on admin.
 	$args = array(
 		'file'              => __FILE__,
-		'name'              => __( 'Boilerplate', 'giveboilerplate' ),
+		'name'              => __( 'Boilerplate', 'give-addon-boilerplate' ),
 		'version'           => GIVE_ADDON_BOILERPLATE_VERSION,
 		'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=addons' ),
 		'documentation_url' => 'https://givewp.com/documentation/add-ons/boilerplate/',

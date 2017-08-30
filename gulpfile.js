@@ -19,8 +19,8 @@ gulp.task( 'pot', function() {
 		.pipe( sort() )
 		.pipe(wpPot({
 			package: 'Give - Gift Aid',
-			domain: 'giveboilerplate', //textdomain
-			dest_file: 'giveboilerplate.pot',
+			domain: 'give-addon-boilerplate', //textdomain
+			dest_file: 'give-addon-boilerplate.pot',
 			bugReport: '',
 			lastTranslator: '',
 			team: 'WordImpress <info@wordimpress.com>'
@@ -32,7 +32,7 @@ gulp.task( 'pot', function() {
  ------------------------------------- */
 gulp.task( 'textdomain', function() {
 	var options = {
-		text_domain: 'giveboilerplate',
+		text_domain: 'give-addon-boilerplate',
 		keywords: [
 			'__:1,2d',
 			'_e:1,2d',
