@@ -79,6 +79,7 @@ final class Give_Addon_Boilerplate {
 
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
 		add_action( 'give_init', array( $this, 'init' ), 10, 1 );
+		add_action( 'plugins_loaded', array( $this, 'check_environment' ), 999 );
 	}
 
 
@@ -111,7 +112,7 @@ final class Give_Addon_Boilerplate {
 
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION' ) ) {
 			// Set it to latest.
-			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '1.8.13' );
+			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '1.8.15' );
 		}
 	}
 
@@ -133,9 +134,10 @@ final class Give_Addon_Boilerplate {
 	 * @access public
 	 *
 	 * @param Give $give
+	 *
+	 * @return void
 	 */
 	public function init( $give ) {
-		// Bailout
 		if ( ! self::$instance->check_environment( $give ) ) {
 			return;
 		}
@@ -150,24 +152,63 @@ final class Give_Addon_Boilerplate {
 	 * Check plugin environment
 	 *
 	 * @since
-	 * @access private
+	 * @access public
 	 *
 	 * @param Give $give
 	 *
-	 * @return bool
+	 * @return bool|null
 	 */
-	private function check_environment( $give ) {
-		// Min. Give. plugin version.
-		if ( defined( 'GIVE_VERSION' ) && version_compare( GIVE_VERSION, GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION, '<' ) ) {
-			require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/misc-functions.php';
+	public function check_environment( $give ) {
+		// Bailout.
+		if ( ! is_admin() || ! current_user_can( 'activate_plugins' ) ) {
+			return null;
+		}
 
-			// Show admin notice.
-			add_action( 'admin_notices', '__give_addon_boilerplate_dependency_notice' );
+		// Load plugin helper functions.
+		if ( ! function_exists( 'deactivate_plugins' ) || ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
+		}
 
-			// Load plugin helper functions.
-			if ( ! function_exists( 'deactivate_plugins' ) ) {
-				require_once ABSPATH . '/wp-admin/includes/plugin.php';
-			}
+		// Load helper functions.
+		require_once GIVE_ADDON_BOILERPLATE_DIR . 'inc/misc-functions.php';
+
+		// Flag to check whether deactivate plugin or not.
+		$is_deactivate_plugin = false;
+
+		// Verify dependency cases.
+		switch ( true ) {
+			case doing_action( 'give_init' ):
+				if (
+					defined( 'GIVE_VERSION' ) &&
+					version_compare( GIVE_VERSION, GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION, '<' )
+				) {
+					/* Min. Give. plugin version. */
+
+					// Show admin notice.
+					add_action( 'admin_notices', '__give_addon_boilerplate_dependency_notice' );
+					
+					$is_deactivate_plugin = true;
+				}
+
+				break;
+
+			case doing_action( 'plugins_loaded' ) && ! did_action( 'give_init' ):
+				/* Check to see if Give is activated, if it isn't deactivate and show a banner. */
+
+				// Check for if give plugin activate or not.
+				$is_give_active = defined( 'GIVE_PLUGIN_BASENAME' ) ? is_plugin_active( GIVE_PLUGIN_BASENAME ) : false;
+
+				if ( ! $is_give_active ) {
+					add_action( 'admin_notices', '__give_addon_boilerplate_inactive_notice' );
+
+					$is_deactivate_plugin = true;
+				}
+
+				break;
+		}
+
+		// Don't let this plugin activate.
+		if ( $is_deactivate_plugin ) {
 
 			// Deactivate plugin.
 			deactivate_plugins( GIVE_ADDON_BOILERPLATE_BASENAME );

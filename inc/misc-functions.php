@@ -25,6 +25,25 @@ function __give_addon_boilerplate_dependency_notice() {
 	) );
 }
 
+/**
+ * Notice for No Core Activation
+ *
+ * @since 1.3.3
+ */
+function __give_addon_boilerplate_inactive_notice() {
+	// Admin notice.
+	$message = sprintf(
+		'<div class="notice notice-error"><p><strong>%1$s</strong> %2$s <a href="%3$s" target="_blank">%4$s</a> %5$s.</p></div>',
+		__( 'Activation Error:', 'giveboilerplate' ),
+		__( 'You must have', 'giveboilerplate' ),
+		'https://givewp.com',
+		__( 'Give', 'giveboilerplate' ),
+		__( ' plugin installed and activated for the Give Addon Boilerplate add-on to activate', 'giveboilerplate' )
+	);
+
+	echo $message;
+}
+
 
 /**
  * Plugin row meta links.
