@@ -1,0 +1,48 @@
+# Copyright (C) 2017 Give - Gift Aid
+# This file is distributed under the same license as the Give - Gift Aid package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Give - Gift Aid\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Language-Team: WordImpress <info@wordimpress.com>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: inc/misc-functions.php:11
+msgid "Activation Error:"
+msgstr ""
+
+#: inc/misc-functions.php:12
+msgid "You must have"
+msgstr ""
+
+#: inc/misc-functions.php:14
+msgid "Give"
+msgstr ""
+
+#: inc/misc-functions.php:15
+msgid "version"
+msgstr ""
+
+#: inc/misc-functions.php:17
+msgid "for the Give Addon Boilerplate add-on to activate"
+msgstr ""
+
+#: inc/misc-functions.php:43
+msgid "Settings"
+msgstr ""
+
+#: inc/misc-functions.php:54
+msgid "Add-ons"
+msgstr ""
+
+#: inc/misc-functions.php:81
+msgid "Boilerplate"
+msgstr ""
