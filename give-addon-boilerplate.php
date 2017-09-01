@@ -124,7 +124,10 @@ final class Give_Addon_Boilerplate {
 	 * @access public
 	 */
 	public function install() {
-
+		// Bailout.
+		if ( ! self::$instance->check_environment() ) {
+			return;
+		}
 	}
 
 	/**
@@ -138,7 +141,7 @@ final class Give_Addon_Boilerplate {
 	 * @return void
 	 */
 	public function init( $give ) {
-		if ( ! self::$instance->check_environment( $give ) ) {
+		if ( ! self::$instance->check_environment() ) {
 			return;
 		}
 
@@ -154,11 +157,9 @@ final class Give_Addon_Boilerplate {
 	 * @since
 	 * @access public
 	 *
-	 * @param Give $give
-	 *
 	 * @return bool|null
 	 */
-	public function check_environment( $give ) {
+	public function check_environment() {
 		// Bailout.
 		if ( ! is_admin() || ! current_user_can( 'activate_plugins' ) ) {
 			return null;
@@ -192,6 +193,7 @@ final class Give_Addon_Boilerplate {
 
 				break;
 
+			case doing_action( 'activate_' . GIVE_ADDON_BOILERPLATE_BASENAME ):
 			case doing_action( 'plugins_loaded' ) && ! did_action( 'give_init' ):
 				/* Check to see if Give is activated, if it isn't deactivate and show a banner. */
 
