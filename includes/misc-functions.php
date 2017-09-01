@@ -28,7 +28,7 @@ function __give_addon_boilerplate_dependency_notice() {
 /**
  * Notice for No Core Activation
  *
- * @since 1.3.3
+ * @since
  */
 function __give_addon_boilerplate_inactive_notice() {
 	// Admin notice.
