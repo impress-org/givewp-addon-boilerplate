@@ -50,7 +50,7 @@ function __give_addon_boilerplate_inactive_notice() {
  *
  * @since
  *
- * @param array  $plugin_meta An array of the plugin's metadata.
+ * @param array $plugin_meta An array of the plugin's metadata.
  * @param string $plugin_file Path to the plugin file, relative to the plugins directory.
  *
  * @return array
@@ -85,25 +85,29 @@ function __give_addon_boilerplate_plugin_row_meta( $plugin_meta, $plugin_file ) 
  */
 function __give_addon_boilerplate_activation_banner() {
 
-	// Check for activation banner class.
+	// Check for activation banner inclusion.
 	if ( ! class_exists( 'Give_Addon_Activation_Banner' )
-	     || ! file_exists( GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php' )
+	     && file_exists( GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php' )
 	) {
-		return;
+
+		include GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php';
 	}
 
-	include GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php';
+	// Initialize activation welcome banner.
+	if ( class_exists( 'Give_Addon_Activation_Banner' ) ) {
 
-	// Only runs on admin.
-	$args = array(
-		'file'              => __FILE__,
-		'name'              => __( 'Boilerplate', 'give-addon-boilerplate' ),
-		'version'           => GIVE_ADDON_BOILERPLATE_VERSION,
-		'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=addons' ),
-		'documentation_url' => 'https://givewp.com/documentation/add-ons/boilerplate/',
-		'support_url'       => 'https://givewp.com/support/',
-		'testing'           => false //Never leave true.
-	);
+		// Only runs on admin.
+		$args = array(
+			'file'              => GIVE_ADDON_BOILERPLATE_FILE,
+			'name'              => __( 'Boilerplate', 'give-addon-boilerplate' ),
+			'version'           => GIVE_ADDON_BOILERPLATE_VERSION,
+			'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=addons' ),
+			'documentation_url' => 'https://givewp.com/documentation/add-ons/boilerplate/',
+			'support_url'       => 'https://givewp.com/support/',
+			'testing'           => false // Never leave true.
+		);
 
-	new Give_Addon_Activation_Banner( $args );
+		new Give_Addon_Activation_Banner( $args );
+
+	}
 }

@@ -59,7 +59,7 @@ final class Give_Addon_Boilerplate {
 	 * @return Give_Addon_Boilerplate
 	 */
 	public static function get_instance() {
-		if ( null === static::$instance ) {
+		if ( ! isset( self::$instance ) &&  ! ( self::$instance instanceof Give_Addon_Boilerplate )) {
 			self::$instance = new Give_Addon_Boilerplate();
 			self::$instance->setup();
 		}
@@ -86,33 +86,42 @@ final class Give_Addon_Boilerplate {
 	/**
 	 * Setup constants
 	 *
+	 * Defines useful constants to use throughout the add-on.
+	 *
 	 * @since
 	 * @access private
 	 */
 	private function setup_constants() {
-		// Defines Addon directory for easy reference.
+		//
+		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_FILE' ) ) {
+			define( 'GIVE_ADDON_BOILERPLATE_FILE', __FILE__  );
+		}
+
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_DIR' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_DIR', trailingslashit( dirname( __FILE__ ) ) );
+			define( 'GIVE_ADDON_BOILERPLATE_DIR', plugin_dir_path( GIVE_ADDON_BOILERPLATE_FILE ) );
 		}
 
-		// Defines Addon Basename.
+		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_URL' ) ) {
+			define( 'GIVE_ADDON_BOILERPLATE_URL', plugin_dir_url( GIVE_ADDON_BOILERPLATE_FILE ) );
+		}
+
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_BASENAME' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_BASENAME', plugin_basename( __FILE__ ) );
+			define( 'GIVE_ADDON_BOILERPLATE_BASENAME', plugin_basename( GIVE_ADDON_BOILERPLATE_FILE ) );
 		}
 
-		// Defins Addon Version number for easy reference.
+		// Defines addon version number for easy reference.
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_VERSION' ) ) {
 			define( 'GIVE_ADDON_BOILERPLATE_VERSION', '1.0' );
 		}
 
-		// Defines the minimum Version this Addon requires to be activated.
+		// Defines the minimum Version this add-on requires to be activated.
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VER' ) ) {
 			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VER', '1.7' );
 		}
 
+		// Set it to latest.
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION' ) ) {
-			// Set it to latest.
-			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '1.8.15' );
+			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '2.0' );
 		}
 	}
 
@@ -264,7 +273,7 @@ final class Give_Addon_Boilerplate {
 	 */
 	private function load_license() {
 		new Give_License(
-			__FILE__,
+			GIVE_ADDON_BOILERPLATE_FILE,
 			'Give Addon Boilerplate',
 			GIVE_ADDON_BOILERPLATE_VERSION,
 			'WordImpress',
