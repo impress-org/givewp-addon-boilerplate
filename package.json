@@ -1,31 +1,65 @@
 {
   "name": "give-addon-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm install && npm run watch",
+    "dev": "cross-env webpack",
+    "production": "cross-env NODE_ENV=production webpack",
+    "build": "npm run production",
+    "watch": "cross-env webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/impress-org/give-addon-boilerplate.git"
+  },
+  "author": "WordImpress, LLC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/impress-org/give-addon-boilerplate/issues"
+  },
   "private": true,
+  "homepage": "https://github.com/impress-org/give-addon-boilerplate#readme",
   "devDependencies": {
-    "del": "^2.0.1",
-    "eslint": "^4.5.0",
-    "eslint-plugin-wordpress": "^0.1.0",
-    "fs-extra": "^1.0.0",
-    "gulp": "^3.9.1",
-    "gulp-bower": "0.0.13",
-    "gulp-checktextdomain": "^1.0.2",
-    "gulp-concat": "~2.6.0",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-filter": "^3.0.1",
-    "gulp-imagemin": "^3.0.3",
-    "gulp-livereload": "^3.0.0",
-    "gulp-notify": "~2.2.0",
-    "gulp-rename": "~1.2.0",
-    "gulp-rtlcss": "^1.0.0",
-    "gulp-sass": "^2.2.0",
-    "gulp-sort": "^2.0.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "~1.5.3",
-    "gulp-watch": "~4.3.5",
-    "gulp-wp-pot": "^1.2.2",
-    "main-bower-files": "^2.11.1"
+    "autoprefixer": "^7.2.6",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.7",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "3.2.4",
+    "css-loader": "^0.28.11",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.19.1",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "expose-loader": "latest",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.11",
+    "imagemin-webpack-plugin": "^1.6.1",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^2.1.6",
+    "regenerator-runtime": "^0.12.1",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.18.2",
+    "stylelint-config-wordpress": "^12.0.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.12.0",
+    "webpack-rtl-plugin": "^1.7.0",
+    "wp-pot": "^1.6.3"
   },
   "dependencies": {
-    "eslint-config-wordpress": "^2.0.0"
+    "npm": "^5.7.1"
+  },
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
   }
 }

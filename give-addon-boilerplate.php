@@ -77,7 +77,7 @@ final class Give_Addon_Boilerplate {
 	private function setup() {
 		self::$instance->setup_constants();
 
-		register_activation_hook( __FILE__, array( $this, 'install' ) );
+		register_activation_hook( GIVE_ADDON_BOILERPLATE_FILE, array( $this, 'install' ) );
 		add_action( 'give_init', array( $this, 'init' ), 10, 1 );
 		add_action( 'plugins_loaded', array( $this, 'check_environment' ), 999 );
 	}
@@ -92,9 +92,19 @@ final class Give_Addon_Boilerplate {
 	 * @access private
 	 */
 	private function setup_constants() {
-		//
+
+		// Defines addon version number for easy reference.
+		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_VERSION' ) ) {
+			define( 'GIVE_ADDON_BOILERPLATE_VERSION', '1.0' );
+		}
+
+		// Set it to latest.
+		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION' ) ) {
+			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '2.0' );
+		}
+
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_FILE' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_FILE', __FILE__  );
+			define( 'GIVE_ADDON_BOILERPLATE_FILE', __FILE__ );
 		}
 
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_DIR' ) ) {
@@ -107,21 +117,6 @@ final class Give_Addon_Boilerplate {
 
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_BASENAME' ) ) {
 			define( 'GIVE_ADDON_BOILERPLATE_BASENAME', plugin_basename( GIVE_ADDON_BOILERPLATE_FILE ) );
-		}
-
-		// Defines addon version number for easy reference.
-		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_VERSION' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_VERSION', '1.0' );
-		}
-
-		// Defines the minimum Version this add-on requires to be activated.
-		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VER' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VER', '1.7' );
-		}
-
-		// Set it to latest.
-		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '2.0' );
 		}
 	}
 
@@ -196,7 +191,7 @@ final class Give_Addon_Boilerplate {
 
 					// Show admin notice.
 					add_action( 'admin_notices', '__give_addon_boilerplate_dependency_notice' );
-					
+
 					$is_deactivate_plugin = true;
 				}
 
