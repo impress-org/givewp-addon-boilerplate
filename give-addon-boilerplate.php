@@ -77,7 +77,7 @@ final class Give_Addon_Boilerplate {
 	private function setup() {
 		self::$instance->setup_constants();
 
-		register_activation_hook( __FILE__, array( $this, 'install' ) );
+		register_activation_hook( GIVE_ADDON_BOILERPLATE_FILE, array( $this, 'install' ) );
 		add_action( 'give_init', array( $this, 'init' ), 10, 1 );
 		add_action( 'plugins_loaded', array( $this, 'check_environment' ), 999 );
 	}
@@ -104,7 +104,7 @@ final class Give_Addon_Boilerplate {
 		}
 
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_FILE' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_FILE', __FILE__  );
+			define( 'GIVE_ADDON_BOILERPLATE_FILE', __FILE__ );
 		}
 
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_DIR' ) ) {
