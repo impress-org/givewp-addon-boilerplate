@@ -100,7 +100,7 @@ final class Give_Addon_Boilerplate {
 
 		// Set it to latest.
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION' ) ) {
-			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '2.0' );
+			define( 'GIVE_ADDON_BOILERPLATE_MIN_GIVE_VERSION', '2.3.0' );
 		}
 
 		if ( ! defined( 'GIVE_ADDON_BOILERPLATE_FILE' ) ) {
