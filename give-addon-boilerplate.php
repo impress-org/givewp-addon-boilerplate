@@ -53,13 +53,13 @@ final class Give_Addon_Boilerplate {
 	/**
 	 * Get instance.
 	 *
+	 * @return Give_Addon_Boilerplate
 	 * @since
 	 * @access public
 	 *
-	 * @return Give_Addon_Boilerplate
 	 */
 	public static function get_instance() {
-		if ( ! isset( self::$instance ) &&  ! ( self::$instance instanceof Give_Addon_Boilerplate )) {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Give_Addon_Boilerplate ) ) {
 			self::$instance = new Give_Addon_Boilerplate();
 			self::$instance->setup();
 		}
@@ -80,6 +80,7 @@ final class Give_Addon_Boilerplate {
 		register_activation_hook( GIVE_ADDON_BOILERPLATE_FILE, array( $this, 'install' ) );
 		add_action( 'give_init', array( $this, 'init' ), 10, 1 );
 		add_action( 'plugins_loaded', array( $this, 'check_environment' ), 999 );
+		add_filter( 'give-settings_get_settings_pages', array( $this, 'register_setting_page' ) );
 	}
 
 
@@ -137,12 +138,12 @@ final class Give_Addon_Boilerplate {
 	/**
 	 * Plugin installation
 	 *
-	 * @since
-	 * @access public
-	 *
 	 * @param Give $give
 	 *
 	 * @return void
+	 * @since
+	 * @access public
+	 *
 	 */
 	public function init( $give ) {
 		if ( ! self::$instance->check_environment() ) {
@@ -158,10 +159,10 @@ final class Give_Addon_Boilerplate {
 	/**
 	 * Check plugin environment
 	 *
+	 * @return bool|null
 	 * @since
 	 * @access public
 	 *
-	 * @return bool|null
 	 */
 	public function check_environment() {
 		// Bailout.
@@ -229,6 +230,20 @@ final class Give_Addon_Boilerplate {
 		return true;
 	}
 
+	/**
+	 * Register setting page.
+	 *
+	 * @param $settings
+	 *
+	 * @return array
+	 */
+	function register_setting_page( $settings ) {
+		require_once GIVE_ADDON_BOILERPLATE_DIR . 'includes/admin/settings.php';
+
+		$settings[] = new Give_BP_Admin_Settings();
+
+		return $settings;
+	}
 
 	/**
 	 * Load plugin files.
@@ -240,7 +255,7 @@ final class Give_Addon_Boilerplate {
 		require_once GIVE_ADDON_BOILERPLATE_DIR . 'includes/misc-functions.php';
 
 		if ( is_admin() ) {
-			require_once GIVE_ADDON_BOILERPLATE_DIR . 'includes/admin/settings.php';
+			require_once GIVE_ADDON_BOILERPLATE_DIR . 'includes/admin/setting-examples.php';
 		}
 	}
 
@@ -286,9 +301,9 @@ final class Give_Addon_Boilerplate {
  *
  * Example: <?php $recurring = Give_Addon_Boilerplate(); ?>
  *
+ * @return Give_Addon_Boilerplate|bool
  * @since 1.0
  *
- * @return Give_Addon_Boilerplate|bool
  */
 function Give_Addon_Boilerplate() {
 	return Give_Addon_Boilerplate::get_instance();
