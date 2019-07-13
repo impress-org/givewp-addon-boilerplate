@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Give - Addon Boilerplate
- * Plugin URI:  https://givewp.com
+ * Plugin URI:  https://github.com/impress-org/give-addon-boilerplate
  * Description: A demo Addon to serve as a boilerplate for devs to better understand how to extend the Give Donation plugin for WordPress.
  * Version:     1.0
  * Author:      WordImpress, LLC
