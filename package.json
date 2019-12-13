@@ -56,7 +56,7 @@
     "wp-pot": "^1.6.3"
   },
   "dependencies": {
-    "npm": "^5.7.1"
+    "npm": "^6.13.4"
   },
   "engines": {
     "node": "8.9.1",
