@@ -58,7 +58,7 @@ function __give_addon_boilerplate_inactive_notice() {
 function __give_addon_boilerplate_plugin_row_meta( $plugin_meta, $plugin_file ) {
 	$new_meta_links['setting'] = sprintf(
 		'<a href="%1$s">%2$s</a>',
-		admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=addons' ),
+		admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=give-bd-setting-fields' ),
 		__( 'Settings', 'give-addon-boilerplate' )
 	);
 
@@ -101,7 +101,7 @@ function __give_addon_boilerplate_activation_banner() {
 			'file'              => GIVE_ADDON_BOILERPLATE_FILE,
 			'name'              => __( 'Boilerplate', 'give-addon-boilerplate' ),
 			'version'           => GIVE_ADDON_BOILERPLATE_VERSION,
-			'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=addons' ),
+			'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=give-bd-setting-fields' ),
 			'documentation_url' => 'https://givewp.com/documentation/add-ons/boilerplate/',
 			'support_url'       => 'https://givewp.com/support/',
 			'testing'           => false // Never leave true.
