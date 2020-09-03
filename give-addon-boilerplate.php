@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Give - Addon Boilerplate
- * Plugin URI:  https://github.com/impress-org/give-addon-boilerplate
+ * Plugin URI:  https://github.com/impress-org/givewp-addon-boilerplate
  * Description: A demo Addon to serve as a boilerplate for devs to better understand how to extend the Give Donation plugin for WordPress.
  * Version:     1.0
- * Author:      WordImpress, LLC
+ * Author:      Impress, LLC
  * Author URI:  https://wordimpress.com
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -77,10 +77,10 @@ final class Give_Addon_Boilerplate {
 	private function setup() {
 		self::$instance->setup_constants();
 
-		register_activation_hook( GIVE_ADDON_BOILERPLATE_FILE, array( $this, 'install' ) );
-		add_action( 'give_init', array( $this, 'init' ), 10, 1 );
-		add_action( 'plugins_loaded', array( $this, 'check_environment' ), 999 );
-		add_filter( 'give-settings_get_settings_pages', array( $this, 'register_setting_page' ) );
+		register_activation_hook( GIVE_ADDON_BOILERPLATE_FILE, [ $this, 'install' ] );
+		add_action( 'give_init', [ $this, 'init' ], 10, 1 );
+		add_action( 'plugins_loaded', [ $this, 'check_environment' ], 999 );
+		add_filter( 'give-settings_get_settings_pages', [ $this, 'register_setting_page' ] );
 	}
 
 

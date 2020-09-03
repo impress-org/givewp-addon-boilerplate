@@ -1,16 +1,19 @@
-const webpack = require( 'webpack' );
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const path = require( 'path' );
-const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
-const inProduction = ('production' === process.env.NODE_ENV);
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const MiniCSSExtractPlugin = require( 'mini-css-extract-plugin' );
 const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
 const ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
-const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
+const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const WebpackRTLPlugin = require( 'webpack-rtl-plugin' );
 const wpPot = require( 'wp-pot' );
 
+const inProduction = ( 'production' === process.env.NODE_ENV );
+const mode = inProduction ? 'production' : 'development';
+
 // Webpack config.
 const config = {
+	mode,
+
 	entry: {
 		'give-addon-admin': [
 			'./assets/src/js/admin/give-addon-admin.js',
@@ -24,16 +27,18 @@ const config = {
 
 	// Tell webpack where to output.
 	output: {
-		path: path.resolve( __dirname, './assets/dist/' ),
-		filename: 'js/[name].js'
+		path: path.join( __dirname, './assets/dist/' ),
+		filename: 'js/[name].js',
 	},
 
 	// Ensure modules like magnific know jQuery is external (loaded via WP).
 	externals: {
 		$: 'jQuery',
-		jquery: 'jQuery'
+		jquery: 'jQuery',
 	},
-	devtool: 'source-map',
+
+	devtool: ! inProduction ? 'source-map' : '',
+
 	module: {
 		rules: [
 
@@ -42,38 +47,37 @@ const config = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loaders: [
-					'babel-loader'
-				]
+					'babel-loader',
+				],
 			},
 
 			// Create RTL styles.
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract( 'style-loader' )
+				use: [
+					//MiniCSSExtractPlugin.loader,
+					'style-loader',
+					'css-loader',
+				],
 			},
 
 			// SASS to CSS.
 			{
 				test: /\.scss$/,
-				use: ExtractTextPlugin.extract( {
-					use: [ {
+				use: [
+					MiniCSSExtractPlugin.loader,
+					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: true
-						}
-					}, {
-						loader: 'postcss-loader',
-						options: {
-							sourceMap: true
-						}
-					}, {
+							sourceMap: true,
+						},
+					},
+					{
 						loader: 'sass-loader',
 						options: {
 							sourceMap: true,
-							outputStyle: (inProduction ? 'compressed' : 'nested')
-						}
-					} ]
-				} )
+						},
+					} ],
 			},
 
 			// Image files.
@@ -84,62 +88,78 @@ const config = {
 						loader: 'file-loader',
 						options: {
 							name: 'images/[name].[ext]',
-							publicPath: '../'
-						}
-					}
-				]
-			}
-		]
+							publicPath: '../',
+						},
+					},
+				],
+			},
+		],
 	},
 
 	// Plugins. Gotta have em'.
 	plugins: [
-
 		// Removes the "dist" folder before building.
-		new CleanWebpackPlugin( [ 'assets/dist' ] ),
+		new CleanWebpackPlugin( {
+			cleanStaleWebpackAssets: false,
+			cleanOnceBeforeBuildPatterns: [ 'assets/dist' ],
+		} ),
 
-		new ExtractTextPlugin( 'css/[name].css' ),
+		new MiniCSSExtractPlugin( {
+			filename: 'css/[name].css',
+		} ),
 
-		// Create RTL css.
-		new WebpackRTLPlugin(),
+		new CopyWebpackPlugin( {
+			patterns: [
+				{
+					from: 'assets/src/images',
+					to: 'images',
+				},
+			],
+		} ),
 
 		// Copy images and SVGs
-		new CopyWebpackPlugin( [ { from: 'assets/src/images', to: 'images' } ] ),
-
-		// Minify images.
-		// Must go after CopyWebpackPlugin above: https://github.com/Klathmon/imagemin-webpack-plugin#example-usage
-		new ImageminPlugin( { test: /\.(jpe?g|png|gif|svg)$/i } ),
+		new CopyWebpackPlugin( {
+			patterns: [
+				{
+					from: 'assets/src/images',
+					to: 'images',
+				},
+			],
+		} ),
 
 		// Setup browser sync. Note: don't use ".local" TLD as it will be very slow. We recommending using ".test".
 		new BrowserSyncPlugin( {
 			files: [
-				'**/*.php'
+				'**/*.php',
 			],
 			host: 'localhost',
 			port: 3000,
-			proxy: 'give.test'
-		} )
-	]
+			proxy: 'give.test',
+		} ),
+	],
 };
 
 // inProd?
 if ( inProduction ) {
+	// Create RTL css.
+	config.plugins.push( new WebpackRTLPlugin( {
+		suffix: '-rtl',
+		minify: true,
+	} ) );
+
+	// Minify images.
+	// Must go after CopyWebpackPlugin above: https://github.com/Klathmon/imagemin-webpack-plugin#example-usage
+	config.plugins.push( new ImageminPlugin( { test: /\.(jpe?g|png|gif|svg)$/i } ) );
 
 	// POT file.
 	wpPot( {
 		package: 'Give-Addon-Boilerplate',
-		domain: 'give-addon',
-		destFile: 'languages/give-addon.pot',
+		domain: 'give-addon-boilerplate',
+		destFile: 'languages/give-addon-boilerplate.pot',
 		relativeTo: './',
-		bugReport: 'https://github.com/impress-org/Give-addon/issues/new',
-		team: 'GiveWP <info@givewp.com>'
+		bugReport: 'https://github.com/impress-org/givewp-addon-boilerplate/issues/new',
+		team: 'GiveWP <info@givewp.com>',
 	} );
-
-	// Uglify JS.
-	config.plugins.push( new webpack.optimize.UglifyJsPlugin( { sourceMap: true } ) );
-
-	// Minify CSS.
-	config.plugins.push( new webpack.LoaderOptionsPlugin( { minimize: true } ) );
 }
 
 module.exports = config;

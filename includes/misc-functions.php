@@ -17,12 +17,14 @@ function __give_addon_boilerplate_dependency_notice() {
 		__( 'for the Give Addon Boilerplate add-on to activate', 'give-addon-boilerplate' )
 	);
 
-	Give()->notices->register_notice( array(
-		'id'          => 'give-activation-error',
-		'type'        => 'error',
-		'description' => $message,
-		'show'        => true,
-	) );
+	Give()->notices->register_notice(
+		[
+			'id'          => 'give-activation-error',
+			'type'        => 'error',
+			'description' => $message,
+			'show'        => true,
+		]
+	);
 }
 
 /**
@@ -64,11 +66,15 @@ function __give_addon_boilerplate_plugin_row_meta( $plugin_meta, $plugin_file ) 
 
 	$new_meta_links['documentation'] = sprintf(
 		'<a href="%1$s" target="_blank">%2$s</a>',
-		esc_url( add_query_arg( array(
-				'utm_source'   => 'plugins-page',
-				'utm_medium'   => 'plugin-row',
-				'utm_campaign' => 'admin',
-			), 'https://givewp.com/addons/' )
+		esc_url(
+			add_query_arg(
+				[
+					'utm_source'   => 'plugins-page',
+					'utm_medium'   => 'plugin-row',
+					'utm_campaign' => 'admin',
+				],
+				'https://givewp.com/addons/'
+			)
 		),
 		__( 'Add-ons', 'give-addon-boilerplate' )
 	);
@@ -87,7 +93,7 @@ function __give_addon_boilerplate_activation_banner() {
 
 	// Check for activation banner inclusion.
 	if ( ! class_exists( 'Give_Addon_Activation_Banner' )
-	     && file_exists( GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php' )
+		 && file_exists( GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php' )
 	) {
 
 		include GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php';
@@ -97,15 +103,15 @@ function __give_addon_boilerplate_activation_banner() {
 	if ( class_exists( 'Give_Addon_Activation_Banner' ) ) {
 
 		// Only runs on admin.
-		$args = array(
+		$args = [
 			'file'              => GIVE_ADDON_BOILERPLATE_FILE,
 			'name'              => __( 'Boilerplate', 'give-addon-boilerplate' ),
 			'version'           => GIVE_ADDON_BOILERPLATE_VERSION,
 			'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=give-bd-setting-fields' ),
 			'documentation_url' => 'https://givewp.com/documentation/add-ons/boilerplate/',
 			'support_url'       => 'https://givewp.com/support/',
-			'testing'           => false // Never leave true.
-		);
+			'testing'           => false, // Never leave true.
+		];
 
 		new Give_Addon_Activation_Banner( $args );
 
