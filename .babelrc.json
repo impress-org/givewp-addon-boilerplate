@@ -1,24 +1,13 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "modules": false
-      }
-    ]
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-    [
-      "transform-react-jsx",
-      {
-        "pragma": "wp.element.createElement"
-      }
-    ]
-  ],
-  "env": {
-    "default": {
-      "plugins": ["transform-runtime"]
-    }
-  }
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "browsers": "last 2 version, > 0.05%, ie >= 10"
+                }
+            }
+        ]
+    ],
+    "plugins": ["@babel/plugin-transform-runtime", "@babel/plugin-proposal-object-rest-spread"]
 }
