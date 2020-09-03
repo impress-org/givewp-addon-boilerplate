@@ -22,6 +22,11 @@
   "private": true,
   "homepage": "https://github.com/impress-org/give-addon-boilerplate#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/runtime": "^7.11.2",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.24.7",
     "browser-sync-webpack-plugin": "^2.2.2",
