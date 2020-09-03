@@ -157,7 +157,7 @@ if ( inProduction ) {
 		domain: 'give-addon-boilerplate',
 		destFile: 'languages/give-addon-boilerplate.pot',
 		relativeTo: './',
-		bugReport: 'https://github.com/impress-org/Give-addon/issues/new',
+		bugReport: 'https://github.com/impress-org/givewp-addon-boilerplate/issues/new',
 		team: 'GiveWP <info@givewp.com>',
 	} );
 }
