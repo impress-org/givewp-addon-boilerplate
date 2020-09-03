@@ -21,7 +21,7 @@
         "type": "git",
         "url": "git+https://github.com/impress-org/give-addon-boilerplate.git"
     },
-    "author": "WordImpress, LLC",
+    "author": "Impress, LLC",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/impress-org/give-addon-boilerplate/issues"

@@ -4,7 +4,7 @@
  * Plugin URI:  https://github.com/impress-org/givewp-addon-boilerplate
  * Description: A demo Addon to serve as a boilerplate for devs to better understand how to extend the Give Donation plugin for WordPress.
  * Version:     1.0
- * Author:      WordImpress, LLC
+ * Author:      Impress, LLC
  * Author URI:  https://wordimpress.com
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
