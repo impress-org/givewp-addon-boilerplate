@@ -21,13 +21,14 @@
         "document": true,
         "giveApiSettings": true
     },
-    "plugins": ["react"],
+    "plugins": ["prettier"],
     "settings": {
         "react": {
             "pragma": "wp"
         }
     },
     "rules": {
+        "prettier/prettier": "error",
         "linebreak-style": 0,
         "array-bracket-spacing": ["error", "always"],
         "brace-style": ["error", "1tbs"],
