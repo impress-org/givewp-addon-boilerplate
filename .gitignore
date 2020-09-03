@@ -1,4 +1,4 @@
 /vendor
 /node_modules
 /assets/dist
-/languages
+/languages/*.pot
