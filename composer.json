@@ -10,5 +10,19 @@
         "wp-coding-standards/wpcs": "^2.3",
         "phpcompatibility/php-compatibility": "^9.3",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"
-    }
+    },
+  "scripts": {
+	"post-install-cmd": [
+	  "@install-codestandards"
+	],
+	,
+	"install-codestandards": [
+	  "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+	]
+  },
+  "autoload": {
+	"psr-4": {
+	  "GiveAddon\\": "src/"
+	}
+  }
 }
