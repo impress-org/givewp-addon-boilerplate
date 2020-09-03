@@ -14,15 +14,15 @@ function give_bp_add_setting_into_existing_tab( $settings ) {
 	}
 
 	// Make sure you will create your own section or add new setting before array with type 'sectionend' otherwise setting field with not align properly with other setting fields.
-	$new_setting = array();
+	$new_setting = [];
 	foreach ( $settings as $key => $setting ) {
-		if( 'give_docs_link' === $setting['type'] ) { // You can use id to compare or create own sub section to add new setting.
-			$new_setting[] = array(
+		if ( 'give_docs_link' === $setting['type'] ) { // You can use id to compare or create own sub section to add new setting.
+			$new_setting[] = [
 				'name' => __( 'Custom Setting Field', 'give' ),
 				'id'   => 'custom_setting_field',
 				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' ),
 				'type' => 'text',
-			);
+			];
 		}
 
 		$new_setting[] = $setting;
@@ -45,22 +45,22 @@ function give_bp_add_setting_into_new_section( $settings ) {
 		return $settings;
 	}
 
-	$settings[] = array(
+	$settings[] = [
 		'type' => 'title',
 		'id'   => 'custom_settings',
-	);
+	];
 
-	$settings[] = array(
+	$settings[] = [
 		'name' => __( 'Custom Setting Field', 'give' ),
 		'id'   => 'custom_setting_field',
 		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' ),
 		'type' => 'text',
-	);
+	];
 
-	$settings[] = array(
+	$settings[] = [
 		'id'   => 'custom_settings',
 		'type' => 'sectionend',
-	);
+	];
 
 	return $settings;
 }
