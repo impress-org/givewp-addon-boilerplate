@@ -33,14 +33,7 @@ class Environment {
 	 * @return bool
 	 */
 	public static function giveMinRequiredVersionCheck() {
-		if (
-			defined( 'GIVE_VERSION' ) &&
-			version_compare( GIVE_VERSION, ADDON_CONSTANT_MIN_GIVE_VERSION, '>=' )
-		) {
-			return true;
-		}
-
-		return false;
+		return defined( 'GIVE_VERSION' ) && version_compare( GIVE_VERSION, ADDON_CONSTANT_MIN_GIVE_VERSION, '>=' );
 	}
 
 	/**
