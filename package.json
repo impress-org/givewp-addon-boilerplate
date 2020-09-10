@@ -36,6 +36,7 @@
         "@babel/preset-env": "^7.11.5",
         "@babel/runtime": "^7.11.2",
         "@prettier/plugin-php": "^0.14.3",
+        "@wordpress/eslint-plugin": "^7.2.0",
         "autoprefixer": "^9.8.6",
         "babel-loader": "^8.1.0",
         "browser-sync": "^2.24.7",
@@ -69,8 +70,6 @@
         "wp-textdomain": "^1.0.1"
     },
     "dependencies": {
-        "@wordpress/eslint-plugin": "^7.2.0",
-        "eslint-plugin-prettier": "^3.1.4",
         "npm": "^6.13.4"
     },
     "engines": {

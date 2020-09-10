@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const WebpackRTLPlugin = require( 'webpack-rtl-plugin' );
 const wpPot = require( 'wp-pot' );
 
-const inProduction = ( 'production' === process.env.NODE_ENV );
+const inProduction = 'production' === process.env.NODE_ENV;
 const mode = inProduction ? 'production' : 'development';
 
 // Webpack config.
@@ -41,14 +41,11 @@ const config = {
 
 	module: {
 		rules: [
-
 			// Use Babel to compile JS.
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: [
-					'babel-loader',
-				],
+				loaders: [ 'babel-loader' ],
 			},
 
 			// Create RTL styles.
@@ -77,7 +74,8 @@ const config = {
 						options: {
 							sourceMap: true,
 						},
-					} ],
+					},
+				],
 			},
 
 			// Image files.
@@ -129,9 +127,7 @@ const config = {
 
 		// Setup browser sync. Note: don't use ".local" TLD as it will be very slow. We recommending using ".test".
 		new BrowserSyncPlugin( {
-			files: [
-				'**/*.php',
-			],
+			files: [ '**/*.php' ],
 			host: 'localhost',
 			port: 3000,
 			proxy: 'give.test',
@@ -142,10 +138,12 @@ const config = {
 // inProd?
 if ( inProduction ) {
 	// Create RTL css.
-	config.plugins.push( new WebpackRTLPlugin( {
-		suffix: '-rtl',
-		minify: true,
-	} ) );
+	config.plugins.push(
+		new WebpackRTLPlugin( {
+			suffix: '-rtl',
+			minify: true,
+		} )
+	);
 
 	// Minify images.
 	// Must go after CopyWebpackPlugin above: https://github.com/Klathmon/imagemin-webpack-plugin#example-usage
