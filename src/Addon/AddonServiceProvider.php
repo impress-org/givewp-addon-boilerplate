@@ -30,7 +30,7 @@ class AddonServiceProvider implements ServiceProvider {
 	 */
 	public function boot() {
 		// Load add-on translations.
-		Hooks::addAction( 'admin_init', Language::class, 'load' );
+		Hooks::addAction( 'init', Language::class, 'load' );
 
 		is_admin()
 			? $this->loadBackend()
