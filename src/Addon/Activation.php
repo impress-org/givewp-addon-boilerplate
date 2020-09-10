@@ -11,6 +11,9 @@ class Activation {
 
 	/**
 	 * Register add-on activation actions.
+	 *
+	 * @since 1.0.0
+	 * @return void
 	 */
 	public static function registerActions() {
 		// Activate add-on hook.
@@ -42,6 +45,7 @@ class Activation {
 	/**
 	 * Activate add-on action hook.
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function activateAddon() {
@@ -51,6 +55,7 @@ class Activation {
 	/**
 	 * Deactivate add-on action hook.
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function deactivateAddon() {
@@ -60,6 +65,7 @@ class Activation {
 	/**
 	 * Uninstall add-on action hook.
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function uninstallAddon() {

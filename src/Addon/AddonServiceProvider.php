@@ -38,6 +38,12 @@ class AddonServiceProvider implements ServiceProvider {
 	}
 
 
+	/**
+	 * Load add-on backend assets.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	private function loadBackend() {
 		// Register settings page
 		SettingsPage::registerPage( AddonSettingsPage::class );
@@ -66,7 +72,12 @@ class AddonServiceProvider implements ServiceProvider {
 		//      ] );
 	}
 
-
+	/**
+	 * Load add-on front-end assets.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	private function loadFrontend() {
 		// Load front-end assets.
 		Hooks::addAction( 'admin_enqueue_scripts', Assets::class, 'loadFrontendAssets' );

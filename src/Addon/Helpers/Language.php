@@ -11,6 +11,7 @@ class Language {
 	/**
 	 * Load language.
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function load() {

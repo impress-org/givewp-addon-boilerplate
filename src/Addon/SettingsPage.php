@@ -12,6 +12,8 @@ class SettingsPage extends \Give_Settings_Page {
 
 	/**
 	 * Settings constructor.
+	 *
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		$this->id          = 'give-addon-boilerplate';
@@ -25,6 +27,7 @@ class SettingsPage extends \Give_Settings_Page {
 	/**
 	 * Add setting sections.
 	 *
+	 * @since 1.0.0
 	 * @return array
 	 */
 	public function get_sections() {
@@ -41,6 +44,7 @@ class SettingsPage extends \Give_Settings_Page {
 	/**
 	 * Get setting.
 	 *
+	 * @since 1.0.0
 	 * @return array
 	 */
 	public function get_settings() {

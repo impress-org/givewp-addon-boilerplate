@@ -12,6 +12,9 @@ class ActivationBanner {
 
 	/**
 	 * Show activation banner
+	 *
+	 * @since 1.0.0
+	 * @return void
 	 */
 	public function show() {
 		// Only runs on admin.

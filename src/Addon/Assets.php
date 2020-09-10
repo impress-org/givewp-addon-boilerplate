@@ -12,6 +12,8 @@ class Assets {
 	/**
 	 * Load add-on backend assets.
 	 *
+	 * @since 1.0.0
+	 * @return void
 	 */
 	public static function loadBackendAssets() {
 		wp_enqueue_style(
@@ -32,6 +34,9 @@ class Assets {
 
 	/**
 	 * Load add-on front-end assets.
+	 *
+	 * @since 1.0.0
+	 * @return void
 	 */
 	public static function loadFrontendAssets() {
 		wp_enqueue_style(

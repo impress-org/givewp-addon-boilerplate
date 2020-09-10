@@ -12,6 +12,9 @@ class Notices {
 
 	/**
 	 * GiveWP min required version notice.
+	 *
+	 * @since 1.0.0
+	 * @return void
 	 */
 	public static function giveVersionError() {
 		Give()->notices->register_notice(
@@ -26,6 +29,9 @@ class Notices {
 
 	/**
 	 * GiveWP inactive notice.
+	 *
+	 * @since 1.0.0
+	 * @return void
 	 */
 	public static function giveInactive() {
 		echo View::load( 'admin/notices/give-inactive' );

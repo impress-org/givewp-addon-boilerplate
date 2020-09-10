@@ -16,6 +16,8 @@ class SettingsPage {
 	 * Regsiter settings page.
 	 *
 	 * @param string $class subclass of Give_Settings_Page
+	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function registerPage( $class ) {
@@ -44,6 +46,7 @@ class SettingsPage {
 	 * @param string $sectionId - settings page section
 	 * @param array  $settings
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function addSettings( $settingsId, $sectionId, $settings ) {
@@ -66,6 +69,7 @@ class SettingsPage {
 	 * @param string $sectionId
 	 * @param string $sectionName
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function addPageSection( $settingsId, $sectionId, $sectionName ) {
@@ -84,6 +88,7 @@ class SettingsPage {
 	 * @param string $settingsId - settings page ID
 	 * @param string $sectionId
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public static function removePageSection( $settingsId, $sectionId ) {

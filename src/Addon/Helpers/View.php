@@ -19,6 +19,7 @@ class View {
 	 *
 	 * @throws InvalidArgumentException if template file not exist
 	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function load( $view, $vars = [], $echo = false ) {
@@ -43,6 +44,8 @@ class View {
 	/**
 	 * @param string $view
 	 * @param array $vars
+	 *
+	 * @since 1.0.0
 	 */
 	public static function render( $view, $vars = [] ) {
 		static::load( $view, $vars, true );
