@@ -1,6 +1,6 @@
 {
     "name": "impress-org/give-addon-boilerplate",
-    "description": "Give Addon Boilerplate: a addon to quick start new GiveWP Addon",
+    "description": "ADDON_DESCRIPTION",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "require": {},

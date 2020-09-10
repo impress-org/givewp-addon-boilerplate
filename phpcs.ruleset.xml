@@ -11,7 +11,9 @@
 	<exclude-pattern>vendor/*</exclude-pattern>
 	<exclude-pattern>sample-data/*</exclude-pattern>
 	<exclude-pattern>languages/*</exclude-pattern>
-	<exclude-pattern>assets/*</exclude-pattern>
+	<exclude-pattern>resources/css/*</exclude-pattern>
+	<exclude-pattern>resources/js/*</exclude-pattern>
+	<exclude-pattern>resources/images/*</exclude-pattern>
 
 	<!-- Bring in WP rules. -->
 	<rule ref="WordPress-Core">

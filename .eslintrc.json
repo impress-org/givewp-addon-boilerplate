@@ -21,7 +21,10 @@
         "document": true,
         "giveApiSettings": true
     },
-    "plugins": ["prettier"],
+    "plugins": [
+      "prettier",
+      "react"
+    ],
     "settings": {
         "react": {
             "pragma": "wp"

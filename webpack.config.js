@@ -16,18 +16,18 @@ const config = {
 
 	entry: {
 		'give-addon-admin': [
-			'./assets/src/js/admin/give-addon-admin.js',
-			'./assets/src/css/admin/give-addon-admin.scss',
+			'./src/Addon/resources/js/admin/give-addon-admin.js',
+			'./src/Addon/resources/css/admin/give-addon-admin.scss',
 		],
 		'give-addon': [
-			'./assets/src/js/frontend/give-addon.js',
-			'./assets/src/css/frontend/give-addon-frontend.scss',
+			'./src/Addon/resources/js/frontend/give-addon.js',
+			'./src/Addon/resources/css/frontend/give-addon-frontend.scss',
 		],
 	},
 
 	// Tell webpack where to output.
 	output: {
-		path: path.join( __dirname, './assets/dist/' ),
+		path: path.join( __dirname, './public/' ),
 		filename: 'js/[name].js',
 	},
 
@@ -101,7 +101,7 @@ const config = {
 		// Removes the "dist" folder before building.
 		new CleanWebpackPlugin( {
 			cleanStaleWebpackAssets: false,
-			cleanOnceBeforeBuildPatterns: [ 'assets/dist' ],
+			cleanOnceBeforeBuildPatterns: [ 'public' ],
 		} ),
 
 		new MiniCSSExtractPlugin( {
@@ -111,7 +111,7 @@ const config = {
 		new CopyWebpackPlugin( {
 			patterns: [
 				{
-					from: 'assets/src/images',
+					from: 'src/Addon/resources/images',
 					to: 'images',
 				},
 			],
@@ -121,7 +121,7 @@ const config = {
 		new CopyWebpackPlugin( {
 			patterns: [
 				{
-					from: 'assets/src/images',
+					from: 'src/Addon/resources/images',
 					to: 'images',
 				},
 			],
@@ -153,9 +153,9 @@ if ( inProduction ) {
 
 	// POT file.
 	wpPot( {
-		package: 'Give-Addon-Boilerplate',
-		domain: 'give-addon-boilerplate',
-		destFile: 'languages/give-addon-boilerplate.pot',
+		package: 'ADDON_NAME',
+		domain: 'ADDON_TEXTDOMAIN',
+		destFile: 'languages/ADDON_TEXTDOMAIN.pot',
 		relativeTo: './',
 		bugReport: 'https://github.com/impress-org/givewp-addon-boilerplate/issues/new',
 		team: 'GiveWP <info@givewp.com>',

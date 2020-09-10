@@ -1,6 +1,6 @@
 const wpTextdomain = require( 'wp-textdomain' );
 
 wpTextdomain( process.argv[ 2 ], {
-	domain: 'give-addon-boilerplate',
+	domain: 'ADDON_TEXTDOMAIN',
 	fix: true,
 } );
