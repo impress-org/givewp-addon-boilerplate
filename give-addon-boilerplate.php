@@ -33,4 +33,4 @@ add_action( 'before_give_init', function() {
 } );
 
 // Check to make sure GiveWP core is installed and compatible with this add-on.
-add_action( 'admin_init', [ Addon\Helpers\Environment::class, 'checkEnviroment' ] );
+add_action( 'admin_init', [ Addon\Helpers\Environment::class, 'checkEnvironment' ] );

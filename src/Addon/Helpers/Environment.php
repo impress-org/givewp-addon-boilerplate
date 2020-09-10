@@ -11,11 +11,11 @@ namespace GiveAddon\Addon\Helpers;
 class Environment {
 
 	/**
-	 * Check eneviroment.
+	 * Check environment.
 	 *
 	 * @return void
 	 */
-	public static function checkEnviroment() {
+	public static function checkEnvironment() {
 		// Check is GiveWP active
 		if ( ! static::isGiveActive() ) {
 			add_action( 'admin_notices', [ Notices::class, 'giveInactive' ] );
