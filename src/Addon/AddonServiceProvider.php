@@ -56,20 +56,19 @@ class AddonServiceProvider implements ServiceProvider {
 		/**
 		 * Example of how to extend an existing settings page.
 		 */
-
-		//      // Remove settings page section.
-		//      SettingsPage::removePageSection( 'general', 'access-control' );
-		//      // Add new settings page section.
-		//      SettingsPage::addPageSection( 'general', 'new-section', 'New Access Control Section' );
-		//      // Add page settings.
-		//      SettingsPage::addSettings( 'general', 'new-section', [
-		//          [
-		//              'name' => __( 'Custom Setting Field', 'give-addon-boilerplate' ),
-		//              'id'   => 'custom_setting_field',
-		//              'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'give-addon-boilerplate' ),
-		//              'type' => 'text'
-		//          ]
-		//      ] );
+		// Remove settings page section.
+		SettingsPage::removePageSection( 'general', 'access-control' );
+		// Add new settings page section.
+		SettingsPage::addPageSection( 'general', 'new-section', 'New Access Control Section' );
+		// Add page settings.
+		SettingsPage::addSettings( 'general', 'new-section', [
+		  [
+			  'name' => __( 'Custom Setting Field', 'give-addon-boilerplate' ),
+			  'id'   => 'custom_setting_field',
+			  'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'give-addon-boilerplate' ),
+			  'type' => 'text'
+		  ]
+		] );
 	}
 
 	/**
