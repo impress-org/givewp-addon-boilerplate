@@ -80,7 +80,7 @@ class AddonServiceProvider implements ServiceProvider {
 	 */
 	private function loadFrontend() {
 		// Load front-end assets.
-		Hooks::addAction( 'admin_enqueue_scripts', Assets::class, 'loadFrontendAssets' );
+		Hooks::addAction( 'wp_enqueue_scripts', Assets::class, 'loadFrontendAssets' );
 	}
 
 }
