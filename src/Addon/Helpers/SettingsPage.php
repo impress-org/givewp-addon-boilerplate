@@ -13,7 +13,7 @@ use InvalidArgumentException;
 class SettingsPage {
 
 	/**
-	 * Regsiter settings page.
+	 * Register settings page.
 	 *
 	 * @param string $class subclass of Give_Settings_Page
 	 *
