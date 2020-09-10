@@ -43,6 +43,7 @@ intermediate
 .idea
 cache
 node_modules
+public
 .storybook-static
 
 # Composer
