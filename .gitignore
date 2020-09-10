@@ -48,3 +48,6 @@ public
 
 # Composer
 vendor
+
+# Assert directory
+assets/dist
