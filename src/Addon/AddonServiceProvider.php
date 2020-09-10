@@ -35,7 +35,6 @@ class AddonServiceProvider implements ServiceProvider {
 		is_admin()
 			? $this->loadBackend()
 			: $this->loadFrontend();
-
 	}
 
 
