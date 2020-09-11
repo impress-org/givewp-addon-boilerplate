@@ -20,25 +20,25 @@ class View {
 	 * @throws InvalidArgumentException if template file not exist
 	 *
 	 * @since 1.0.0
-	 * @return string
+	 * @return string|void
 	 */
 	public static function load( $view, $vars = [], $echo = false ) {
 		$template = ADDON_CONSTANT_DIR . 'src/Addon/resources/views/' . $view . '.php';
 
-		if ( file_exists( $template ) ) {
-			ob_start();
-			extract( $vars );
-			include $template;
-			$content = ob_get_clean();
-
-			if ( ! $echo ) {
-				return $content;
-			}
-
-			echo $content;
+		if ( ! file_exists( $template ) ) {
+			throw new InvalidArgumentException( "View template file {$template} not exist" );
 		}
 
-		throw new InvalidArgumentException( "View template file {$template} not exist" );
+		ob_start();
+		extract( $vars );
+		include $template;
+		$content = ob_get_clean();
+
+		if ( ! $echo ) {
+			return $content;
+		}
+
+		echo $content;
 	}
 
 	/**
