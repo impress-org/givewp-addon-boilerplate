@@ -32,21 +32,9 @@ fi
 addon_constant=$( echo $( echo "$addon_name" | tr -s ' ' '_' ) | tr -cd "[:alnum:]_" )
 addon_namespace=$( echo "$addon_name" | tr -cd "[:alnum:]" )
 
+shopt -s globstar
 files=(
-	"src/Addon/Helpers/ActivationBanner.php"
-	"src/Addon/Helpers/Environment.php"
-	"src/Addon/Helpers/Language.php"
-	"src/Addon/Helpers/License.php"
-	"src/Addon/Helpers/Notices.php"
-	"src/Addon/Helpers/SettingsPage.php"
-	"src/Addon/Helpers/View.php"
-	"src/Addon/Activation.php"
-	"src/Addon/AddonServiceProvider.php"
-	"src/Addon/Assets.php"
-	"src/Addon/SettingsPage.php"
-	"src/Addon/resources/views/admin/notices/give-inactive.php"
-	"src/Addon/resources/views/admin/notices/give-version-error.php"
-	"give-addon-boilerplate.php"
+	**/*.php
 	"webpack.config.js"
 	"wp-textdomain.js"
 	"composer.json"
