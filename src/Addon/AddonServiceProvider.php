@@ -63,9 +63,9 @@ class AddonServiceProvider implements ServiceProvider {
 		// Add page settings.
 		SettingsPage::addSettings( 'general', 'new-section', [
 		  [
-			  'name' => __( 'Custom Setting Field', 'give-addon-boilerplate' ),
+			  'name' => __( 'Custom Setting Field', 'ADDON_TEXTDOMAIN' ),
 			  'id'   => 'custom_setting_field',
-			  'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'give-addon-boilerplate' ),
+			  'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'ADDON_TEXTDOMAIN' ),
 			  'type' => 'text'
 		  ]
 		] );
