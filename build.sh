@@ -13,15 +13,34 @@ done
 # Add-on description
 read -p "Add-on description: " addon_description
 
-# TextDomain
-echo "Enter add-on textdomain"
+# Add-on ID
+echo "Enter Add-on ID"
 echo -e "\e[32mExample: give-funds\e[0m"
-read -p "" addon_textdomain
-while [ -z "$addon_textdomain" ] || [[ ! "$addon_textdomain" =~ ^give([a-z-])*$ ]]
+read -p "" addon_id
+while [ -z "$addon_id" ] || [[ ! "$addon_id" =~ ^give([a-z-])*$ ]]
 do
 	echo -e "\e[32mExample: give-funds\e[0m"
-  	read -p "Enter valid add-on textdomain: " addon_textdomain
+  	read -p "Enter valid add-on ID: " addon_id
 done
+
+read -p "Use ID ( $addon_id ) as add-on textdomain? (y/n): " use_id
+
+if [ "$use_id" == y ] ; then
+	addon_textdomain=addon_id
+fi
+
+
+# TextDomain
+if [ "$use_id" != y ] ; then
+	echo "Enter add-on textdomain"
+	echo -e "\e[32mExample: give-funds\e[0m"
+	read -p "" addon_textdomain
+	while [ -z "$addon_textdomain" ] || [[ ! "$addon_textdomain" =~ ^give([a-z-])*$ ]]
+	do
+		echo -e "\e[32mExample: give-funds\e[0m"
+		read -p "Enter valid add-on textdomain: " addon_textdomain
+	done
+fi
 
 read -p "Build add-on? (y/n): " build_addon
 
@@ -35,9 +54,10 @@ addon_namespace=$( echo "$addon_name" | tr -cd "[:alnum:]" )
 shopt -s globstar
 files=(
 	**/*.php
-	"webpack.config.js"
+	"webpack.mix.js"
 	"wp-textdomain.js"
 	"composer.json"
+	"package.json"
 )
 
 for file in "${files[@]}"
@@ -52,6 +72,8 @@ do
 	sed -i "s/ADDON_DESCRIPTION/$addon_description/" $file
 	# replace add-on textdomain tag
 	sed -i "s/ADDON_TEXTDOMAIN/$addon_textdomain/g" $file
+	# replace add-on ID tag
+	sed -i "s/ADDON_ID/$addon_id/g" $file
 done
 
 # delete this file
