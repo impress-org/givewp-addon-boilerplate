@@ -76,6 +76,9 @@ do
 	sed -i "s/ADDON_ID/$addon_id/g" $file
 done
 
+# rename add-on base file
+mv "give-addon-boilerplate.php" "$addon_id.php"
+
 # delete this file
 rm build.sh
 
