@@ -16,7 +16,7 @@ class SettingsPage extends \Give_Settings_Page {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		$this->id          = 'give-addon-boilerplate';
+		$this->id          = 'ADDON_ID';
 		$this->label       = esc_html__( 'ADDON_NAME Setting ', 'ADDON_TEXTDOMAIN' );
 		$this->default_tab = 'text_fields';
 

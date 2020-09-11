@@ -17,15 +17,15 @@ class Assets {
 	 */
 	public static function loadBackendAssets() {
 		wp_enqueue_style(
-			'give-addon-boilerplate-style-backend',
-			ADDON_CONSTANT_URL . 'public/css/give-addon-admin.css',
+			'ADDON_ID-style-backend',
+			ADDON_CONSTANT_URL . 'public/css/ADDON_ID-admin.css',
 			[],
 			GIVE_VERSION
 		);
 
 		wp_enqueue_script(
-			'give-addon-boilerplate-script-backend',
-			ADDON_CONSTANT_URL . 'public/js/give-addon-admin.js',
+			'ADDON_ID-script-backend',
+			ADDON_CONSTANT_URL . 'public/js/ADDON_ID-admin.js',
 			[],
 			GIVE_VERSION,
 			true
@@ -40,15 +40,15 @@ class Assets {
 	 */
 	public static function loadFrontendAssets() {
 		wp_enqueue_style(
-			'give-addon-boilerplate-style-frontend',
-			ADDON_CONSTANT_URL . 'public/css/give-addon.css',
+			'ADDON_ID-style-frontend',
+			ADDON_CONSTANT_URL . 'public/css/ADDON_ID.css',
 			[],
 			GIVE_VERSION
 		);
 
 		wp_enqueue_script(
-			'give-addon-boilerplate-script-frontend',
-			ADDON_CONSTANT_URL . 'public/js/give-addon.js',
+			'ADDON_ID-script-frontend',
+			ADDON_CONSTANT_URL . 'public/js/ADDON_ID.js',
 			[],
 			GIVE_VERSION,
 			true

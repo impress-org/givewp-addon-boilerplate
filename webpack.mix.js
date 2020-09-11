@@ -6,12 +6,12 @@ mix
 	.sourceMaps( false )
 
 	// admin assets
-	.js( 'src/Addon/resources/js/admin/give-addon-admin.js', 'public/js/' )
-	.sass( 'src/Addon/resources/css/admin/give-addon-admin.scss', 'public/css' )
+	.js( 'src/Addon/resources/js/admin/ADDON_ID-admin.js', 'public/js/' )
+	.sass( 'src/Addon/resources/css/admin/ADDON_ID-admin.scss', 'public/css' )
 
 	// public assets
-	.js( 'src/Addon/resources/js/frontend/give-addon.js', 'public/js/' )
-	.sass( 'src/Addon/resources/css/frontend/give-addon-frontend.scss', 'public/css' );
+	.js( 'src/Addon/resources/js/frontend/ADDON_ID.js', 'public/js/' )
+	.sass( 'src/Addon/resources/css/frontend/ADDON_ID-frontend.scss', 'public/css' );
 
 mix.webpackConfig( {
 	externals: {
@@ -22,11 +22,11 @@ mix.webpackConfig( {
 
 if ( mix.inProduction() ) {
 	wpPot( {
-		package: 'Give-Addon-Boilerplate',
-		domain: 'give-addon',
-		destFile: 'languages/give-addon.pot',
+		package: 'ADDON_NAME',
+		domain: 'ADDON_TEXTDOMAIN',
+		destFile: 'languages/ADDON_TEXTDOMAIN.pot',
 		relativeTo: './',
-		bugReport: 'https://github.com/impress-org/Give-addon/issues/new',
+		bugReport: 'https://github.com/impress-org/ADDON_ID/issues/new',
 		team: 'GiveWP <info@givewp.com>',
 	} );
 }

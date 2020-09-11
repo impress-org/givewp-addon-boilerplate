@@ -19,7 +19,7 @@ class Notices {
 	public static function giveVersionError() {
 		Give()->notices->register_notice(
 			[
-				'id'          => 'give-activation-error',
+				'id'          => 'ADDON_ID-activation-error',
 				'type'        => 'error',
 				'description' => View::load( 'admin/notices/give-version-error' ),
 				'show'        => true,
