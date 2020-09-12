@@ -58,6 +58,7 @@ files=(
 	"wp-textdomain.js"
 	"composer.json"
 	"package.json"
+	"phpcs.ruleset.xml"
 )
 
 for file in "${files[@]}"
