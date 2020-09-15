@@ -17,11 +17,11 @@ class Activation {
 	 */
 	public static function registerActions() {
 		// Activate add-on hook.
-		register_activation_hook( ADDON_CONSTANT_FILE,   [ __CLASS__, 'activateAddon' ] );
+		register_activation_hook( ADDON_CONSTANT_FILE, [ __CLASS__, 'activateAddon' ] );
 		// Deactivate add-on hook.
-		register_deactivation_hook(	ADDON_CONSTANT_FILE, [ __CLASS__, 'deactivateAddon' ] );
+		register_deactivation_hook( ADDON_CONSTANT_FILE, [ __CLASS__, 'deactivateAddon' ] );
 		// Uninstall add-on hook.
-		register_uninstall_hook( ADDON_CONSTANT_FILE,    [ __CLASS__, 'uninstallAddon' ] );
+		register_uninstall_hook( ADDON_CONSTANT_FILE, [ __CLASS__, 'uninstallAddon' ] );
 	}
 
 	/**

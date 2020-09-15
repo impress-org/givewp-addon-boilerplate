@@ -61,14 +61,18 @@ class AddonServiceProvider implements ServiceProvider {
 		// Add new settings page section.
 		SettingsPage::addPageSection( 'general', 'new-section', 'New Access Control Section' );
 		// Add page settings.
-		SettingsPage::addSettings( 'general', 'new-section', [
-		  [
-			  'name' => __( 'Custom Setting Field', 'ADDON_TEXTDOMAIN' ),
-			  'id'   => 'custom_setting_field',
-			  'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'ADDON_TEXTDOMAIN' ),
-			  'type' => 'text'
-		  ]
-		] );
+		SettingsPage::addSettings(
+			'general',
+			'new-section',
+			[
+				[
+					'name' => __( 'Custom Setting Field', 'ADDON_TEXTDOMAIN' ),
+					'id'   => 'custom_setting_field',
+					'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'ADDON_TEXTDOMAIN' ),
+					'type' => 'text',
+				],
+			]
+		);
 	}
 
 	/**

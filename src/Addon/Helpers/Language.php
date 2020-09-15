@@ -18,7 +18,7 @@ class Language {
 
 		// Set filter for plugin's languages directory.
 		$langDir = apply_filters(
-			sprintf( '%s_languages_directory', 'ADDON_TEXTDOMAIN' ),
+			sprintf( '%s_languages_directory', 'ADDON_TEXTDOMAIN' ), // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores, WordPress.NamingConventions.ValidHookName.NotLowercase
 			dirname( ADDON_CONSTANT_BASENAME ) . '/languages/'
 		);
 
