@@ -24,6 +24,13 @@ define( 'ADDON_CONSTANT_BASENAME', plugin_basename( ADDON_CONSTANT_FILE ) );
 
 require ADDON_CONSTANT_DIR . 'vendor/autoload.php';
 
+// Activate add-on hook.
+register_activation_hook( ADDON_CONSTANT_FILE, [ Addon\Activation::class, 'activateAddon' ] );
+// Deactivate add-on hook.
+register_deactivation_hook(	ADDON_CONSTANT_FILE, [ Addon\Activation::class, 'deactivateAddon' ] );
+// Uninstall add-on hook.
+register_uninstall_hook( ADDON_CONSTANT_FILE, [ Addon\Activation::class, 'uninstallAddon' ] );
+
 // Register the add-on service provider with the GiveWP core.
 add_action( 'before_give_init', function() {
 	// Check Give min required version.
