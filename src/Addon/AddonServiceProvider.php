@@ -47,8 +47,7 @@ class AddonServiceProvider implements ServiceProvider {
 	private function loadBackend() {
 		// Register settings page
 		SettingsPage::registerPage( AddonSettingsPage::class );
-		// Activation hooks.
-		Hooks::addAction( 'admin_init', Activation::class, 'registerActions' );
+
 		Hooks::addAction( 'admin_init', License::class, 'check' );
 		Hooks::addAction( 'admin_init', ActivationBanner::class, 'show' );
 		// Load backend assets.
