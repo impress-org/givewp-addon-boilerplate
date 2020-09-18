@@ -1,0 +1,6 @@
+{
+    "*.json": ["prettier --write"],
+    "*.php": ["npm run lint:textdomain", "npm run lint:php:fix", "npm run lint:php"],
+    "*.{js,jsx}": ["eslint --fix"],
+    "*.scss": ["stylelint --fix"]
+}
