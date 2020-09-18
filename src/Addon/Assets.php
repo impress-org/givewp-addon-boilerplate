@@ -20,14 +20,14 @@ class Assets {
 			'ADDON_ID-style-backend',
 			ADDON_CONSTANT_URL . 'public/css/ADDON_ID-admin.css',
 			[],
-			GIVE_VERSION
+			ADDON_CONSTANT_VERSION
 		);
 
 		wp_enqueue_script(
 			'ADDON_ID-script-backend',
 			ADDON_CONSTANT_URL . 'public/js/ADDON_ID-admin.js',
 			[],
-			GIVE_VERSION,
+			ADDON_CONSTANT_VERSION,
 			true
 		);
 	}
@@ -43,14 +43,14 @@ class Assets {
 			'ADDON_ID-style-frontend',
 			ADDON_CONSTANT_URL . 'public/css/ADDON_ID.css',
 			[],
-			GIVE_VERSION
+			ADDON_CONSTANT_VERSION
 		);
 
 		wp_enqueue_script(
 			'ADDON_ID-script-frontend',
 			ADDON_CONSTANT_URL . 'public/js/ADDON_ID.js',
 			[],
-			GIVE_VERSION,
+			ADDON_CONSTANT_VERSION,
 			true
 		);
 	}
