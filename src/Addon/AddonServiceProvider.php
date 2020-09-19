@@ -1,13 +1,13 @@
 <?php
-namespace GiveAddon\Addon;
+namespace Give\Addon;
 
 use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider;
 
+use Give\Addon\Helpers\SettingsPage;
+use Give\Addon\SettingsPage as AddonSettingsPage;
 use GiveAddon\Addon\Helpers\License;
-use GiveAddon\Addon\Helpers\SettingsPage;
 use GiveAddon\Addon\Helpers\Language;
-use GiveAddon\Addon\SettingsPage as AddonSettingsPage;
 use GiveAddon\Addon\Helpers\ActivationBanner;
 
 /**
