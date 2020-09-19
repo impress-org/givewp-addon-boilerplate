@@ -6,6 +6,36 @@ A demo plugin to serve as a boilerplate for developers to understand how to exte
 2. `composer install`
 3. `npm install`
 
+## Concepts
+
+### src vs src-addon
+
+GiveWP follows a domain-driven model both in core and in add-ons. Each business feature defines
+its own domain, including whatever it needs (settings, models, etc.) to do what it does. It's also
+important these domains are portable, that is, they are not bound to the plugin and could move to or
+from another plugin as needed.
+
+For these reasons, each add-on has two primary directories for handling its logic:
+- src
+- src-addon
+
+### src directory
+
+As mentioned, the src directory handles business domain logic (i.e. a specific feature). The src
+directory should have no files in the root, but be a collection of folders. Each folder represents
+a distinct domain. Even if there is only one domain for the add-on, it should still live inside a
+domain directory.
+
+No domain code should reference (and therefore depend on) the `src-addon` directory.
+
+### src-addon directory
+
+This directory is responsible for the fact that the add-on is a WordPress plugin. Plugins do things
+such as activate, upgrade, and uninstall — the logic of which should be handled there. All GiveWP
+add-ons also check for compatibility with GiveWP core, and this also is handled here.
+
+The `src-addon` directory may reference code in the `src` directory, but not the other way around.
+Doing this keeps the dependency unidirectional.
 
 #### Note for developers
 If running `npm run dev` throws an error then check whether the `images` folder exists in your addon directory under `src/Addon/resources`. 
