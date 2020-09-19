@@ -1,6 +1,6 @@
 <?php
 
-namespace GiveAddon\Addon\Helpers;
+namespace GiveAddon;
 
 /**
  * Helper class responsible for showing add-on notices.

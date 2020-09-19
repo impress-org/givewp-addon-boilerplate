@@ -1,6 +1,7 @@
 <?php
 
-namespace GiveAddon\Addon\Helpers;
+namespace GiveAddon;
+
 /**
  * Helper class responsible for loading add-on translations.
  *
