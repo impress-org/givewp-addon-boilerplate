@@ -1,6 +1,6 @@
 <?php
 
-namespace GiveAddon;
+namespace GiveAddon\Addon;
 
 class License {
 

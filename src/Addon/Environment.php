@@ -1,6 +1,6 @@
 <?php
 
-namespace GiveAddon;
+namespace GiveAddon\Addon;
 
 /**
  * Helper class responsible for checking the add-on environment.

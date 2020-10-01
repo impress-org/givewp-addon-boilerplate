@@ -1,5 +1,5 @@
 <?php
-namespace GiveAddon;
+namespace GiveAddon\Addon;
 
 /**
  * Example of a helper class responsible for registering and handling add-on activation hooks.

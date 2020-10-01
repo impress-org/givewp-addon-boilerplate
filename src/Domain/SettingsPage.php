@@ -1,5 +1,5 @@
 <?php
-namespace Give\Addon;
+namespace GiveAddon\Domain;
 
 /**
  * Example code to show how to add setting page to give settings.
