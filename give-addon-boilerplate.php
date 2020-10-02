@@ -1,6 +1,8 @@
 <?php namespace GiveAddon;
 
-use Give\Addon\AddonServiceProvider;
+use GiveAddon\Addon\Activation;
+use GiveAddon\Addon\Environment;
+use GiveAddon\Domain\AddonServiceProvider;
 
 /**
  * Plugin Name: ADDON_NAME
