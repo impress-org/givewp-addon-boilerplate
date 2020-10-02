@@ -24,17 +24,14 @@
 
 	<rule ref="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid">
 		<exclude-pattern>src/*</exclude-pattern>
-		<exclude-pattern>src-addon/*</exclude-pattern>
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase">
 		<exclude-pattern>src/*</exclude-pattern>
-		<exclude-pattern>src-addon/*</exclude-pattern>
 	</rule>
 
 	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
 		<exclude-pattern>src/*</exclude-pattern>
-		<exclude-pattern>src-addon/*</exclude-pattern>
 	</rule>
 
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found">
