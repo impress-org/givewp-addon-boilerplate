@@ -1,8 +1,9 @@
 # Give - Addon Boilerplate
-A demo plugin to serve as a boilerplate for developers to understand how to extend the Give Donation plugin for WordPress
+A demo plugin to serve as a boilerplate for developers to understand how to extend the Give Donation
+plugin for WordPress
 
 ## Installation
-1. `bash build.sh`
+1. `php build.php`
 2. `composer install`
 3. `npm install`
 
@@ -16,26 +17,32 @@ important these domains are portable, that is, they are not bound to the plugin 
 from another plugin as needed.
 
 For these reasons, each add-on has two primary directories for handling its logic:
-- src
-- src-addon
+- src/Addon
+- src/Domain
 
 ### src directory
 
-As mentioned, the src directory handles business domain logic (i.e. a specific feature). The src
+The src directory handles business domain logic (i.e. a specific feature). The src
 directory should have no files in the root, but be a collection of folders. Each folder represents
 a distinct domain. Even if there is only one domain for the add-on, it should still live inside a
 domain directory.
 
-No domain code should reference (and therefore depend on) the `src-addon` directory.
+### src/Domain directory
 
-### src-addon directory
+It is possible for an add-on to have multiple domains, but it will always have at least one. Feel
+free to duplicate this directory and make more. This directory is just the starting point for the
+initial domain.
 
-This directory is responsible for the fact that the add-on is a WordPress plugin. Plugins do things
-such as activate, upgrade, and uninstall — the logic of which should be handled there. All GiveWP
-add-ons also check for compatibility with GiveWP core, and this also is handled here.
+### src/Addon directory
 
-The `src-addon` directory may reference code in the `src` directory, but not the other way around.
-Doing this keeps the dependency unidirectional.
+This unique domain directory is responsible for the fact that the add-on is a WordPress plugin.
+Plugins do things such as activate, upgrade, and uninstall — the logic of which should be handled
+there. All GiveWP add-ons also check for compatibility with GiveWP core, and this also is handled
+here.
+
+The `src/Addon` directory may reference code in the `src` directory, but not the other way around.
+No domain code should reference (and therefore depend on) the `src/Addon` directory. Doing this
+keeps the dependency unidirectional.
 
 #### Note for developers
 If running `npm run dev` throws an error then check whether the `images` folder exists in your addon directory under `src/Addon/resources`. 
