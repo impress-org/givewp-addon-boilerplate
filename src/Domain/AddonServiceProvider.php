@@ -1,14 +1,15 @@
 <?php
-namespace GiveAddon\Addon;
+namespace GiveAddon\Domain;
 
 use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider;
 
-use GiveAddon\Addon\Helpers\License;
-use GiveAddon\Addon\Helpers\SettingsPage;
-use GiveAddon\Addon\Helpers\Language;
-use GiveAddon\Addon\SettingsPage as AddonSettingsPage;
-use GiveAddon\Addon\Helpers\ActivationBanner;
+use GiveAddon\Domain\Helpers\SettingsPage;
+use GiveAddon\Domain\SettingsPage as AddonSettingsPage;
+use GiveAddon\Addon\Activation;
+use GiveAddon\Addon\License;
+use GiveAddon\Addon\Language;
+use GiveAddon\Addon\ActivationBanner;
 
 /**
  * Example of a service provider responsible for add-on initialization.
@@ -17,7 +18,6 @@ use GiveAddon\Addon\Helpers\ActivationBanner;
  * @copyright   Copyright (c) 2020, GiveWP
  */
 class AddonServiceProvider implements ServiceProvider {
-
 	/**
 	 * @inheritDoc
 	 */
@@ -84,5 +84,4 @@ class AddonServiceProvider implements ServiceProvider {
 		// Load front-end assets.
 		Hooks::addAction( 'wp_enqueue_scripts', Assets::class, 'loadFrontendAssets' );
 	}
-
 }

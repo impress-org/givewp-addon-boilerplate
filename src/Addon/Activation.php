@@ -15,7 +15,6 @@ class Activation {
 	 * @return void
 	 */
 	public static function activateAddon() {
-
 	}
 
 	/**

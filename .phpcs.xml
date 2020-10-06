@@ -7,6 +7,7 @@
 	<description>We love clean code for GiveWP. This will let us enforce that easily.</description>
 
 	<!-- Exclude directories we don't want checked. -->
+	<exclude-pattern>build.php</exclude-pattern>
 	<exclude-pattern>node_modules/*</exclude-pattern>
 	<exclude-pattern>vendor/*</exclude-pattern>
 	<exclude-pattern>languages/*</exclude-pattern>

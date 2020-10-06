@@ -1,6 +1,6 @@
 <?php
 
-namespace GiveAddon\Addon\Helpers;
+namespace GiveAddon\Addon;
 
 /**
  * Helper class responsible for showing add-on Activation Banner.

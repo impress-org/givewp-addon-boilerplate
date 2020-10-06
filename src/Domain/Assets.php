@@ -1,5 +1,5 @@
 <?php
-namespace GiveAddon\Addon;
+namespace GiveAddon\Domain;
 
 /**
  * Helper class responsible for loading add-on assets.
