@@ -1,6 +1,6 @@
-# Give - Addon Boilerplate
-A demo plugin to serve as a boilerplate for developers to understand how to extend the Give Donation
-plugin for WordPress
+# GiveWP - Addon Boilerplate
+A demo plugin to serve as a boilerplate for developers to understand how to extend the GiveWP Donation
+plugin for WordPress.
 
 ## Installation
 1. `php build.php`
