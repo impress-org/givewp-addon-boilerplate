@@ -44,5 +44,5 @@ keeps the dependency unidirectional.
 
 #### Note for developers
 If running `npm run dev` throws an error then check whether the `images` folder exists in your addon directory under `src/Addon/resources`. 
-1. If `images` folder doesn't exists then create one. 
-2. If `images` folder is not required for any add-on then remove code from `webpack.config.js`.
+1. If the `images` folder does not exist then create one. 
+2. If the `images` folder isn't required then remove the code from `webpack.config.js`.
