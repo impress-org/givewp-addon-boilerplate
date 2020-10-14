@@ -2,10 +2,20 @@
 A demo plugin to serve as a boilerplate for developers to understand how to extend the Give Donation
 plugin for WordPress
 
-## Installation
-1. `php build.php`
-2. `composer install`
-3. `npm install`
+## Setup & Installation
+1. Clone this repository to your local
+2. Remove the `.git` directory
+3. Run `php build.php` from the CLI
+4. Run `composer install` from the CLI
+5. Run `npm install` from the CLI
+6. Update this README (see below for a starting point)
+
+### Asset Compilation
+To compile your CSS & JS assets, run one of the following:
+- `npm run dev` — Compiles all assets for development one time
+- `npm run watch` — Compiles all assets for development one time and then watches for changes, supporting [BrowserSync](https://laravel-mix.com/docs/5.0/browsersync)
+- `npm run hot` — Compiles all assets for development one time and then watches for [hot replacement](https://laravel-mix.com/docs/5.0/hot-module-replacement)
+- `npm run dev` — Compiles all assets for production one time
 
 ## Concepts
 
@@ -46,3 +56,27 @@ keeps the dependency unidirectional.
 If running `npm run dev` throws an error then check whether the `images` folder exists in your addon directory under `src/Addon/resources`. 
 1. If the `images` folder does not exist then create one. 
 2. If the `images` folder isn't required then remove the code from `webpack.config.js`.
+
+---
+
+DELETE ABOVE THIS LINE WHEN REWRITING README
+
+---
+
+## Introduction
+
+[Write an introduction to what this addon is for]
+
+## Development
+
+### Getting Set Up
+1. Clone this repository locally
+2. Run `composer install` from the CLI
+3. Run `npm install` from the CLI
+
+### Asset Compilation
+To compile your CSS & JS assets, run one of the following:
+- `npm run dev` — Compiles all assets for development one time
+- `npm run watch` — Compiles all assets for development one time and then watches for changes, supporting [BrowserSync](https://laravel-mix.com/docs/5.0/browsersync)
+- `npm run hot` — Compiles all assets for development one time and then watches for [hot replacement](https://laravel-mix.com/docs/5.0/hot-module-replacement)
+- `npm run dev` — Compiles all assets for production one time
