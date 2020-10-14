@@ -22,7 +22,7 @@ class ActivationBanner {
 			'file'              => ADDON_CONSTANT_FILE,
 			'name'              => ADDON_CONSTANT_NAME,
 			'version'           => ADDON_CONSTANT_VERSION,
-			'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=give-addon-boilerplate' ),
+			'settings_url'      => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=ADDON_ID' ),
 			'documentation_url' => 'https://givewp.com/documentation/add-ons/boilerplate/',
 			'support_url'       => 'https://givewp.com/support/',
 			'testing'           => false, // Never leave true.

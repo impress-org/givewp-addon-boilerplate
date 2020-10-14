@@ -1,7 +1,7 @@
 <?php
 
 $name = readline(
-	'What is the name of the add-on? For example, "Give Funds"' . PHP_EOL .
+	'What is the name of the add-on as shows up in the WP plugin screen? For example, "Give - Funds"' . PHP_EOL .
 	'Add-on Name: '
 );
 
@@ -20,34 +20,37 @@ $id = empty( $id ) ? $tentativeId : $id;
 
 $textDomain = readline(
 	PHP_EOL . 'What is the text domain of the add-on? For example, "give-funds"' . PHP_EOL .
-	"Add-on ID (leave empty to use $id): "
+	"Add-on Text Domain (leave empty to use $id): "
 );
 
 $textDomain = empty( $textDomain ) ? $id : $textDomain;
 
 $constant = readline(
 	PHP_EOL . 'What is the Constant prefix of the add-on? For example, "GIVE_FUNDS"' . PHP_EOL .
-	"Add-on ID (leave empty to use $tentativeConstant): "
+	"Add-on Constant (leave empty to use $tentativeConstant): "
 );
 
 $constant = empty( $constant ) ? $tentativeConstant : $constant;
 
 $namespace = readline(
-	PHP_EOL . 'What is the Namespace of the add-on? For example, "give-funds"' . PHP_EOL .
-	"Add-on ID (leave empty to use $tentativeNamespace): "
+	PHP_EOL . 'What is the Namespace of the add-on? For example, "GiveFunds"' . PHP_EOL .
+	"Add-on Namespace (leave empty to use $tentativeNamespace): "
 );
 
 $namespace = empty( $namespace ) ? $tentativeNamespace : $namespace;
 
 $domain = ucfirst( trim( readline(
 	PHP_EOL . 'What is the default domain of the add-on? For example, "Funds"' . PHP_EOL .
-	"Add-on ID: "
+	"Add-on Domain: "
 ) ) );
 
 // Retrieve the files
 $files = array_filter( array_merge(
 	[
-		__DIR__ . '.phpcs.xml',
+		__DIR__ . '/.phpcs.xml',
+		__DIR__ . '/webpack.mix.js',
+		__DIR__ . 'package.json',
+		__DIR__ . 'composer.json'
 	],
 	glob( __DIR__ . '/*.php', GLOB_NOSORT ),
 	rglob( __DIR__ . '/src/*.php', GLOB_NOSORT )
@@ -58,6 +61,7 @@ $files = array_filter( array_merge(
 $replacements = [
 	'GiveAddon'         => trim( $namespace ),
 	'\\Domain'          => trim( "\\$domain" ),
+	'src/Domain'        => trim( "src/$domain" ),
 	'ADDON_NAME'        => trim( $name ),
 	'ADDON_CONSTANT'    => trim( $constant ),
 	'ADDON_DESCRIPTION' => trim( $description ),
