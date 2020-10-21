@@ -11,7 +11,10 @@ mix
 
 	// public assets
 	.js( 'src/Domain/resources/js/frontend/ADDON_ID.js', 'public/js/' )
-	.sass( 'src/Domain/resources/css/frontend/ADDON_ID-frontend.scss', 'public/css' );
+	.sass( 'src/Domain/resources/css/frontend/ADDON_ID-frontend.scss', 'public/css' )
+
+	// images
+	.copy( 'src/Domain/resources/images/*.{jpg,jpeg,png,gif}', 'public/images' );
 
 mix.webpackConfig( {
 	externals: {
