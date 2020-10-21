@@ -29,7 +29,7 @@ define( 'ADDON_CONSTANT_DIR', plugin_dir_path( ADDON_CONSTANT_FILE ) );
 define( 'ADDON_CONSTANT_URL', plugin_dir_url( ADDON_CONSTANT_FILE ) );
 define( 'ADDON_CONSTANT_BASENAME', plugin_basename( ADDON_CONSTANT_FILE ) );
 
-require './vendor/autoload.php';
+require 'vendor/autoload.php';
 
 // Activate add-on hook.
 register_activation_hook( ADDON_CONSTANT_FILE, [ Activation::class, 'activateAddon' ] );
