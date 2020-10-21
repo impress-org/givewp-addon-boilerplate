@@ -17,6 +17,11 @@ class ActivationBanner {
 	 * @return void
 	 */
 	public function show() {
+		// Check for Activation banner class.
+		if ( ! class_exists( 'Give_Addon_Activation_Banner' ) ) {
+			include GIVE_PLUGIN_DIR . 'includes/admin/class-addon-activation-banner.php';
+		}
+
 		// Only runs on admin.
 		$args = [
 			'file'              => ADDON_CONSTANT_FILE,
