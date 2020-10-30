@@ -30,6 +30,7 @@ class View {
 		}
 
 		ob_start();
+		extract( $templateParams );
 		include $template;
 		$content = ob_get_clean();
 
