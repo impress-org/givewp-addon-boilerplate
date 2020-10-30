@@ -34,7 +34,7 @@ class View {
 	public static function load( $view, $templateParams = [], $echo = false ) {
 		// Get domain and file path
 		list ( $domain, $file ) = static::getPaths( $view );
-		$template = GIVE_TEST_DATA_DIR . "src/{$domain}/resources/views/{$file}.php";
+		$template = ADDON_CONSTANT_DIR . "src/{$domain}/resources/views/{$file}.php";
 
 		if ( ! file_exists( $template ) ) {
 			throw new InvalidArgumentException( "View template file {$template} not exist" );
