@@ -62,6 +62,7 @@ $replacements = [
 	'GiveAddon'         => trim( $namespace ),
 	'\\Domain'          => trim( "\\$domain" ),
 	'src/Domain'        => trim( "src/$domain" ),
+	'ADDON_DOMAIN'      => trim( $domain ),
 	'ADDON_NAME'        => trim( $name ),
 	'ADDON_CONSTANT'    => trim( $constant ),
 	'ADDON_DESCRIPTION' => trim( $description ),
