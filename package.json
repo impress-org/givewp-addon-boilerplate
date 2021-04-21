@@ -12,9 +12,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "lint": "npm run lint:js & npm run lint:scss & npm run lint:php",
         "lint:js": "eslint src/**/resources/**/*.js",
-        "lint:js-fix": "eslint src/**/resources/**/*.js --fix",
-        "lint:php": "./vendor/bin/phpcs -v -s --colors",
-        "lint:php:fix": "./vendor/bin/phpcbf -v --colors",
+        "lint:js:fix": "eslint src/**/resources/**/*.js --fix",
         "lint:textdomain": "node ./wp-textdomain.js",
         "lint:scss": "stylelint src/**/resources/**/*.scss"
     },

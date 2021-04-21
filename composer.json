@@ -12,6 +12,8 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"
     },
     "scripts": {
+        "lint:php": "./vendor/bin/phpcs -v -s --colors",
+        "lint:php:fix": "./vendor/bin/phpcbf -v --colors",
         "post-install-cmd": [
             "@install-codestandards"
         ],
