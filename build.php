@@ -49,7 +49,6 @@ $files = array_filter( array_merge(
 	[
 		__DIR__ . '/.phpcs.xml',
 		__DIR__ . '/webpack.mix.js',
-		__DIR__ . '/package.json',
 		__DIR__ . '/composer.json'
 	],
 	glob( __DIR__ . '/*.php', GLOB_NOSORT ),
