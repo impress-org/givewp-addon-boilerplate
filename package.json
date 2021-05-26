@@ -1,8 +1,5 @@
 {
-    "name": "ADDON_ID",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "private": true,
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -16,17 +13,6 @@
         "lint:textdomain": "node ./wp-textdomain.js",
         "lint:scss": "stylelint src/**/resources/**/*.scss"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/impress-org/ADDON_ID.git"
-    },
-    "author": "GiveWP, LLC",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/impress-org/ADDON_ID/issues"
-    },
-    "private": true,
-    "homepage": "https://github.com/impress-org/ADDON_ID#readme",
     "devDependencies": {
         "@babel/eslint-parser": "^7.11.5",
         "@babel/plugin-transform-react-jsx": "^7.10.4",
@@ -48,16 +34,9 @@
         "stylelint-config-prettier": "^8.0.2",
         "stylelint-config-wordpress": "^17.0.0",
         "stylelint-prettier": "^1.1.2",
+        "stylelint-scss": "^3.19.0",
         "vue-template-compiler": "^2.6.12",
         "wp-pot": "^1.6.3",
         "wp-textdomain": "^1.0.1"
-    },
-    "dependencies": {
-        "npm": "^6.13.4",
-        "stylelint-scss": "^3.19.0"
-    },
-    "engines": {
-        "node": "8.9.1",
-        "npm": "5.5.1"
     }
 }
