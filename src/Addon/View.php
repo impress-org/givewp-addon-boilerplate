@@ -37,7 +37,7 @@ class View {
 		$template = ADDON_CONSTANT_DIR . "src/{$domain}/resources/views/{$file}.php";
 
 		if ( ! file_exists( $template ) ) {
-			throw new InvalidArgumentException( "View template file {$template} not exist" );
+			throw new InvalidArgumentException( "View template file {$template} does not exist" );
 		}
 
 		ob_start();
