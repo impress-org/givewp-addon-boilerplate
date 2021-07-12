@@ -83,6 +83,8 @@ rename(
 	__DIR__ . "/src/$domain"
 );
 
+unlink( __FILE__ );
+
 echo( PHP_EOL . PHP_EOL . 'All set!' );
 
 /***** HELPER FUNCTIONS *****/
