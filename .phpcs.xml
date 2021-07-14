@@ -29,7 +29,7 @@
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="give-p2p"/>
+			<property name="text_domain" type="array" value="ADDON_TEXTDOMAIN"/>
 		</properties>
 	</rule>
 </ruleset>
