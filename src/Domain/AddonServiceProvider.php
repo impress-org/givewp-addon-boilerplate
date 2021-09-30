@@ -1,9 +1,11 @@
 <?php
+
 namespace GiveAddon\Domain;
 
 use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider;
 
+use GiveAddon\Addon\Links;
 use GiveAddon\Domain\Helpers\SettingsPage;
 use GiveAddon\Domain\SettingsPage as AddonSettingsPage;
 use GiveAddon\Addon\Activation;
@@ -31,6 +33,8 @@ class AddonServiceProvider implements ServiceProvider {
 	public function boot() {
 		// Load add-on translations.
 		Hooks::addAction( 'init', Language::class, 'load' );
+		// Load add-on links.
+		Hooks::addFilter( 'plugin_action_links_' . ADDON_CONSTANT_BASENAME, Links::class );
 
 		is_admin()
 			? $this->loadBackend()
@@ -66,8 +70,9 @@ class AddonServiceProvider implements ServiceProvider {
 			[
 				[
 					'name' => __( 'Custom Setting Field', 'ADDON_TEXTDOMAIN' ),
-					'id'   => 'custom_setting_field',
-					'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'ADDON_TEXTDOMAIN' ),
+					'id' => 'custom_setting_field',
+					'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+						'ADDON_TEXTDOMAIN' ),
 					'type' => 'text',
 				],
 			]
