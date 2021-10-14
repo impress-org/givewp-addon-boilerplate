@@ -47,6 +47,7 @@ $domain = ucfirst( trim( readline(
 // Retrieve the files
 $files = array_filter( array_merge(
 	[
+		__DIR__ . '/readme.txt',
 		__DIR__ . '/.phpcs.xml',
 		__DIR__ . '/webpack.mix.js',
 		__DIR__ . '/composer.json'
