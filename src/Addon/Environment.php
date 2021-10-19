@@ -15,20 +15,24 @@ class Environment
      * Check environment.
      *
      * @since 1.0.0
-     * @return void
+     * @return bool
      */
     public static function checkEnvironment()
     {
         // Check is GiveWP active
         if ( ! static::isGiveActive()) {
-            add_action('admin_notices', [Notices::class, 'giveInactive']);
+            add_action( 'admin_notices', [ Notices::class, 'giveInactive' ] );
 
-            return;
+            return false;
         }
         // Check min required version
-        if ( ! static::giveMinRequiredVersionCheck()) {
-            add_action('admin_notices', [Notices::class, 'giveVersionError']);
+        if ( ! static::giveMinRequiredVersionCheck() ) {
+            add_action( 'admin_notices', [ Notices::class, 'giveVersionError' ] );
+
+            return false;
         }
+
+        return true;
     }
 
     /**

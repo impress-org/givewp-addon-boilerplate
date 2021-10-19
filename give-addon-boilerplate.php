@@ -3,6 +3,7 @@ namespace GiveAddon;
 
 use GiveAddon\Addon\Activation;
 use GiveAddon\Addon\Environment;
+use GiveAddon\Addon\Helpers\PluginUpgrade;
 use GiveAddon\Domain\AddonServiceProvider;
 
 /**
@@ -55,4 +56,8 @@ add_action(
 );
 
 // Check to make sure GiveWP core is installed and compatible with this add-on.
-add_action('admin_init', [Environment::class, 'checkEnvironment']);
+add_action( 'admin_init', function () {
+    if ( Environment::checkEnvironment() ) {
+        give( PluginUpgrade::class )->storePluginUpgradeVersion();
+    }
+} );
