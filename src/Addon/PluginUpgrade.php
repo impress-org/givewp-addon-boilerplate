@@ -20,11 +20,11 @@ class PluginUpgrade {
             $pluginVersion = '1.0.0';
         }
 
-        if ( version_compare( $pluginVersion, GIVE_FUNDS_ADDON_VERSION, '<' ) ) {
+        if ( version_compare( $pluginVersion, ADDON_CONSTANT_VERSION, '<' ) ) {
             update_option(
                 'give_addon_version',
                 preg_replace( '/[^0-9.].*/', '',
-                    GIVE_FUNDS_ADDON_VERSION
+                    ADDON_CONSTANT_VERSION
                 )
             );
 
