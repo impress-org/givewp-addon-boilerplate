@@ -7,6 +7,7 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "build": "npm run production",
         "lint": "npm run lint:js & npm run lint:scss & npm run lint:php",
         "lint:js": "eslint src/**/resources/**/*.js",
         "lint:js:fix": "eslint src/**/resources/**/*.js --fix",
