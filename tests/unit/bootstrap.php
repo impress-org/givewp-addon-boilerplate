@@ -5,7 +5,7 @@
  *
  * @unreleased
  */
-class Give_GiveAddon_Unit_Tests_Bootstrap {
+class ADDON_CONSTANT_Unit_Tests_Bootstrap {
 
 	/** @var \Give_Unit_Tests_Bootstrap instance */
 	protected static $instance = NULL;
