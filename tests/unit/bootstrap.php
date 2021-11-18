@@ -94,7 +94,7 @@ class Give_GiveAddon_Unit_Tests_Bootstrap {
 	 */
 	public function install_plugin() {
 
-		echo 'Installing ADDON_NAME...' . PHP_EOL;
+		echo 'Installing ADDON_DOMAIN...' . PHP_EOL;
 
 		// give_{addon}_install();
 	}
@@ -131,4 +131,4 @@ class Give_GiveAddon_Unit_Tests_Bootstrap {
 	}
 }
 
-Give_GiveAddon_Unit_Tests_Bootstrap::instance();
+ADDON_CONSTANT_Unit_Tests_Bootstrap::instance();
