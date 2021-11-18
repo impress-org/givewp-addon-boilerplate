@@ -1,0 +1,12 @@
+name: WordPress Tests
+
+on:
+    push:
+        branches: [ master, develop ]
+    pull_request:
+        branches: [ master, develop ]
+    workflow_dispatch:
+
+jobs:
+    build:
+        uses: impress-org/givewp-github-actions/.github/workflows/wordpress.yml@master
