@@ -1,4 +1,4 @@
-name: WordPress Tests
+name: Run Unit Tests
 
 on:
     push:
@@ -9,4 +9,4 @@ on:
 
 jobs:
     build:
-        uses: impress-org/givewp-github-actions/.github/workflows/wordpress.yml@master
+        uses: impress-org/givewp-github-actions/.github/workflows/unit-tests.yml@master
