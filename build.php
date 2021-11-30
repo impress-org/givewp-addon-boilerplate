@@ -51,7 +51,7 @@ $files = array_filter( array_merge(
 		__DIR__ . '/webpack.mix.js',
 		__DIR__ . '/composer.json',
 		__DIR__ . '/tests/unit/bootstrap.php',
-        __DIR__ . '/.github/workflows/pre-release.yml',
+        __DIR__ . '/github/workflows/pre-release.yml',
 	],
 	glob( __DIR__ . '/*.php', GLOB_NOSORT ),
 	rglob( __DIR__ . '/src/*.php', GLOB_NOSORT )
@@ -88,6 +88,11 @@ rename(
 rename(
     __DIR__ . '/tests/unit/Domain',
     __DIR__ . "/tests/unit/$domain"
+);
+
+rename(
+    __DIR__ . '/github',
+    __DIR__ . '/.github'
 );
 
 unlink( __FILE__ );
