@@ -55,12 +55,8 @@ class ADDON_CONSTANT_Unit_Tests_Bootstrap {
             require_once("{$this->wp_tests_dir}/give/tests/unit/bootstrap.php");
         }
 
-		// Uninstall plugin.
-		tests_add_filter( 'plugins_loaded', array( $this, 'uninstall_plugin' ), 0 );
-
 		// Load plugin
 		tests_add_filter( 'muplugins_loaded', array( $this, 'load_plugin' ) );
-
 
 		// Install plugin
 		tests_add_filter( 'init', array( $this, 'install_plugin' ) );
@@ -77,16 +73,6 @@ class ADDON_CONSTANT_Unit_Tests_Bootstrap {
 	 */
 	public function load_plugin() {
 		require_once( dirname($this->plugin_dir) . "/ADDON_ID.php" );
-	}
-
-	/**
-	 * Uninstall plugin
-	 */
-	public function uninstall_plugin() {
-		give_update_option( 'uninstall_on_delete', 'enabled' );
-
-		// WP_UNINSTALL_PLUGIN is already define while uninstalling give.
-//		include( $this->plugin_dir . '/uninstall.php' );
 	}
 
 	/**
