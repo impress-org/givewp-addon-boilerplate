@@ -1,4 +1,5 @@
 <?php
+
 namespace GiveAddon\Addon;
 
 /**
@@ -7,33 +8,35 @@ namespace GiveAddon\Addon;
  * @package     GiveAddon\Addon
  * @copyright   Copyright (c) 2020, GiveWP
  */
-class Activation {
-	/**
-	 * Activate add-on action hook.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public static function activateAddon() {
-	}
+class Activation
+{
+    /**
+     * Activate add-on action hook.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    public static function activateAddon()
+    {
+    }
 
-	/**
-	 * Deactivate add-on action hook.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public static function deactivateAddon() {
+    /**
+     * Deactivate add-on action hook.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    public static function deactivateAddon()
+    {
+    }
 
-	}
-
-	/**
-	 * Uninstall add-on action hook.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public static function uninstallAddon() {
-
-	}
+    /**
+     * Uninstall add-on action hook.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    public static function uninstallAddon()
+    {
+    }
 }

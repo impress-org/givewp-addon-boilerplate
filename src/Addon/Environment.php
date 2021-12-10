@@ -8,43 +8,48 @@ namespace GiveAddon\Addon;
  * @package     GiveAddon\Addon\Helpers
  * @copyright   Copyright (c) 2020, GiveWP
  */
-class Environment {
+class Environment
+{
 
-	/**
-	 * Check environment.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public static function checkEnvironment() {
-		// Check is GiveWP active
-		if ( ! static::isGiveActive() ) {
-			add_action( 'admin_notices', [ Notices::class, 'giveInactive' ] );
-			return;
-		}
-		// Check min required version
-		if ( ! static::giveMinRequiredVersionCheck() ) {
-			add_action( 'admin_notices', [ Notices::class, 'giveVersionError' ] );
-		}
-	}
+    /**
+     * Check environment.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    public static function checkEnvironment()
+    {
+        // Check is GiveWP active
+        if ( ! static::isGiveActive()) {
+            add_action('admin_notices', [Notices::class, 'giveInactive']);
 
-	/**
-	 * Check min required version of GiveWP.
-	 *
-	 * @since 1.0.0
-	 * @return bool
-	 */
-	public static function giveMinRequiredVersionCheck() {
-		return defined( 'GIVE_VERSION' ) && version_compare( GIVE_VERSION, ADDON_CONSTANT_MIN_GIVE_VERSION, '>=' );
-	}
+            return;
+        }
+        // Check min required version
+        if ( ! static::giveMinRequiredVersionCheck()) {
+            add_action('admin_notices', [Notices::class, 'giveVersionError']);
+        }
+    }
 
-	/**
-	 * Check if GiveWP is active.
-	 *
-	 * @since 1.0.0
-	 * @return bool
-	 */
-	public static function isGiveActive() {
-		return defined( 'GIVE_VERSION' );
-	}
+    /**
+     * Check min required version of GiveWP.
+     *
+     * @since 1.0.0
+     * @return bool
+     */
+    public static function giveMinRequiredVersionCheck()
+    {
+        return defined('GIVE_VERSION') && version_compare(GIVE_VERSION, ADDON_CONSTANT_MIN_GIVE_VERSION, '>=');
+    }
+
+    /**
+     * Check if GiveWP is active.
+     *
+     * @since 1.0.0
+     * @return bool
+     */
+    public static function isGiveActive()
+    {
+        return defined('GIVE_VERSION');
+    }
 }
