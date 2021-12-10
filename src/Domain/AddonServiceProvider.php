@@ -4,13 +4,13 @@ namespace GiveAddon\Domain;
 
 use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider;
-use GiveAddon\Addon\Links;
-use GiveAddon\Domain\Helpers\SettingsPage;
-use GiveAddon\Domain\SettingsPage as AddonSettingsPage;
 use GiveAddon\Addon\Activation;
 use GiveAddon\Addon\ActivationBanner;
 use GiveAddon\Addon\Language;
 use GiveAddon\Addon\License;
+use GiveAddon\Addon\Links;
+use GiveAddon\Domain\Helpers\SettingsPage;
+use GiveAddon\Domain\SettingsPage as AddonSettingsPage;
 
 /**
  * Example of a service provider responsible for add-on initialization.
@@ -18,23 +18,25 @@ use GiveAddon\Addon\License;
  * @package     GiveAddon\Addon
  * @copyright   Copyright (c) 2020, GiveWP
  */
+class AddonServiceProvider implements ServiceProvider
+{
+    /**
+     * @inheritDoc
+     */
+    public function register()
+    {
+        give()->singleton(Activation::class);
+    }
 
-class AddonServiceProvider implements ServiceProvider {
-	/**
-	 * @inheritDoc
-	 */
-	public function register() {
-		give()->singleton( Activation::class );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function boot() {
-		// Load add-on translations.
-		Hooks::addAction( 'init', Language::class, 'load' );
-		// Load add-on links.
-		Hooks::addFilter( 'plugin_action_links_' . ADDON_CONSTANT_BASENAME, Links::class );
+    /**
+     * @inheritDoc
+     */
+    public function boot()
+    {
+        // Load add-on translations.
+        Hooks::addAction('init', Language::class, 'load');
+        // Load add-on links.
+        Hooks::addFilter('plugin_action_links_' . ADDON_CONSTANT_BASENAME, Links::class);
 
         is_admin()
             ? $this->loadBackend()
@@ -44,8 +46,8 @@ class AddonServiceProvider implements ServiceProvider {
     /**
      * Load add-on backend assets.
      *
-     * @since 1.0.0
      * @return void
+     * @since 1.0.0
      */
     private function loadBackend()
     {
@@ -84,8 +86,8 @@ class AddonServiceProvider implements ServiceProvider {
     /**
      * Load add-on front-end assets.
      *
-     * @since 1.0.0
      * @return void
+     * @since 1.0.0
      */
     private function loadFrontend()
     {
