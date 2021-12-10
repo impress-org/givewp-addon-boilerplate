@@ -5,7 +5,7 @@ namespace GiveAddon\Addon;
 class Links
 {
     /**
-     *
+     * Add settings link
      * @return array
      * @since 1.0.0
      */
