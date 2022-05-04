@@ -22,14 +22,3 @@ mix.webpackConfig( {
 		jquery: 'jQuery',
 	},
 } );
-
-if ( mix.inProduction() ) {
-	wpPot( {
-		package: 'ADDON_NAME',
-		domain: 'ADDON_TEXTDOMAIN',
-		destFile: 'languages/ADDON_TEXTDOMAIN.pot',
-		relativeTo: './',
-		bugReport: 'https://github.com/impress-org/ADDON_ID/issues/new',
-		team: 'GiveWP <info@givewp.com>',
-	} );
-}
