@@ -36,7 +36,7 @@ class Assets
 
         wp_localize_script(
             'ADDON_ID-script-backend',
-            'ADDON_ID',
+            'GiveAddon',
             [
                 'locale' => str_replace('_', '-', get_locale()),
                 'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',
@@ -69,7 +69,7 @@ class Assets
 
         wp_localize_script(
             'ADDON_ID-script-frontend',
-            'ADDON_ID',
+            'GiveAddon',
             [
                 'locale' => str_replace('_', '-', get_locale()),
                 'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',

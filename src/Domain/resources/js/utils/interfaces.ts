@@ -1,4 +1,4 @@
-export interface IADDON_ID {
+export interface IGiveAddon {
     locale: string;
     imageUrl: string;
 }

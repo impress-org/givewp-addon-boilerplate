@@ -1,5 +1,5 @@
 {
-    "name": "impress-org/ADDON_ID",
+    "name": "impress-org/addon-id",
     "description": "ADDON_DESCRIPTION",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
