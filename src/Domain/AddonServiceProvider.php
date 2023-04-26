@@ -54,6 +54,9 @@ class AddonServiceProvider implements ServiceProvider
         // Register settings page
         SettingsPage::registerPage(AddonSettingsPage::class);
 
+        // Register settings page - react app
+        SettingsPage::registerPage(SettingsPageApp::class);
+
         Hooks::addAction('admin_init', License::class, 'check');
         Hooks::addAction('admin_init', ActivationBanner::class, 'show', 20);
         // Load backend assets.

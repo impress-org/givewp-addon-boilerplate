@@ -13,5 +13,5 @@ ReactDOM.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>,
-    document.getElementById('give-addon-react-app')
+    document.getElementById('ADDON_ID-settings-page-app')
 );

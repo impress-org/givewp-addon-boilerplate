@@ -7,8 +7,8 @@ mix.setPublicPath('public')
     // utils
     .ts('src/Domain/resources/js/utils/helpers.ts', 'public/js/')
 
-    // admin settings page react app
-    .ts('src/Domain/resources/js/admin/settings-page-react-app/index.tsx', 'public/js/settings-page-react-app.js')
+    // admin settings page - react app
+    .ts('src/Domain/resources/js/admin/settings-page-app/index.tsx', 'public/js/settings-page-app.js')
 
     // admin assets
     .js('src/Domain/resources/js/admin/ADDON_ID-admin.js', 'public/js/')

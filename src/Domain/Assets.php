@@ -34,8 +34,26 @@ class Assets
             true
         );
 
+
+        wp_enqueue_script(
+            'ADDON_ID-settings-app',
+            ADDON_CONSTANT_URL . 'public/js/settings-page-app.js',
+            [],
+            ADDON_CONSTANT_VERSION,
+            true
+        );
+
         wp_localize_script(
             'ADDON_ID-script-backend',
+            'GiveAddon',
+            [
+                'locale' => str_replace('_', '-', get_locale()),
+                'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',
+            ]
+        );
+
+        wp_localize_script(
+            'ADDON_ID-settings-app',
             'GiveAddon',
             [
                 'locale' => str_replace('_', '-', get_locale()),
