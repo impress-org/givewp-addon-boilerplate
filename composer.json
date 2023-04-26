@@ -5,6 +5,9 @@
     "license": "GPL-2.0-or-later",
     "require": {},
     "require-dev": {
+        "kjohnson/since-unreleased": "^1.0.0",
+        "phpunit/phpunit": "^5",
+        "yoast/phpunit-polyfills": "^1.0",
         "squizlabs/php_codesniffer": "^3.5",
         "phpcompatibility/phpcompatibility-wp": "^2.1",
         "wp-coding-standards/wpcs": "^2.3",
@@ -12,6 +15,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"
     },
     "scripts": {
+        "test": "./vendor/bin/phpunit --colors --stop-on-failure",
         "lint:php": "./vendor/bin/phpcs -v -s --colors",
         "lint:php:fix": "./vendor/bin/phpcbf -v --colors",
         "post-install-cmd": [
@@ -24,6 +28,11 @@
     "autoload": {
         "psr-4": {
             "GiveAddon\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }
