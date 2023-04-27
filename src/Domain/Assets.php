@@ -36,15 +36,6 @@ class Assets
             true
         );
 
-
-        wp_enqueue_script(
-            'ADDON_ID-settings-app',
-            ADDON_CONSTANT_URL . 'public/js/settings-page-app.js',
-            [],
-            ADDON_CONSTANT_VERSION,
-            true
-        );
-
         $object = [
             'locale' => str_replace('_', '-', get_locale()),
             'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',
@@ -56,11 +47,21 @@ class Assets
             $object
         );
 
-        wp_localize_script(
-            'ADDON_ID-settings-app',
-            'ADDON_ID',
-            $object
-        );
+        if (isset($_GET['tab']) && 'ADDON_ID-settings-app' === $_GET['tab']) {
+            wp_enqueue_script(
+                'ADDON_ID-settings-app',
+                ADDON_CONSTANT_URL . 'public/js/settings-page-app.js',
+                [],
+                ADDON_CONSTANT_VERSION,
+                true
+            );
+
+            wp_localize_script(
+                'ADDON_ID-settings-app',
+                'ADDON_ID',
+                $object
+            );
+        }
     }
 
     /**

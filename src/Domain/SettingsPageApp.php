@@ -16,7 +16,7 @@ class SettingsPageApp extends Give_Settings_Page
      */
     public function __construct()
     {
-        $this->id = 'ADDON_ID-app';
+        $this->id = 'ADDON_ID-settings-app';
         $this->label = esc_html__('ADDON_NAME Settings React App', 'ADDON_TEXTDOMAIN');
 
         parent::__construct();
