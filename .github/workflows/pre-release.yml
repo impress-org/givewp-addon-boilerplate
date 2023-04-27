@@ -8,5 +8,5 @@ jobs:
     build:
         uses: impress-org/givewp-github-actions/.github/workflows/pre-release.yml@master
         with:
-            plugin_slug: ADDON_ID
-            zip_name: ADDON_ID
+            plugin_slug: give-authorize-net
+            zip_name: give-authorize-net

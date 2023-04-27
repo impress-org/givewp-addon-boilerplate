@@ -1,0 +1,17 @@
+name: 🔁 Sync Translations
+
+on:
+    workflow_dispatch:
+        inputs:
+            ref:
+                description: 'Git Commit Ref (branch, tag, or hash)'
+                required: true
+                type: string
+                default: 'master'
+jobs:
+    sync-translations:
+        uses: impress-org/givewp-github-actions/.github/workflows/sync-translations.yml@master
+        secrets: inherit
+        with:
+            ref: ${{ github.event.inputs.ref }}
+            plugin_slug: give-authorize-net
