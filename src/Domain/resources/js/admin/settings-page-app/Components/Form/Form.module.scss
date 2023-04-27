@@ -1,0 +1,41 @@
+.formContainer {
+    margin: 0 auto;
+
+    .periodSelectorContainer {
+        display: flex;
+        justify-content: space-around;
+        margin: 1.5rem auto;
+    }
+
+    .submitButtonContainer {
+        margin: 1.2rem auto 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .formNoticeWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--givewp-blue-25);
+        color: var(--givewp-blue-500);
+        height: auto;
+        max-width: 28.5rem;
+        width: 100%;
+        padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+        box-sizing: border-box;
+        margin: 0.5rem auto;
+
+        img {
+            margin-right: 1.3rem;
+            transform: scale(1.2);
+            cursor: default;
+        }
+
+        label {
+            font-family: OpenSans, sans-serif;
+            font-size: 0.9rem;
+            cursor: auto;
+        }
+    }
+}

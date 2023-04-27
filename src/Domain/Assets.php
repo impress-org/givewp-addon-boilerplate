@@ -19,6 +19,8 @@ class Assets
      */
     public static function loadBackendAssets()
     {
+        wp_enqueue_style('givewp-design-system-foundation');
+
         wp_enqueue_style(
             'ADDON_ID-style-backend',
             ADDON_CONSTANT_URL . 'public/css/ADDON_ID-admin.css',
@@ -43,22 +45,21 @@ class Assets
             true
         );
 
+        $object = [
+            'locale' => str_replace('_', '-', get_locale()),
+            'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',
+        ];
+
         wp_localize_script(
             'ADDON_ID-script-backend',
-            'GiveAddon',
-            [
-                'locale' => str_replace('_', '-', get_locale()),
-                'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',
-            ]
+            'ADDON_ID',
+            $object
         );
 
         wp_localize_script(
             'ADDON_ID-settings-app',
-            'GiveAddon',
-            [
-                'locale' => str_replace('_', '-', get_locale()),
-                'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',
-            ]
+            'ADDON_ID',
+            $object
         );
     }
 
@@ -70,6 +71,8 @@ class Assets
      */
     public static function loadFrontendAssets()
     {
+        wp_enqueue_style('givewp-design-system-foundation');
+
         wp_enqueue_style(
             'ADDON_ID-style-frontend',
             ADDON_CONSTANT_URL . 'public/css/ADDON_ID.css',
@@ -87,7 +90,7 @@ class Assets
 
         wp_localize_script(
             'ADDON_ID-script-frontend',
-            'GiveAddon',
+            'ADDON_ID',
             [
                 'locale' => str_replace('_', '-', get_locale()),
                 'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',

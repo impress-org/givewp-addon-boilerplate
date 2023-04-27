@@ -1,0 +1,90 @@
+.periodSelector {
+    display: inline-flex;
+    align-items: center;
+    min-width: 330px;
+}
+
+.datepicker {
+    border: 1px solid #ddd;
+    border-bottom-width: 3px;
+    background: #fff;
+    min-height: 3rem;
+    height: auto;
+    width: 100%;
+    border-radius: var(--givewp-rounded-4);
+    padding-left: 1.75rem;
+
+    :global .CalendarDay__selected_span {
+        background: rgb(145, 200, 150);
+        color: #fff;
+        border: 1px solid #66bb6a;
+    }
+
+    :global .CalendarDay__selected {
+        background: #66bb6a;
+        color: #fff;
+        border: 1px double #47814a;
+    }
+
+    :global .CalendarDay__hovered_span,
+    :global .CalendarDay__hovered_span:hover {
+        background: rgb(145, 200, 150);
+        color: #fff;
+        border: 1px solid #66bb6a;
+    }
+
+    :global .DayPickerNavigation_button__horizontalDefault {
+        top: 0.75rem;
+    }
+
+    :global .DateRangePickerInput {
+        border: none;
+        background: none;
+        height: 1.62rem;
+    }
+
+    :global .DateRangePicker_picker {
+        border-radius: var(--givewp-rounded-2);
+        top: 3rem !important;
+    }
+
+    :global .DateInput_fang {
+        top: 2.375rem !important;
+    }
+
+    :global .DateInput {
+        background: none;
+    }
+
+    :global .DayPicker_weekHeader {
+        top: 3.25rem;
+    }
+
+    input[type='text'] {
+        font-family: OpenSans, sans-serif;
+        font-size: var(--givewp-font-size-headline-md);
+        font-weight: var(--givewp-font-weight-headline-md);
+        border-radius: var(--givewp-rounded-4);
+        min-height: 3rem;
+        height: auto;
+        border: none;
+        background: none;
+        overflow: hidden;
+
+        &:focus {
+            box-shadow: none;
+            border: none;
+        }
+    }
+}
+
+.icon {
+    height: 2rem;
+    width: 2rem;
+    margin-left: 0.4rem;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

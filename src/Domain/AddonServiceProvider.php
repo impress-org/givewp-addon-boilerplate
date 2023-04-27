@@ -54,7 +54,9 @@ class AddonServiceProvider implements ServiceProvider
         // Register settings page
         SettingsPage::registerPage(AddonSettingsPage::class);
 
-        // Register settings page - react app
+        /**
+         * Example of how to extend an existing settings page using a React App.
+         */
         SettingsPage::registerPage(SettingsPageApp::class);
 
         Hooks::addAction('admin_init', License::class, 'check');

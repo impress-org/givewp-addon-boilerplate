@@ -4,14 +4,13 @@ const wpPot = require('wp-pot');
 mix.setPublicPath('public')
     .sourceMaps(false)
 
-    // utils
-    .ts('src/Domain/resources/js/utils/helpers.ts', 'public/js/')
-
-    // admin settings page - react app
+    /**
+     * Example of how to extend an existing settings page using a React App.
+     */
     .ts('src/Domain/resources/js/admin/settings-page-app/index.tsx', 'public/js/settings-page-app.js')
 
     // admin assets
-    .js('src/Domain/resources/js/admin/ADDON_ID-admin.js', 'public/js/')
+    .ts('src/Domain/resources/js/admin/ADDON_ID-admin.ts', 'public/js/')
     .sass('src/Domain/resources/css/admin/ADDON_ID-admin.scss', 'public/css')
 
     // frontend assets
