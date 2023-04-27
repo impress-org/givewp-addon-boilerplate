@@ -44,7 +44,7 @@ mix.options({
 
 if (mix.inProduction()) {
     wpPot({
-        package: 'ADDON_NAME',
+        package: 'ADDON_ID',
         domain: 'ADDON_TEXTDOMAIN',
         destFile: 'languages/ADDON_TEXTDOMAIN.pot',
         relativeTo: './',
