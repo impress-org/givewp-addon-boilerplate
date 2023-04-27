@@ -5,7 +5,7 @@ import {IGiveAddon} from '../../utils/interfaces';
 
 declare global {
     interface Window {
-        ADDON_ID: IGiveAddon;
+        GiveAddon: IGiveAddon;
     }
 }
 
