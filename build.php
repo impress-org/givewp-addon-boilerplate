@@ -53,6 +53,7 @@ $files = array_filter( array_merge(
         __DIR__ . '/.github/workflows/pre-release.yml',
     ],
     glob(__DIR__ . '/*.php', GLOB_NOSORT),
+    rglob(__DIR__ . '/tests/*.php', GLOB_NOSORT),
     rglob(__DIR__ . '/src/*.php', GLOB_NOSORT),
     rglob(__DIR__ . '/src/*.js', GLOB_NOSORT),
     rglob(__DIR__ . '/src/*.ts', GLOB_NOSORT),
@@ -72,6 +73,7 @@ $replacements = [
     'ADDON_TEXTDOMAIN' => trim($textDomain),
     'ADDON_ID' => trim($id),
     'impress-org/addon-id' => 'impress-org/' . trim($id),
+    'give-addon-boilerplate' => trim($id),
 ];
 
 foreach ($files as $file) {
@@ -95,7 +97,7 @@ rename(
 
 rename(
     __DIR__ . '/src/Domain/resources/css/admin/ADDON_ID-admin.scss',
-    __DIR__ . "/src/Domain/resources/css/admin/$id-frontend.scss"
+    __DIR__ . "/src/Domain/resources/css/admin/$id-admin.scss"
 );
 
 rename(
@@ -106,6 +108,11 @@ rename(
 rename(
     __DIR__ . '/src/Domain',
     __DIR__ . "/src/$domain"
+);
+
+rename(
+    __DIR__ . '/tests/Unit/Domain',
+    __DIR__ . "/tests/Unit/$domain"
 );
 
 unlink(__FILE__);
