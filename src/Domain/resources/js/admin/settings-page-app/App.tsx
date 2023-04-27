@@ -15,7 +15,7 @@ function App() {
 
     return (
         <div className="App">
-            <h2>React App</h2>
+            <h2>Settings React App</h2>
             <Modal title={__('Modal Title', 'ADDON_TEXTDOMAIN')} showModal={showModal} setShowModal={setShowModal}>
                 <Form setShowModal={setShowModal} />
             </Modal>
