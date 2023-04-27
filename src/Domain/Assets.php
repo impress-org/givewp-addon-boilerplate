@@ -47,7 +47,7 @@ class Assets
             $object
         );
 
-        if (isset($_GET['tab']) && 'ADDON_ID-settings-app' === $_GET['tab']) {
+        if (isset($_GET['tab']) && 'ADDON_ID-settings-page-app' === $_GET['tab']) {
             wp_enqueue_script(
                 'ADDON_ID-settings-app',
                 ADDON_CONSTANT_URL . 'public/js/ADDON_ID-settings-page-app.js',
