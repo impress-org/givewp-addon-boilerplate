@@ -20,12 +20,13 @@ function App() {
                 <Form setShowModal={setShowModal} />
             </Modal>
             <a href={'#'} onClick={handleOnClick}>
-                {__('Click here to see a sample modal', 'ADDON_TEXTDOMAIN')}
+                {__('Click here to open a sample modal', 'ADDON_TEXTDOMAIN')}
             </a>
             <br />
             <br />
-            <label htmlFor="soption">Sample Option: </label>
-            <input type="text" id="soption" name="soption" />
+            <label htmlFor="soption">
+                Sample Option: <input type="text" id="soption" name="soption" />
+            </label>
             <br />
             <br />
             <Button small={true} onClick={() => alert('Handle Submitting Here')}>
