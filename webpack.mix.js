@@ -7,14 +7,14 @@ mix.setPublicPath('public')
     /**
      * Example of how to extend an existing settings page using a React App.
      */
-    .ts('src/Domain/resources/js/admin/settings-page-app/index.tsx', 'public/js/settings-page-app.js')
+    .ts('src/Domain/resources/js/admin/settings-page-app/index.tsx', 'public/js/ADDON_ID-settings-page-app.js')
 
     // admin assets
     .ts('src/Domain/resources/js/admin/ADDON_ID-admin.ts', 'public/js/')
     .sass('src/Domain/resources/css/admin/ADDON_ID-admin.scss', 'public/css')
 
     // frontend assets
-    .js('src/Domain/resources/js/frontend/ADDON_ID.js', 'public/js/')
+    .js('src/Domain/resources/js/frontend/ADDON_ID-frontend.js', 'public/js/')
     .sass('src/Domain/resources/css/frontend/ADDON_ID-frontend.scss', 'public/css')
 
     // images

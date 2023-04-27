@@ -50,7 +50,7 @@ class Assets
         if (isset($_GET['tab']) && 'ADDON_ID-settings-app' === $_GET['tab']) {
             wp_enqueue_script(
                 'ADDON_ID-settings-app',
-                ADDON_CONSTANT_URL . 'public/js/settings-page-app.js',
+                ADDON_CONSTANT_URL . 'public/js/ADDON_ID-settings-page-app.js',
                 [],
                 ADDON_CONSTANT_VERSION,
                 true
@@ -76,14 +76,14 @@ class Assets
 
         wp_enqueue_style(
             'ADDON_ID-style-frontend',
-            ADDON_CONSTANT_URL . 'public/css/ADDON_ID.css',
+            ADDON_CONSTANT_URL . 'public/css/ADDON_ID-frontend.css',
             [],
             ADDON_CONSTANT_VERSION
         );
 
         wp_enqueue_script(
             'ADDON_ID-script-frontend',
-            ADDON_CONSTANT_URL . 'public/js/ADDON_ID.js',
+            ADDON_CONSTANT_URL . 'public/js/ADDON_ID-frontend.js',
             [],
             ADDON_CONSTANT_VERSION,
             true

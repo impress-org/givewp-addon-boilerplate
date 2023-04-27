@@ -74,23 +74,43 @@ $replacements = [
     'impress-org/addon-id' => 'impress-org/' . trim($id),
 ];
 
-foreach ( $files as $file ) {
-	replaceInFile( $file, array_keys( $replacements ), array_values( $replacements ) );
+foreach ($files as $file) {
+    replaceInFile($file, array_keys($replacements), array_values($replacements));
 }
 
 rename(
-	__DIR__ . '/give-addon-boilerplate.php',
-	__DIR__ . "/$id.php"
+    __DIR__ . '/give-addon-boilerplate.php',
+    __DIR__ . "/$id.php"
 );
 
 rename(
-	__DIR__ . '/src/Domain',
-	__DIR__ . "/src/$domain"
+    __DIR__ . '/src/Domain/resources/js/admin/ADDON_ID-admin.ts',
+    __DIR__ . "/src/Domain/resources/js/admin/$id-admin.ts"
 );
 
-unlink( __FILE__ );
+rename(
+    __DIR__ . '/src/Domain/resources/js/frontend/ADDON_ID-frontend.js',
+    __DIR__ . "/src/Domain/resources/js/frontend/$id-frontend.js"
+);
 
-echo( PHP_EOL . PHP_EOL . 'All set!' );
+rename(
+    __DIR__ . '/src/Domain/resources/css/admin/ADDON_ID-admin.scss',
+    __DIR__ . "/src/Domain/resources/css/admin/$id-frontend.scss"
+);
+
+rename(
+    __DIR__ . '/src/Domain/resources/css/frontend/ADDON_ID-frontend.scss',
+    __DIR__ . "/src/Domain/resources/css/frontend/$id-frontend.scss"
+);
+
+rename(
+    __DIR__ . '/src/Domain',
+    __DIR__ . "/src/$domain"
+);
+
+unlink(__FILE__);
+
+echo(PHP_EOL . PHP_EOL . 'All set!');
 
 /***** HELPER FUNCTIONS *****/
 
