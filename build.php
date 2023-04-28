@@ -53,6 +53,7 @@ $files = array_filter( array_merge(
         __DIR__ . '/.github/workflows/pre-release.yml',
     ],
     glob(__DIR__ . '/*.php', GLOB_NOSORT),
+    rglob(__DIR__ . '/.github/*.yml', GLOB_NOSORT),
     rglob(__DIR__ . '/tests/*.php', GLOB_NOSORT),
     rglob(__DIR__ . '/src/*.php', GLOB_NOSORT),
     rglob(__DIR__ . '/src/*.js', GLOB_NOSORT),

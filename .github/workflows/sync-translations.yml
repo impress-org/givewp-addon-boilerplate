@@ -14,4 +14,4 @@ jobs:
         secrets: inherit
         with:
             ref: ${{ github.event.inputs.ref }}
-            plugin_slug: give-authorize-net
+            plugin_slug: ADDON_ID
