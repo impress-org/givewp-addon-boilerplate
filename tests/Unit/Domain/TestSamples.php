@@ -1,6 +1,6 @@
 <?php
 
-namespace GivePdfReceipt\Tests\PdfExport\EventHandlers;
+namespace GiveAddon\Tests\Unit\Domain;
 
 use Exception;
 use Give\Tests\TestCase;

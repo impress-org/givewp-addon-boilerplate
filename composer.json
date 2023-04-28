@@ -30,7 +30,15 @@
             "GiveAddon\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "GiveAddon\\Tests\\": "tests/"
+        }
+    },
     "config": {
+        "platform": {
+            "php": "7.0"
+        },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
