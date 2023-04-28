@@ -5,7 +5,7 @@ mix.setPublicPath('public')
     .sourceMaps(false)
 
     /**
-     * Example of how to extend an existing settings page using a React App.
+     * admin assets - example of how to create a settings page using a React App.
      */
     .ts('src/Domain/resources/js/admin/settings-page-app/index.tsx', 'public/js/ADDON_ID-settings-page-app.js')
 
