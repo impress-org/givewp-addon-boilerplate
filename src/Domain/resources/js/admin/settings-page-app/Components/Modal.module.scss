@@ -1,0 +1,73 @@
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    display: flex;
+    z-index: 1000;
+    padding: 2rem calc(4rem + 15px) 2rem 4rem;
+
+    @media (max-width: 40rem) {
+        padding: 0;
+    }
+
+    .modalContent {
+        margin: auto;
+        min-height: 356px;
+        height: auto;
+        max-width: 504px;
+        width: 100%;
+        border-radius: 0.4rem;
+        background: white;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        transform: scale(0.8);
+        animation: scaleUp 0.3s forwards;
+        
+
+        @media (max-width: 64rem) {
+            height: auto;
+            max-width: 360px;
+            max-height: none;
+            grid-template-columns: minmax(20rem, 40rem);
+            grid-template-rows: auto;
+        }
+
+        .modalHeader {
+            display: grid;
+            grid-template-columns: 6fr 1fr;
+            background: var(--givewp-grey-5);
+            align-items: center;
+            position: relative;
+            width: 100%;
+            border-bottom: solid 0.06rem var(--givewp-grey-100);
+            box-sizing: border-box;
+            height: 3.5rem;
+            align-content: center;
+        }
+
+        .modalTitle {
+            font-family: OpenSans, sans-serif;
+            margin-left: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .modalClose {
+            cursor: pointer;
+            padding: 0.2rem;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            margin: 0.8rem 1.5rem 0.8rem auto;
+        }
+
+        .modalBody {
+            padding: 1rem;
+        }
+    }
+}

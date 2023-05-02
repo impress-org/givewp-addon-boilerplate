@@ -1,0 +1,43 @@
+.button {
+    font-family: OpenSans, sans-serif;
+    font-size: var(--givewp-font-size-headline-lg);
+    font-weight: 600;
+    border-radius: var(--givewp-rounded-4);
+    border: none;
+    cursor: pointer;
+    background: #2271b1;
+    color: var(--givewp-blue-25);
+    box-sizing: border-box;
+    transition: 0.1s;
+    margin: 1rem auto 1rem auto;
+    padding: 0.5rem;
+    max-width: 28.5rem;
+    width: 100%;
+    height: 4rem;
+}
+
+.small {
+    width: 10rem;
+    font-size: 0.8rem;
+    height: 2.25rem;
+    margin-left: 0.2rem;
+}
+
+.button:hover,
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--givewp-blue-25), 0 0 0 4px #2271b1;
+}
+
+.button:disabled {
+    background-color: var(--givewp-grey-300);
+    cursor: default;
+
+    label {
+        cursor: default;
+    }
+}
+
+.button:disabled:hover {
+    box-shadow: none;
+}
