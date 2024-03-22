@@ -1,8 +1,9 @@
-import {GiveAddonSettings} from '../types/GiveAddonSettings';
+import {colorProps} from '../types/colorProps';
 
 /**
  * @since 1.0.0
  */
 export interface IGiveAddonFormBuilder {
-    GiveAddon: GiveAddonSettings;
+    colors: colorProps[];
+    colorSettingsUrl: string;
 }

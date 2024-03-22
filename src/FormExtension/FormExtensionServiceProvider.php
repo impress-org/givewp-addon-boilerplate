@@ -1,6 +1,6 @@
 <?php
 
-namespace GiveAddon\Domain;
+namespace GiveAddon\FormExtension;
 
 use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider;
@@ -9,7 +9,7 @@ use GiveAddon\FormExtension\FormBuilder\Actions\LoadFormBuilderAssets;
 /**
  * Example of a service provider responsible for Form Extension initialization.
  *
- * @package     GiveAddon\Addon
+ * @package     GiveAddon\FormExtension
  * @copyright   Copyright (c) 2020, GiveWP
  */
 class FormExtensionServiceProvider implements ServiceProvider
@@ -32,9 +32,10 @@ class FormExtensionServiceProvider implements ServiceProvider
         // Load add-on links.
         //Hooks::addFilter('plugin_action_links_' . ADDON_CONSTANT_BASENAME, Links::class);
 
-        is_admin()
+        $this->loadBackend();
+        /*is_admin()
             ? $this->loadBackend()
-            : $this->loadFrontend();
+            : $this->loadFrontend();*/
     }
 
     /**

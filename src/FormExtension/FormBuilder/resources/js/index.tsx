@@ -1,14 +1,8 @@
-import {IGiveCore} from './interfaces/IGiveCore';
-import {IGiveAddonFormBuilder} from './interfaces/IGiveAddonFormBuilder';
+import ColorsSampleBlock from './Blocks/ColorsSampleBlock';
+import {getGiveCoreFormBuilderWindowData} from './window';
 
-declare const window: {
-    givewp: IGiveCore;
-    GiveAddon: IGiveAddonFormBuilder;
-} & Window;
+const {form} = getGiveCoreFormBuilderWindowData();
 
-/**
- * @since 1.0.0
- */
-export function getGiveAddonFormBuilderWindowData() {
-    return window.GiveAddon;
-}
+console.log(ColorsSampleBlock);
+
+form.blocks.register(ColorsSampleBlock.name, ColorsSampleBlock.settings);

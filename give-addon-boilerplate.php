@@ -4,6 +4,7 @@ namespace GiveAddon;
 use GiveAddon\Addon\Activation;
 use GiveAddon\Addon\Environment;
 use GiveAddon\Domain\AddonServiceProvider;
+use GiveAddon\FormExtension\FormExtensionServiceProvider;
 
 /**
  * Plugin Name:         ADDON_NAME
@@ -50,6 +51,7 @@ add_action(
         // Check Give min required version.
         if (Environment::giveMinRequiredVersionCheck()) {
             give()->registerServiceProvider(AddonServiceProvider::class);
+            give()->registerServiceProvider(FormExtensionServiceProvider::class);
         }
     }
 );

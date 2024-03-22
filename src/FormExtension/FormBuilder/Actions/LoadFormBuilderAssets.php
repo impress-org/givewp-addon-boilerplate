@@ -46,7 +46,7 @@ class LoadFormBuilderAssets
             true
         );
 
-        wp_localize_script('givewp-form-extension-ADDON_ID', 'GiveAddon',
+        wp_localize_script('givewp-form-extension-ADDON_ID', 'GiveAddonFormBuilder',
             give(GiveAddonViewModel::class)->exports());
     }
 }
