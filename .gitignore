@@ -45,9 +45,13 @@ cache
 node_modules
 public
 .storybook-static
+build
 
 # Composer
 vendor
 
-# Assert directory
+# Assets directory
 assets/dist
+
+# POT File
+languages/give-funds.pot
