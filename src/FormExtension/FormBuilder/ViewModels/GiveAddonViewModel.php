@@ -35,7 +35,8 @@ class GiveAddonViewModel
 
         return [
             'colors' => $colorsArray,
-            'colorSettingsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-color-settings')),
+            'colorSettingsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-addon-color-settings')),
+            'globalOptionsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-settings&tab=give-addon-global-settings')),
         ];
     }
 }

@@ -6,4 +6,5 @@ import {colorProps} from '../types/colorProps';
 export interface IGiveAddonFormBuilder {
     colors: colorProps[];
     colorSettingsUrl: string;
+    globalOptionsUrl: string;
 }
