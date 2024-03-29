@@ -33,10 +33,17 @@ class GiveAddonViewModel
             ]
         ];
 
+        $sampleTags = [
+            ['tag' => 'sitename', 'desc' => __('Site Name', 'give-pdf-receipts')],
+            ['tag' => 'today', 'desc' => __('Date of Receipt Generation', 'give-pdf-receipts')],
+            ['tag' => 'date', 'desc' => __('Receipt Date', 'give-pdf-receipts')],
+        ];
+
         return [
             'colors' => $colorsArray,
             'colorSettingsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-addon-color-settings')),
             'globalOptionsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-settings&tab=give-addon-global-settings')),
+            'sampleTags' => $sampleTags,
         ];
     }
 }

@@ -4,6 +4,7 @@ import {SettingsSection} from '@givewp/form-builder-library';
 import {getGiveAddonFormBuilderWindowData} from '../window';
 import {createInterpolateElement} from '@wordpress/element';
 import {GiveAddonSettingsProps} from '../types/GiveAddonSettingsProps';
+import CustomSettings from './CustomSettings';
 
 /**
  * @since 1.0.0
@@ -21,7 +22,7 @@ export default function GiveAddonSettings({settings, setSettings}) {
         });
     };
 
-    const customizePdfReceiptsDescription = createInterpolateElement(
+    const globalSettingsHelperText = createInterpolateElement(
         __('Uses <a>global settings</a> when disabled.', 'ADDON_TEXTDOMAIN'),
         {
             a: <a href={globalOptionsUrl} target="_blank" />,
@@ -29,7 +30,7 @@ export default function GiveAddonSettings({settings, setSettings}) {
     );
 
     return (
-        <div className={'give-form-settings__pdf-receipts'}>
+        <div className={'give-form-settings__addon-settings'}>
             <SettingsSection
                 title={__('Give Addon Settings', 'ADDON_TEXTDOMAIN')}
                 description={__(
@@ -40,7 +41,7 @@ export default function GiveAddonSettings({settings, setSettings}) {
                 <PanelRow className={'no-extra-gap'}>
                     <ToggleControl
                         label={__('Customize Settings', 'ADDON_TEXTDOMAIN')}
-                        help={customizePdfReceiptsDescription}
+                        help={globalSettingsHelperText}
                         checked={addonSettings.enable === 'enabled'}
                         onChange={(value) => {
                             updateAddonSettings('enable', value ? 'enabled' : 'global');
@@ -49,7 +50,9 @@ export default function GiveAddonSettings({settings, setSettings}) {
                 </PanelRow>
             </SettingsSection>
 
-            {addonSettings.enable === 'enabled' && <p>Your custom settings goes here...</p>}
+            {addonSettings.enable === 'enabled' && (
+                <CustomSettings addonSettings={addonSettings} updateAddonSettings={updateAddonSettings} />
+            )}
         </div>
     );
 }
