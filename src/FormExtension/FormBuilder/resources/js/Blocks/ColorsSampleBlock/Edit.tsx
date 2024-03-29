@@ -7,11 +7,11 @@ import {OptionProps} from '@givewp/form-builder-library/build/OptionsPanel/types
 import {getGiveAddonFormBuilderWindowData} from '../../window';
 import {createInterpolateElement} from '@wordpress/element';
 import {useEffect, useState} from 'react';
-import {colorProps} from '../../types/colorProps';
+import {ColorOptionProps} from '../../types/ColorOptionProps';
 
 const filterCheckedOptions = (options: OptionProps[]) => options.filter((option) => option.checked === true);
 
-const mergeOptionsWithColors = (options: OptionProps[], colors: colorProps[]) => {
+const mergeOptionsWithColors = (options: OptionProps[], colors: ColorOptionProps[]) => {
     const validOptions = options
         .map((option) => {
             const color = colors.find((color) => color.value === option.value);
@@ -57,7 +57,7 @@ export default function Edit({attributes, setAttributes}: BlockEditProps<any>) {
         const enabledOptions = filterCheckedOptions(mergeOptionsWithColors(options, colors));
         if (enabledOptions.length === 0) {
             options.find(
-                (option: OptionProps) => option.value === colors.find((fund: colorProps) => fund.isDefault).value
+                (option: OptionProps) => option.value === colors.find((fund: ColorOptionProps) => fund.isDefault).value
             ).checked = true;
             setIsAdminChoice(true);
         } else {

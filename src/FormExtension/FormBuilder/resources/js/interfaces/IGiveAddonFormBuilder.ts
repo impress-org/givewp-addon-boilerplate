@@ -1,4 +1,4 @@
-import {colorProps} from '../types/colorProps';
+import {colorProps} from '../types/ColorProps.ts.off';
 
 /**
  * @since 1.0.0
