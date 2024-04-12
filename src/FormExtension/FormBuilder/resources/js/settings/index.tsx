@@ -10,9 +10,16 @@ import CustomSettings from './CustomSettings';
  * @since 1.0.0
  */
 export default function GiveAddonSettings({settings, setSettings}) {
+    console.log('settings: ', settings);
     const addonSettings: GiveAddonSettingsProps = settings.addonSettings ?? {};
     const {globalOptionsUrl} = getGiveAddonFormBuilderWindowData();
 
+    /**
+     * This is just a sample demonstrating how to start a Form settings extension, but the values will NOT be updated
+     * because there is no "addonSettings" attribute defined in the core form settings. At this moment, there is no way
+     * to extend the default form settings without changing the core codebase. In the future, we can change this sample
+     * to support updates if a way to extend the form settings is implemented in the core.
+     */
     const updateAddonSettings = (property: string, value: any) => {
         setSettings({
             addonSettings: {
@@ -32,7 +39,7 @@ export default function GiveAddonSettings({settings, setSettings}) {
     return (
         <div className={'give-form-settings__addon-settings'}>
             <SettingsSection
-                title={__('Give Addon Settings', 'ADDON_TEXTDOMAIN')}
+                title={__('Give Addon Settings Sample', 'ADDON_TEXTDOMAIN')}
                 description={__(
                     'This allows you to customize the Add-on settings for just this donation form.',
                     'ADDON_TEXTDOMAIN'
@@ -50,8 +57,16 @@ export default function GiveAddonSettings({settings, setSettings}) {
                 </PanelRow>
             </SettingsSection>
 
-            {addonSettings.enable === 'enabled' && (
+            {addonSettings.enable === 'enabled' ? (
                 <CustomSettings addonSettings={addonSettings} updateAddonSettings={updateAddonSettings} />
+            ) : (
+                <p>
+                    <strong>IMPORTANT:</strong> This is just a sample demonstrating how to start a Form settings
+                    extension, but the values will NOT be updated because there is no "addonSettings" attribute defined
+                    in the core form settings. At this moment, there is no way to extend the default form settings
+                    without changing the core codebase. In the future, we can change this sample to support updates if a
+                    way to extend the form settings is implemented in the core.
+                </p>
             )}
         </div>
     );

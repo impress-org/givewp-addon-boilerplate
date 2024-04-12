@@ -21,7 +21,7 @@ const addGiveAddonSettings = (settings) => {
     return [
         ...settings,
         {
-            name: __('Give Addon Settings', 'ADDON_TEXTDOMAIN'),
+            name: __('Give Addon Settings Sample', 'ADDON_TEXTDOMAIN'),
             path: 'give-addon-settings',
             element: GiveAddonSettings,
         },

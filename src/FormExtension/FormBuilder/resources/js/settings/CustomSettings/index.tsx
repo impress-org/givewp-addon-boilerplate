@@ -182,7 +182,9 @@ const CustomSettings = ({addonSettings, updateAddonSettings}: customSettingsProp
             <Button
                 className={'pdf-builder-settings__pdf-builder-btn'}
                 variant={'secondary'}
-                onClick={() => window.open(previewUrl + '&form_id=' + donationFormID, '_blank', 'noopener,noreferrer')}
+                onClick={() =>
+                    window.open(previewUrl + '&donationFormID=' + donationFormID, '_blank', 'noopener,noreferrer')
+                }
             >
                 {__('Preview Template Sample', 'ADDON_TEXTDOMAIN')}
             </Button>
