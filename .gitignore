@@ -54,4 +54,4 @@ vendor
 assets/dist
 
 # POT File
-languages/give-funds.pot
+languages/ADDON_TEXTDOMAIN.pot
