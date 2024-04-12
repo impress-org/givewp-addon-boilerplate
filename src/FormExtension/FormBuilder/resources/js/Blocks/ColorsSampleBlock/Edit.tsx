@@ -57,7 +57,8 @@ export default function Edit({attributes, setAttributes}: BlockEditProps<any>) {
         const enabledOptions = filterCheckedOptions(mergeOptionsWithColors(options, colors));
         if (enabledOptions.length === 0) {
             options.find(
-                (option: OptionProps) => option.value === colors.find((fund: ColorOptionProps) => fund.isDefault).value
+                (option: OptionProps) =>
+                    option.value === colors.find((color: ColorOptionProps) => color.isDefault).value
             ).checked = true;
             setIsAdminChoice(true);
         } else {
@@ -73,7 +74,7 @@ export default function Edit({attributes, setAttributes}: BlockEditProps<any>) {
                 disabled={isAdminChoice}
                 label={label}
                 options={donorSelectOptions}
-                onChange={(value: string) => setAttributes({fund: value})}
+                onChange={(value: string) => setAttributes({color: value})}
                 help={
                     isAdminChoice &&
                     __(
@@ -83,7 +84,7 @@ export default function Edit({attributes, setAttributes}: BlockEditProps<any>) {
                 }
             />
             <InspectorControls>
-                <PanelBody title={__('Colors - Sample Block', 'ADDON_TEXTDOMAIN')} initialOpen={true}>
+                <PanelBody title={__('Settings', 'ADDON_TEXTDOMAIN')} initialOpen={true}>
                     <PanelRow>
                         <TextControl
                             label={__('Label', 'ADDON_TEXTDOMAIN')}
@@ -99,7 +100,7 @@ export default function Edit({attributes, setAttributes}: BlockEditProps<any>) {
                             multiple={true}
                             options={mergeOptionsWithColors(options, colors)}
                             setOptions={(newOptions: any) => setAttributes({options: newOptions})}
-                            label={__('Funds', 'ADDON_TEXTDOMAIN')}
+                            label={__('Colors', 'ADDON_TEXTDOMAIN')}
                             readOnly={true}
                             disableSoloCheckedOption={true}
                         />
@@ -108,7 +109,7 @@ export default function Edit({attributes, setAttributes}: BlockEditProps<any>) {
                     <p>
                         {createInterpolateElement(
                             __(
-                                'Select colors to designate for this donation form. You can add or edit your colors in the <a>colors settings.</a>',
+                                "Select colors to designate for this donation form. You can add or edit your colors in the <a>colors settings.</a> This is a sample, the linked page doesn't exist!",
                                 'ADDON_TEXTDOMAIN'
                             ),
                             {

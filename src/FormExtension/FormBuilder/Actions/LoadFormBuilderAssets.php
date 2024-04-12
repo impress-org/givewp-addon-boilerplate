@@ -18,7 +18,8 @@ class LoadFormBuilderAssets
         /**
          * This global path refers to the compiled version of the 'FormExtension/FormBuilder/resources/css/index.scss' style
          */
-        $globalStylePath = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtensionGlobalStyle.css';
+        $globalStylePath = ADDON_CONSTANT_DIR . 'build/GiveAddonFormBuilderExtensionGlobalStyle.css';
+        $globalStyleUrl = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtensionGlobalStyle.css';
 
         /**
          * This path refers to the compiled version of the '.module.scss' files present in the 'FormExtension/FormBuilder/resources/js/index.tsx' script
@@ -27,30 +28,28 @@ class LoadFormBuilderAssets
          * and it gets compiled with WP Scripts, then a .js file is generated in the build folder alongside a style file
          * with the same entry name but with the .css extension.
          */
-        $stylePath = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtension.css';
+        $cssModuleStylePath = ADDON_CONSTANT_DIR . 'build/GiveAddonFormBuilderExtension.css';
+        $cssModuleStyleUrl = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtension.css';
 
         /**
          * This global path refers to the compiled version of the 'FormExtension/FormBuilder/resources/js/index.tsx' script
          */
-        $scriptPath = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtension.js';
-
-        
-
+        $scriptUrl = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtension.js';
         $assets = ScriptAsset::get(trailingslashit(ADDON_CONSTANT_URL) . '/build/GiveAddonFormBuilderExtension.asset.php');
 
         if (file_exists($globalStylePath)) {
             wp_enqueue_style(
                 'givewp-form-extension-ADDON_ID-global-style',
-                $globalStylePath,
+                $globalStyleUrl,
                 [],
                 $assets['version']
             );
-        }
+       }
 
-        if (file_exists($stylePath)) {
+        if (file_exists($cssModuleStylePath)) {
             wp_enqueue_style(
                 'givewp-form-extension-ADDON_ID-style',
-                $stylePath,
+                $cssModuleStyleUrl,
                 [],
                 $assets['version']
             );
@@ -58,7 +57,7 @@ class LoadFormBuilderAssets
 
         wp_enqueue_script(
             'givewp-form-extension-ADDON_ID',
-            $scriptPath,
+            $scriptUrl,
             $assets['dependencies'],
             $assets['version'],
             true

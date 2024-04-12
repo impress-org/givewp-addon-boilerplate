@@ -30,7 +30,10 @@ export default function GiveAddonSettings({settings, setSettings}) {
     };
 
     const globalSettingsHelperText = createInterpolateElement(
-        __('Uses <a>global settings</a> when disabled.', 'ADDON_TEXTDOMAIN'),
+        __(
+            "Uses <a>global settings</a> when disabled. This is a sample, the linked page doesn't exist!",
+            'ADDON_TEXTDOMAIN'
+        ),
         {
             a: <a href={globalOptionsUrl} target="_blank" />,
         }

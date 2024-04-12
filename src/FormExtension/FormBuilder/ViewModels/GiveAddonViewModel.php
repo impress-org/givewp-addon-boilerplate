@@ -34,9 +34,9 @@ class GiveAddonViewModel
         ];
 
         $sampleTags = [
-            ['tag' => 'sitename', 'desc' => __('Site Name', 'give-pdf-receipts')],
-            ['tag' => 'today', 'desc' => __('Date of Receipt Generation', 'give-pdf-receipts')],
-            ['tag' => 'date', 'desc' => __('Receipt Date', 'give-pdf-receipts')],
+            ['tag' => 'sitename', 'desc' => __('Site Name', 'give-addon-receipts')],
+            ['tag' => 'today', 'desc' => __('Date of Receipt Generation', 'give-addon-receipts')],
+            ['tag' => 'date', 'desc' => __('Receipt Date', 'give-addon-receipts')],
         ];
 
         return [

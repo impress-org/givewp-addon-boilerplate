@@ -7,7 +7,7 @@ const {colors} = getGiveAddonFormBuilderWindowData();
 const metadata: BlockConfiguration = {
     name: 'givewp/colors-sample-block',
     title: __('Colors Sample Block', 'ADDON_TEXTDOMAIN'),
-    description: __('Set the color you would like to use to customize your swags.', 'ADDON_TEXTDOMAIN'),
+    description: __("Set the primary color to customize the donor's swags.", 'ADDON_TEXTDOMAIN'),
     category: 'addons',
     icon: 'yes',
     supports: {
