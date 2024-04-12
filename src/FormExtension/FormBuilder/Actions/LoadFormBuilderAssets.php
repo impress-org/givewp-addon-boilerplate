@@ -15,10 +15,28 @@ class LoadFormBuilderAssets
      */
     public function __invoke()
     {
-        $assets = ScriptAsset::get(trailingslashit(ADDON_CONSTANT_URL) . '/build/GiveAddonFormBuilderExtension.asset.php');
+        /**
+         * This global path refers to the compiled version of the 'FormExtension/FormBuilder/resources/css/index.scss' style
+         */
         $globalStylePath = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtensionGlobalStyle.css';
+
+        /**
+         * This path refers to the compiled version of the '.module.scss' files present in the 'FormExtension/FormBuilder/resources/js/index.tsx' script
+         *
+         * When the 'FormExtension/FormBuilder/resources/js/index.tsx' file loads some component that uses '.module.scss'
+         * and it gets compiled with WP Scripts, then a .js file is generated in the build folder alongside a style file
+         * with the same entry name but with the .css extension.
+         */
         $stylePath = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtension.css';
+
+        /**
+         * This global path refers to the compiled version of the 'FormExtension/FormBuilder/resources/js/index.tsx' script
+         */
         $scriptPath = trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonFormBuilderExtension.js';
+
+        
+
+        $assets = ScriptAsset::get(trailingslashit(ADDON_CONSTANT_URL) . '/build/GiveAddonFormBuilderExtension.asset.php');
 
         if (file_exists($globalStylePath)) {
             wp_enqueue_style(
