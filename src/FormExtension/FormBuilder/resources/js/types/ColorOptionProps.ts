@@ -1,7 +1,7 @@
 import {OptionProps} from '@givewp/form-builder-library/build/OptionsPanel/types';
 
 /**
- * @unreleased
+ * @since 1.0.0
  */
 export type ColorOptionProps = OptionProps & {
     isDefault: boolean;

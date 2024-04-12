@@ -17,6 +17,5 @@ export function getGiveCoreFormBuilderWindowData() {
  * @since 1.0.0
  */
 export function getGiveAddonFormBuilderWindowData() {
-    console.log(window.GiveAddonFormBuilder);
     return window.GiveAddonFormBuilder;
 }

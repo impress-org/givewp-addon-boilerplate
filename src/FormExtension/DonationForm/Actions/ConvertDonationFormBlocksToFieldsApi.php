@@ -11,14 +11,14 @@ use Give\Framework\FieldsAPI\Select;
 use GiveAddon\FormExtension\DonationForm\ValueObjects\ColorField;
 
 /**
- * @unreleased
+ * @since 1.0.0
  */
 class ConvertDonationFormBlocksToFieldsApi
 {
     /**
      * Converts the Sample Blocks to the form in GiveWP Field API fields
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @throws EmptyNameException
      */
@@ -42,7 +42,7 @@ class ConvertDonationFormBlocksToFieldsApi
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function setFieldOptions(Select $field, BlockModel $block)
     {
@@ -50,7 +50,7 @@ class ConvertDonationFormBlocksToFieldsApi
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function isAdminChoice(BlockModel $block): bool
     {
@@ -58,7 +58,7 @@ class ConvertDonationFormBlocksToFieldsApi
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function getValidOptions(BlockModel $block): array
     {
@@ -73,7 +73,7 @@ class ConvertDonationFormBlocksToFieldsApi
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function getDefaultValue(BlockModel $block): array
     {

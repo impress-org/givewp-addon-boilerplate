@@ -41,7 +41,7 @@ const mergeOptionsWithColors = (options: OptionProps[], colors: ColorOptionProps
 };
 
 /**
- * @unreleased
+ * @since 1.0.0
  */
 export default function Edit({attributes, setAttributes}: BlockEditProps<any>) {
     const {colors, colorSettingsUrl} = getGiveAddonFormBuilderWindowData();
