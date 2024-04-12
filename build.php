@@ -117,18 +117,18 @@ rename(
 );
 
 rename(
-    __DIR__ . 'src/FormExtension/FormBuilder/ViewModels/GiveAddonViewModel.php',
-    __DIR__ . "src/FormExtension/FormBuilder/ViewModels/{$namespace}ViewModel.php"
+    __DIR__ . '/src/FormExtension/FormBuilder/ViewModels/GiveAddonViewModel.php',
+    __DIR__ . "/src/FormExtension/FormBuilder/ViewModels/{$namespace}ViewModel.php"
 );
 
 rename(
-    __DIR__ . 'src/FormExtension/FormBuilder/resources/js/types/GiveAddonSettingsProps.ts',
-    __DIR__ . "src/FormExtension/FormBuilder/resources/js/types/{$namespace}SettingsProps.ts"
+    __DIR__ . '/src/FormExtension/FormBuilder/resources/js/types/GiveAddonSettingsProps.ts',
+    __DIR__ . "/src/FormExtension/FormBuilder/resources/js/types/{$namespace}SettingsProps.ts"
 );
 
 rename(
-    __DIR__ . 'src/FormExtension/FormBuilder/resources/js/interfaces/IGiveAddonFormBuilder.ts',
-    __DIR__ . "src/FormExtension/FormBuilder/resources/js/interfaces/I{$namespace}FormBuilder.ts"
+    __DIR__ . '/src/FormExtension/FormBuilder/resources/js/interfaces/IGiveAddonFormBuilder.ts',
+    __DIR__ . "/src/FormExtension/FormBuilder/resources/js/interfaces/I{$namespace}FormBuilder.ts"
 );
 
 unlink(__FILE__);
