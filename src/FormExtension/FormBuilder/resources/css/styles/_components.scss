@@ -1,4 +1,4 @@
-.give-addon-settings__logo_upload__wrapper {
+.ADDON_TEXTDOMAIN-settings__logo_upload__wrapper {
     display: flex;
     gap: 0.25rem;
 
@@ -16,7 +16,7 @@
     }
 }
 
-.give-addon-settings-template-tags {
+.ADDON_TEXTDOMAIN-settings-template-tags {
     max-height: 25rem;
     overflow-y: scroll;
     border: 1px solid var(--givewp-grey-100);

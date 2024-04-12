@@ -34,15 +34,15 @@ class GiveAddonViewModel
         ];
 
         $sampleTags = [
-            ['tag' => 'sitename', 'desc' => __('Site Name', 'give-addon-receipts')],
-            ['tag' => 'today', 'desc' => __('Date of Receipt Generation', 'give-addon-receipts')],
-            ['tag' => 'date', 'desc' => __('Receipt Date', 'give-addon-receipts')],
+            ['tag' => 'sitename', 'desc' => __('Site Name', 'ADDON_TEXTDOMAIN-receipts')],
+            ['tag' => 'today', 'desc' => __('Date of Receipt Generation', 'ADDON_TEXTDOMAIN-receipts')],
+            ['tag' => 'date', 'desc' => __('Receipt Date', 'ADDON_TEXTDOMAIN-receipts')],
         ];
 
         return [
             'colors' => $colorsArray,
-            'colorSettingsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-addon-color-settings')),
-            'globalOptionsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-settings&tab=give-addon-global-settings')),
+            'colorSettingsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=ADDON_TEXTDOMAIN-color-settings')),
+            'globalOptionsUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=give-settings&tab=ADDON_TEXTDOMAIN-global-settings')),
             'sampleTags' => $sampleTags,
             'previewUrl' => esc_url_raw(admin_url('edit.php?post_type=give_forms&page=givewp-form-builder'))
         ];

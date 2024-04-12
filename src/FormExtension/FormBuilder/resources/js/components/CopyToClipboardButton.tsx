@@ -26,7 +26,7 @@ const CopyToClipboardButton = ({textToCopy}: CopyClipboardButtonProps) => {
             ref={ref as Ref<HTMLAnchorElement>}
             icon={copyIcon}
         >
-            {isCopied ? __('Copied!', 'give-addon-receipts') : __('Copy Tag', 'give-addon-receipts')}
+            {isCopied ? __('Copied!', 'ADDON_TEXTDOMAIN-receipts') : __('Copy Tag', 'ADDON_TEXTDOMAIN-receipts')}
         </Button>
     );
 };

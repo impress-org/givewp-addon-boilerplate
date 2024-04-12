@@ -62,7 +62,7 @@ const CustomSettings = ({addonSettings, updateAddonSettings}: customSettingsProp
             >
                 <PanelRow>
                     <RadioControl
-                        className="radio-control--give-addonoptions"
+                        className="radio-control--ADDON_TEXTDOMAIN-options"
                         label={__('Radio Option Sample', 'ADDON_TEXTDOMAIN')}
                         hideLabelFromVision={true}
                         selected={addonSettings.radioOptionSample ?? 'option_1'}
@@ -142,7 +142,7 @@ const CustomSettings = ({addonSettings, updateAddonSettings}: customSettingsProp
                 title={__('Image Selector Option Sample', 'ADDON_TEXTDOMAIN')}
                 description={__('Description Image Selector Option Sample.', 'ADDON_TEXTDOMAIN')}
             >
-                <PanelRow className={'give-addon-settings__logo_upload'}>
+                <PanelRow className={'ADDON_TEXTDOMAIN-settings__logo_upload'}>
                     <ImageUpload
                         value={addonSettings.imageSelectorOptionSample}
                         onChange={(value: string) => updateAddonSettings('imageSelectorOptionSample', value)}
@@ -167,7 +167,7 @@ const CustomSettings = ({addonSettings, updateAddonSettings}: customSettingsProp
                 description={__('Description Sample Tags.', 'ADDON_TEXTDOMAIN')}
             >
                 <PanelRow>
-                    <ul className={'give-addon-settings-template-tags'} ref={templateTagsRef}>
+                    <ul className={'ADDON_TEXTDOMAIN-settings-template-tags'} ref={templateTagsRef}>
                         {sampleTags.map((tag) => (
                             <li key={tag.tag}>
                                 <strong>{'{' + tag.tag + '}'}</strong>
@@ -180,7 +180,7 @@ const CustomSettings = ({addonSettings, updateAddonSettings}: customSettingsProp
             </SettingsSection>
 
             <Button
-                className={'give-addon-settings__preview-btn'}
+                className={'ADDON_TEXTDOMAIN-settings__preview-btn'}
                 variant={'secondary'}
                 onClick={() =>
                     window.open(previewUrl + '&donationFormID=' + donationFormID, '_blank', 'noopener,noreferrer')

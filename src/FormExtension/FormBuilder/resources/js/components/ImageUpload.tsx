@@ -26,9 +26,9 @@ export default ({value, onChange}) => {
         }
 
         frame = window.wp.media({
-            title: __('Add or upload file', 'give-addon-receipts'),
+            title: __('Add or upload file', 'ADDON_TEXTDOMAIN-receipts'),
             button: {
-                text: __('Use this media', 'give-addon-receipts'),
+                text: __('Use this media', 'ADDON_TEXTDOMAIN-receipts'),
             },
             multiple: false, // Set to true to allow multiple files to be selected
         });
@@ -45,14 +45,14 @@ export default ({value, onChange}) => {
     };
     return (
         <BaseControl
-            id={'give-addon-settings__logo_upload'}
-            label={__('Image URL', 'give-addon-receipts')}
-            help={__('Max height of image should be 90px', 'give-addon-receipts')}
+            id={'ADDON_TEXTDOMAIN-settings__logo_upload'}
+            label={__('Image URL', 'ADDON_TEXTDOMAIN-receipts')}
+            help={__('Max height of image should be 90px', 'ADDON_TEXTDOMAIN-receipts')}
         >
-            <div className={'give-addon-settings__logo_upload__wrapper'}>
+            <div className={'ADDON_TEXTDOMAIN-settings__logo_upload__wrapper'}>
                 <TextControl type={'url'} value={value} onChange={onChange} />
                 <Button icon={upload} variant={'secondary'} onClick={openMediaLibrary}>
-                    {__('Add or upload file', 'give-addon-receipts')}
+                    {__('Add or upload file', 'ADDON_TEXTDOMAIN-receipts')}
                 </Button>
             </div>
         </BaseControl>

@@ -22,10 +22,10 @@ const addGiveAddonSettings = (settings) => {
         ...settings,
         {
             name: __('Give Addon Settings Sample', 'ADDON_TEXTDOMAIN'),
-            path: 'give-addon-settings',
+            path: 'ADDON_TEXTDOMAIN-settings',
             element: GiveAddonSettings,
         },
     ];
 };
 
-wp.hooks.addFilter('givewp_form_builder_settings_additional_routes', 'give-addon-settings', addGiveAddonSettings);
+wp.hooks.addFilter('givewp_form_builder_settings_additional_routes', 'ADDON_TEXTDOMAIN-settings', addGiveAddonSettings);
