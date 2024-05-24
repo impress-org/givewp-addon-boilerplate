@@ -12,10 +12,14 @@ plugin for WordPress.
 
 ### Asset Compilation
 To compile your CSS & JS assets, run one of the following:
-- `npm run dev` — Compiles all assets for development one time
-- `npm run watch` — Compiles all assets for development one time and then watches for changes, supporting [BrowserSync](https://laravel-mix.com/docs/5.0/browsersync)
-- `npm run hot` — Compiles all assets for development one time and then watches for [hot replacement](https://laravel-mix.com/docs/5.0/hot-module-replacement)
-- `npm run dev` — Compiles all assets for production one time
+
+- `npm run dev` — Compiles all assets (except Form Extension assets) for development one time
+- `npm run watch` — Compiles all assets (except Form Extension assets) for development one time and then watches for
+  changes, supporting [BrowserSync](https://laravel-mix.com/docs/5.0/browsersync)
+- `npm run dev:form-extension` — Compiles Form Extension assets for development one time
+- `npm run watch:form-extension` — Compiles Form Extension assets for development one time and then watches for changes,
+  supporting [BrowserSync](https://laravel-mix.com/docs/5.0/browsersync)
+- `npm run start` — Compiles all assets for development one time and then watches for changes
 
 ## Concepts
 
@@ -53,8 +57,11 @@ No domain code should reference (and therefore depend on) the `src/Addon` direct
 keeps the dependency unidirectional.
 
 #### Note for developers
-If running `npm run dev` throws an error then check whether the `images` folder exists in your addon directory under `src/Addon/resources`. 
-1. If the `images` folder does not exist then create one. 
+
+If running `npm run dev` throws an error then check whether the `images` folder exists in your addon directory
+under `src/Addon/resources`.
+
+1. If the `images` folder does not exist then create one.
 2. If the `images` folder isn't required then remove the code from `webpack.config.js`.
 
 ---

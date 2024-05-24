@@ -1,0 +1,74 @@
+.ADDON_TEXTDOMAIN-settings__logo_upload__wrapper {
+    display: flex;
+    gap: 0.25rem;
+
+    div {
+        width: 100% !important;
+    }
+
+    button {
+        border-radius: 0.125rem;
+        flex: 0 0 auto;
+        height: auto;
+        max-width: 9.75rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+.ADDON_TEXTDOMAIN-settings-template-tags {
+    max-height: 25rem;
+    overflow-y: scroll;
+    border: 1px solid var(--givewp-grey-100);
+    border-radius: 2px;
+    scroll-snap-type: y mandatory;
+    width: 100%;
+
+    &__copy-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        height: fit-content;
+        padding-block: 0.5rem;
+        font-size: 12px;
+    }
+
+    & > li {
+        scroll-snap-align: start;
+    }
+
+    li {
+        padding: var(--givewp-spacing-2) var(--givewp-spacing-2) var(--givewp-spacing-4) var(--givewp-spacing-2);
+        margin: 0;
+        position: relative;
+
+        &:hover button {
+            visibility: visible;
+        }
+
+        button {
+            visibility: hidden;
+            position: absolute;
+            top: 2px;
+            right: var(--givewp-spacing-2);
+        }
+    }
+
+    li:nth-child(even) {
+        background-color: var(--givewp-grey-5);
+    }
+
+    strong {
+        font-size: 13px;
+        background-color: var(--givewp-blue-25);
+        display: inline-block;
+        margin-bottom: var(--givewp-spacing-3);
+        line-height: 1.137rem;
+    }
+
+    p {
+        margin: 0; // Override the default margin.
+    }
+}
+
+

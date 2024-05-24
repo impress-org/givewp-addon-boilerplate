@@ -116,6 +116,21 @@ rename(
     __DIR__ . "/tests/Unit/$domain"
 );
 
+rename(
+    __DIR__ . '/src/FormExtension/FormBuilder/ViewModels/GiveAddonViewModel.php',
+    __DIR__ . "/src/FormExtension/FormBuilder/ViewModels/{$namespace}ViewModel.php"
+);
+
+rename(
+    __DIR__ . '/src/FormExtension/FormBuilder/resources/js/types/GiveAddonSettingsProps.ts',
+    __DIR__ . "/src/FormExtension/FormBuilder/resources/js/types/{$namespace}SettingsProps.ts"
+);
+
+rename(
+    __DIR__ . '/src/FormExtension/FormBuilder/resources/js/interfaces/IGiveAddonFormBuilder.ts',
+    __DIR__ . "/src/FormExtension/FormBuilder/resources/js/interfaces/I{$namespace}FormBuilder.ts"
+);
+
 unlink(__FILE__);
 
 echo(PHP_EOL . PHP_EOL . 'All set!');
