@@ -54,4 +54,4 @@ vendor
 assets/dist
 
 # POT File
-languages/ADDON_TEXTDOMAIN.pot
+languages
