@@ -5,6 +5,7 @@ use GiveAddon\Addon\Activation;
 use GiveAddon\Addon\Environment;
 use GiveAddon\Domain\AddonServiceProvider;
 use GiveAddon\FormExtension\FormExtensionServiceProvider;
+use GiveAddon\OffSiteGateway\OffSiteGatewayServiceProvider;
 
 /**
  * Plugin Name:         ADDON_NAME
@@ -52,6 +53,7 @@ add_action(
         if (Environment::giveMinRequiredVersionCheck()) {
             give()->registerServiceProvider(AddonServiceProvider::class);
             give()->registerServiceProvider(FormExtensionServiceProvider::class);
+            give()->registerServiceProvider(OffSiteGatewayServiceProvider::class);
         }
     }
 );
