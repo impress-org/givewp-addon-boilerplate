@@ -8,12 +8,12 @@ use GiveAddon\FormExtension\DonationForm\Actions\ConvertDonationFormBlocksToFiel
 use GiveAddon\FormExtension\FormBuilder\Actions\LoadFormBuilderAssets;
 
 /**
- * @sice 1.0.0
+ * @since 1.0.0
  */
 class FormExtensionServiceProvider implements ServiceProvider
 {
     /**
-     * @sice 1.0.0
+     * @since 1.0.0
      */
     public function register()
     {
@@ -21,7 +21,7 @@ class FormExtensionServiceProvider implements ServiceProvider
     }
 
     /**
-     * @sice 1.0.0
+     * @since 1.0.0
      */
     public function boot()
     {
