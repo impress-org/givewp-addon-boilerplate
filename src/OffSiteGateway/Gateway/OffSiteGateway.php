@@ -10,6 +10,7 @@ use Give\Framework\Http\Response\Types\RedirectResponse;
 use Give\Framework\PaymentGateways\Commands\RedirectOffsite;
 use Give\Framework\PaymentGateways\Exceptions\PaymentGatewayException;
 use Give\Framework\PaymentGateways\PaymentGateway;
+use Give\Framework\Support\Facades\Scripts\ScriptAsset;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayPayment;
 
 /**
@@ -73,11 +74,43 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
+     * Add support to v2 forms
+     *
      * @unreleased
      */
     public function getLegacyFormFieldMarkup(int $formId, array $args): string
     {
-        return '<p>The Off-Site Gateway Logo Goes Here...</p>';
+        return sprintf(
+            '<div style="text-align: center;"><img src="%s" alt="OffSite Gateway Logo" /><p>%s</p></div>',
+            ADDON_CONSTANT_URL . 'src/OffSiteGateway/Gateway/resources/logo.svg',
+            __('You will be redirected to an Off-Site Gateway simulation where will be possible to complete the payment and trigger webhook notifications for test purposes.',
+                'ADDON_TEXTDOMAIN')
+        );
+    }
+
+    /**
+     * Add support to v3 forms
+     *
+     * @unreleased
+     */
+    public function enqueueScript(int $formId)
+    {
+        $assets = ScriptAsset::get(trailingslashit(ADDON_CONSTANT_DIR) . '/build/GiveAddonOffSiteGateway.asset.php');
+
+        wp_enqueue_script(
+            self::id(),
+            trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonOffSiteGateway.js',
+            $assets['dependencies'],
+            $assets['version'],
+            true
+        );
+
+        wp_enqueue_style(
+            self::id(),
+            trailingslashit(ADDON_CONSTANT_URL) . 'build/GiveAddonOffSiteGateway.css',
+            [],
+            $assets['version']
+        );
     }
 
     /**

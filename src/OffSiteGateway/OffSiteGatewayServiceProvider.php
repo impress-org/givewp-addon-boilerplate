@@ -4,8 +4,10 @@ namespace GiveAddon\OffSiteGateway;
 
 use Exception;
 use Give\Framework\PaymentGateways\PaymentGatewayRegister;
+use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider;
 use GiveAddon\OffSiteGateway\Gateway\OffSiteGateway;
+use GiveAddon\OffSiteGateway\Gateway\OffSiteSimulation;
 
 /**
  * @unreleased
@@ -33,5 +35,7 @@ class OffSiteGatewayServiceProvider implements ServiceProvider
                 $registrar->registerGateway(OffSiteGateway::class);
             }
         );
+
+        Hooks::addAction('init', OffSiteSimulation::class);
     }
 }

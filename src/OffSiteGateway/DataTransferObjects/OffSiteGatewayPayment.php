@@ -20,7 +20,9 @@ class OffSiteGatewayPayment
         $self = new self();
 
         $self->id = $data['id'] ?? '';
-        $self->checkoutUrl = $data['checkoutUrl'] ?? '';
+        $self->checkoutUrl = add_query_arg('off-site-gateway-simulation', true, home_url());
+
+        //$data['checkoutUrl'] ?? '';
 
         return $self;
     }
