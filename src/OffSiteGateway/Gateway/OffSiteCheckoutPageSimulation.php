@@ -3,9 +3,11 @@
 namespace GiveAddon\OffSiteGateway\Gateway;
 
 /**
+ * IMPORTANT: you don't need to keep this file in your integration; this is just a sample to demonstrate how off-site gateway integrations should work.
+ *
  * @unreleased
  */
-class OffSiteSimulation
+class OffSiteCheckoutPageSimulation
 {
     /**
      * @unreleased
@@ -16,6 +18,10 @@ class OffSiteSimulation
             return;
         }
 
+        /**
+         * We need to do this workaround because the legacy forms submit logic tries to redirect URLs from
+         * the same site inside the donation form iframe instead of using the parent page as the reference.
+         */
         if ($this->isLegacyFormReferrer()) {
             echo '<script>window.top.location.href ="' . home_url($_SERVER['REQUEST_URI']) . '";</script>';
             exit();
@@ -58,29 +64,14 @@ class OffSiteSimulation
             }
         </style>
         <div class="container">
-            <h1>
-                <?php
-                echo esc_html__('Off-site Gateway Simulation', 'ADDON_TEXTDOMAIN');
-                ?>
-            </h1>
+            <h1>Off-site Checkout Page Simulation</h1>
             <p>
-                <?php
-                echo esc_html__('Donation amount:', 'ADDON_TEXTDOMAIN');
-                ?>
-                <strong>
-                    <?php
-                    echo isset($_GET['amount']) ? $_GET['amount']['currency'] . ' ' . $_GET['amount']['value'] : 0;
-                    ?>
-                </strong>
+                Donation amount:<strong><?php
+                    echo isset($_GET['amount']) ? $_GET['amount']['currency'] . ' ' . $_GET['amount']['value'] : 0; ?></strong>
             </p>
             <hr />
             <p>
-                <strong>
-                    <?php
-                    echo esc_html__('Click on the links below to simulate off-site gateway actions:',
-                        'ADDON_TEXTDOMAIN');
-                    ?>
-                </strong>
+                <strong>Click on the links below to simulate off-site gateway actions:</strong>
             </p>
             <a style="color:green;font-weight: bold;" href="<?php
             echo $_GET['returnUrl'] ?>">Success Payment</a> | <a style="color:red;font-weight: bold;" href="<?php
@@ -88,10 +79,9 @@ class OffSiteSimulation
             <br />
             <br />
             <p>
-                <?php
-                echo ⚠️ . esc_html__('This page is being loaded directly from your site to demonstrate how off-site gateways work. In real-world integrations, this page should be the checkout page provided by the gateway you are integrating, so users can complete or cancel the payment and be redirected back to your site.',
-                        'ADDON_TEXTDOMAIN');
-                ?>
+                ⚠️ This page is being loaded directly from your website to demonstrate how off-site gateways work. In
+                real-world integrations, this page should be the checkout page provided by the gateway you are
+                integrating, so users can complete or cancel the payment and be redirected back to your site.
             </p>
         </div>
         <?php
