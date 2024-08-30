@@ -126,7 +126,12 @@ class OffSiteGateway extends PaymentGateway
             $donation->gatewayTransactionId = $payment->id;
             $donation->save();
 
-            return new RedirectOffsite($payment->checkoutUrl);
+            $paymentParameters['off-site-gateway-simulation'] = true;
+
+            $redirectUrl = add_query_arg($paymentParameters, home_url());
+
+            return new RedirectOffsite($redirectUrl);
+            //return new RedirectOffsite(add_query_arg('off-site-gateway-simulation', true, home_url()));
         } catch (Exception $e) {
             $donation->status = DonationStatus::FAILED();
             $donation->save();
@@ -218,13 +223,17 @@ class OffSiteGateway extends PaymentGateway
      */
     private function getPaymentsReturnURL(Donation $donation, $gatewayData): string
     {
-        return $this->generateSecureGatewayRouteUrl(
-            'handleSuccessPaymentReturn',
-            $donation->id,
-            [
-                'donation-id' => $donation->id,
-                'givewp-return-url' => $gatewayData['successUrl'],
-            ]
+        return urlencode(
+            esc_url_raw(
+                $this->generateSecureGatewayRouteUrl(
+                    'handleSuccessPaymentReturn',
+                    $donation->id,
+                    [
+                        'donation-id' => $donation->id,
+                        'givewp-return-url' => $gatewayData['successUrl'],
+                    ]
+                )
+            )
         );
     }
 
@@ -233,13 +242,17 @@ class OffSiteGateway extends PaymentGateway
      */
     private function getPaymentsCancelURL(Donation $donation, $gatewayData): string
     {
-        return $this->generateSecureGatewayRouteUrl(
-            'handleCanceledPaymentReturn',
-            $donation->id,
-            [
-                'donation-id' => $donation->id,
-                'givewp-return-url' => $gatewayData['cancelUrl'],
-            ]
+        return urlencode(
+            esc_url_raw(
+                $this->generateSecureGatewayRouteUrl(
+                    'handleCanceledPaymentReturn',
+                    $donation->id,
+                    [
+                        'donation-id' => $donation->id,
+                        'givewp-return-url' => $gatewayData['cancelUrl'],
+                    ]
+                )
+            )
         );
     }
 
@@ -248,12 +261,16 @@ class OffSiteGateway extends PaymentGateway
      */
     private function getPaymentsWebhookUrl(Donation $donation): string
     {
-        return $this->generateGatewayRouteUrl(
-            $this->getWebhookNotificationsListener(),
-            [
-                'notification_type' => 'payments',
-                'payment_id' => $donation->id,
-            ]
+        return urlencode(
+            esc_url_raw(
+                $this->generateGatewayRouteUrl(
+                    $this->getWebhookNotificationsListener(),
+                    [
+                        'notification_type' => 'payments',
+                        'payment_id' => $donation->id,
+                    ]
+                )
+            )
         );
     }
 }
