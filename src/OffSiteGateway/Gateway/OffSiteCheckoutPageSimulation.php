@@ -66,8 +66,12 @@ class OffSiteCheckoutPageSimulation
         <div class="container">
             <h1>Off-site Checkout Page Simulation</h1>
             <p>
-                Donation amount:<strong><?php
-                    echo isset($_GET['amount']) ? $_GET['amount']['currency'] . ' ' . $_GET['amount']['value'] : 0; ?></strong>
+                Donation amount: <strong><?php
+                    echo isset($_GET['amount']) ? $_GET['amount']['currency'] . ' ' . $_GET['amount']['value'] : ' 0'; ?></strong>
+            </p>
+            <p>
+                Description: <strong><?php
+                    echo $_GET['description'] ?? ' -'; ?></strong>
             </p>
             <hr />
             <p>

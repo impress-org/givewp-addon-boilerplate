@@ -126,12 +126,15 @@ class OffSiteGateway extends PaymentGateway
             $donation->gatewayTransactionId = $payment->id;
             $donation->save();
 
+            /**
+             * This is necessary to make the off-site checkout page simulation work;
+             * In real-world integrations, this parameter isn't necessary.
+             */
             $paymentParameters['off-site-gateway-simulation'] = true;
 
             $redirectUrl = add_query_arg($paymentParameters, home_url());
 
             return new RedirectOffsite($redirectUrl);
-            //return new RedirectOffsite(add_query_arg('off-site-gateway-simulation', true, home_url()));
         } catch (Exception $e) {
             $donation->status = DonationStatus::FAILED();
             $donation->save();
@@ -165,7 +168,7 @@ class OffSiteGateway extends PaymentGateway
                 'value' => $donation->amount->formatToDecimal(),
                 'currency' => $donation->amount->getCurrency()->getCode(),
             ],
-            //'description' => MollieApi::getPaymentDescription($donation),
+            'description' => $donation->formTitle,
             'returnUrl' => $this->getPaymentsReturnURL($donation, $gatewayData),
             'cancelUrl' => $this->getPaymentsCancelURL($donation, $gatewayData),
             'webhookUrl' => $this->getPaymentsWebhookUrl($donation),
