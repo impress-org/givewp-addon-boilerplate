@@ -53,6 +53,6 @@ class OffSiteGatewaysWebhookNotificationHandler
      */
     private function isRecurringDonation(OffSiteGatewayWebhookNotification $webhookNotification): bool
     {
-        return 'subscription' === $webhookNotification->notificationType;
+        return 'subscription' === $webhookNotification->gatewayNotificationType;
     }
 }
