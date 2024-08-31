@@ -4,6 +4,7 @@ namespace GiveAddon\OffSiteGateway;
 
 use Exception;
 use Give\Framework\PaymentGateways\PaymentGatewayRegister;
+use Give\Framework\PaymentGateways\Webhooks\EventHandlers\DonationCompleted;
 use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider;
 use GiveAddon\OffSiteGateway\Gateway\OffSiteCheckoutPageSimulation;
@@ -37,5 +38,8 @@ class OffSiteGatewayServiceProvider implements ServiceProvider
         );
 
         Hooks::addAction('init', OffSiteCheckoutPageSimulation::class);
+
+        // Add Async Event Handlers
+        Hooks::addAction('givewp_off-site_gateway_sample_event_donation_completed', DonationCompleted::class);
     }
 }

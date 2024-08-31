@@ -12,11 +12,26 @@ class OffSiteGatewayWebhookNotification
      */
     public $notificationType;
 
-    public static function fromArray(array $data): OffSiteGatewayWebhookNotification
+    /**
+     * @var string
+     */
+    public $paymentStatus;
+
+    /**
+     * @var string
+     */
+    public $merchantPaymentId;
+
+    /**
+     * @var string
+     */
+    public $gatewayPaymentId;
+
+    public static function fromRequest(array $request): OffSiteGatewayWebhookNotification
     {
         $self = new self();
 
-        $self->notificationType = $data['notification_type'] ?? '';
+        $self->notificationType = $request['notification_type'] ?? '';
 
         return $self;
     }

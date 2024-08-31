@@ -66,8 +66,12 @@ class OffSiteCheckoutPageSimulation
         <div class="container">
             <h1>Off-site Checkout Page Simulation</h1>
             <p>
+                Gateway Payment ID: <strong><?php
+                    echo $_GET['gatewayPaymentId'] ?? ' -'; ?></strong>
+            </p>
+            <p>
                 Donation amount: <strong><?php
-                    echo isset($_GET['amount']) ? $_GET['amount']['currency'] . ' ' . $_GET['amount']['value'] : ' 0'; ?></strong>
+                    echo isset($_GET['amount']) ? $_GET['amount']['currency'] . ' ' . $_GET['amount']['value'] : ' -'; ?></strong>
             </p>
             <p>
                 Description: <strong><?php

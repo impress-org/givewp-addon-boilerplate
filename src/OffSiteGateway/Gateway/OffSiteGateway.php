@@ -9,9 +9,12 @@ use Give\Donations\ValueObjects\DonationStatus;
 use Give\Framework\Http\Response\Types\RedirectResponse;
 use Give\Framework\PaymentGateways\Commands\RedirectOffsite;
 use Give\Framework\PaymentGateways\Exceptions\PaymentGatewayException;
+use Give\Framework\PaymentGateways\Log\PaymentGatewayLog;
 use Give\Framework\PaymentGateways\PaymentGateway;
 use Give\Framework\Support\Facades\Scripts\ScriptAsset;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayPayment;
+use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotification;
+use GiveAddon\OffSiteGateway\Webhooks\OffSiteGatewaysWebhookNotificationHandler;
 
 /**
  * @unreleased
@@ -122,6 +125,21 @@ class OffSiteGateway extends PaymentGateway
     {
         try {
             /**
+             * Some gateways can provide an API that allows creating a transaction before redirecting to the off-site
+             * checkout page, in these cases we can retrieve the gateway transaction ID and attach it to our donation
+             * even before redirecting donors - we are doing it in this sample integration.
+             *
+             * We also are setting the donation status to PENDING because it will be changed to COMPLETE when the
+             * donor is redirected back to the site and the  "handleSuccessPaymentReturn" method is triggered OR
+             * when the "OffSiteGatewayWebhookRequestHandler" class receives a webhook notification sent from the
+             * "OffSiteCheckoutPageSimulation" even before the donor being redirected back to the site.
+             */
+            $offSiteGatewayPayment = $this->createGiveAddonOffSiteGatewayPaymentApi($donation);
+            $donation->gatewayTransactionId = $offSiteGatewayPayment->gatewayPaymentId;
+            $donation->status = DonationStatus::PENDING();
+            $donation->save();
+
+            /**
              * Get the parameters that will be sent to the gateway off-site checkout page, in this sample integration
              * it will be sent to the "OffSiteCheckoutPageSimulation" where you can complete or cancel the donation.
              */
@@ -132,21 +150,6 @@ class OffSiteGateway extends PaymentGateway
              * In real-world integrations, this parameter isn't necessary.
              */
             $paymentParameters['off-site-gateway-simulation'] = true;
-
-            /**
-             * Some gateways can provide an API that allows creating a transaction before redirecting to the off-site
-             * checkout page, in these cases we can retrieve the gateway transaction ID and attach it to our donation
-             * even before redirecting donors - we are doing it in this sample integration.
-             *
-             * We also are setting the donation status to PENDING because it will be changed to COMPLETE when the
-             * donor is redirected back to the site and the  "handleSuccessPaymentReturn" method is triggered OR
-             * when the "OffSiteGatewayWebhookRequestHandler" class receives a webhook notification sent from the
-             * "OffSiteCheckoutPageSimulation" even before the donor being redirected back to the site.
-             */
-            $offSiteGatewayPayment = $this->createGiveAddonOffSiteGatewayPaymentApi($donation, $paymentParameters);
-            $donation->gatewayTransactionId = $offSiteGatewayPayment->id;
-            $donation->status = DonationStatus::PENDING();
-            $donation->save();
 
             /**
              * Please note that we are using the "home_url()" method to redirect the donor to the "OffSiteCheckoutPageSimulation"
@@ -185,6 +188,7 @@ class OffSiteGateway extends PaymentGateway
     public function getPaymentParameters(Donation $donation, $gatewayData): array
     {
         return [
+            'gatewayPaymentId' => $donation->gatewayTransactionId,
             'amount' => [
                 'value' => $donation->amount->formatToDecimal(),
                 'currency' => $donation->amount->getCurrency()->getCode(),
@@ -198,16 +202,17 @@ class OffSiteGateway extends PaymentGateway
 
     /**
      * @param Donation $donation
-     * @param array    $paymentParameters
      *
      * @return OffSiteGatewayPayment
      */
-    protected function createGiveAddonOffSiteGatewayPaymentApi(
-        Donation $donation,
-        array $paymentParameters
-    ): OffSiteGatewayPayment {
+    protected function createGiveAddonOffSiteGatewayPaymentApi(Donation $donation): OffSiteGatewayPayment
+    {
+        /**
+         * We are mocking an external API call return and converting it to an OffSite Gateway Payment object.
+         */
         return OffSiteGatewayPayment::fromArray([
-            'id' => 'payment-id',
+            'gatewayPaymentId' => 'off-site-sample-gateway-payment-id-' . rand(),
+            'merchantPaymentId' => $donation->id,
         ]);
     }
 
@@ -245,6 +250,24 @@ class OffSiteGateway extends PaymentGateway
         $donation->save();
 
         return new RedirectResponse(esc_url_raw($queryParams['givewp-return-url']));
+    }
+
+    /**
+     * @unreleased
+     */
+    protected function webhookNotificationsListener()
+    {
+        try {
+            $webhookNotification = OffSiteGatewayWebhookNotification::fromRequest($_REQUEST);
+            give(OffSiteGatewaysWebhookNotificationHandler::class)($webhookNotification);
+        } catch (Exception $e) {
+            esc_html_e('Off-site gateway Webhook Notification failed.', 'ADDON_TEXTDOMAIN');
+            PaymentGatewayLog::error(
+                'Off-site gateway Webhook Notification failed. Error: ' . $e->getMessage()
+            );
+        }
+
+        exit();
     }
 
     /**
