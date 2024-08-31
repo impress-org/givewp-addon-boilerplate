@@ -121,17 +121,38 @@ class OffSiteGateway extends PaymentGateway
     public function createPayment(Donation $donation, $gatewayData): RedirectOffsite
     {
         try {
+            /**
+             * Get the parameters that will be sent to the gateway off-site checkout page, in this sample integration
+             * it will be sent to the "OffSiteCheckoutPageSimulation" where you can complete or cancel the donation.
+             */
             $paymentParameters = $this->getPaymentParameters($donation, $gatewayData);
-            $payment = $this->createGiveAddonOffSiteGatewayPayment($donation, $paymentParameters);
-            $donation->gatewayTransactionId = $payment->id;
-            $donation->save();
 
             /**
-             * This is necessary to make the off-site checkout page simulation work;
+             * This additional parameter is necessary to make the off-site checkout page simulation work;
              * In real-world integrations, this parameter isn't necessary.
              */
             $paymentParameters['off-site-gateway-simulation'] = true;
 
+            /**
+             * Some gateways can provide an API that allows creating a transaction before redirecting to the off-site
+             * checkout page, in these cases we can retrieve the gateway transaction ID and attach it to our donation
+             * even before redirecting donors - we are doing it in this sample integration.
+             *
+             * We also are setting the donation status to PENDING because it will be changed to COMPLETE when the
+             * donor is redirected back to the site and the  "handleSuccessPaymentReturn" method is triggered OR
+             * when the "OffSiteGatewayWebhookRequestHandler" class receives a webhook notification sent from the
+             * "OffSiteCheckoutPageSimulation" even before the donor being redirected back to the site.
+             */
+            $offSiteGatewayPayment = $this->createGiveAddonOffSiteGatewayPaymentApi($donation, $paymentParameters);
+            $donation->gatewayTransactionId = $offSiteGatewayPayment->id;
+            $donation->status = DonationStatus::PENDING();
+            $donation->save();
+
+            /**
+             * Please note that we are using the "home_url()" method to redirect the donor to the "OffSiteCheckoutPageSimulation"
+             * class which is an internal page that simulates an external page, but in real-world integrations, the donor should
+             * be redirected to a real external checkout page provided by the gateway you are integrating.
+             */
             $redirectUrl = add_query_arg($paymentParameters, home_url());
 
             return new RedirectOffsite($redirectUrl);
@@ -181,13 +202,12 @@ class OffSiteGateway extends PaymentGateway
      *
      * @return OffSiteGatewayPayment
      */
-    protected function createGiveAddonOffSiteGatewayPayment(
+    protected function createGiveAddonOffSiteGatewayPaymentApi(
         Donation $donation,
         array $paymentParameters
     ): OffSiteGatewayPayment {
         return OffSiteGatewayPayment::fromArray([
             'id' => 'payment-id',
-            'checkoutUrl' => 'https://example.com/',
         ]);
     }
 
@@ -200,8 +220,14 @@ class OffSiteGateway extends PaymentGateway
     {
         $donation = Donation::find((int)$queryParams['donation-id']);
 
-        $donation->status = DonationStatus::COMPLETE();
-        $donation->save();
+        /**
+         * Verify the status before changing it because maybe the "OffSiteGatewayWebhookRequestHandler" class already
+         * received a webhook notification sent from the ""OffSiteCheckoutPageSimulation" and has changed it before.
+         */
+        if ( ! $donation->status->isComplete()) {
+            $donation->status = DonationStatus::COMPLETE();
+            $donation->save();
+        }
 
         return new RedirectResponse(esc_url_raw($queryParams['givewp-return-url']));
     }
