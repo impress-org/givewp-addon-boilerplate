@@ -10,12 +10,17 @@ class OffSiteGatewayWebhookNotification
     /**
      * @var string
      */
-    public $notificationType;
+    public $gatewayNotificationType;
 
     /**
      * @var string
      */
-    public $paymentStatus;
+    public $gatewayPaymentStatus;
+
+    /**
+     * @var string
+     */
+    public $gatewayPaymentId;
 
     /**
      * @var string
@@ -23,15 +28,16 @@ class OffSiteGatewayWebhookNotification
     public $merchantPaymentId;
 
     /**
-     * @var string
+     * @unreleased
      */
-    public $gatewayPaymentId;
-
     public static function fromRequest(array $request): OffSiteGatewayWebhookNotification
     {
         $self = new self();
 
-        $self->notificationType = $request['notification_type'] ?? '';
+        $self->gatewayNotificationType = $request['notification_type'] ?? '';
+        $self->gatewayPaymentStatus = $request['payment_status'] ?? '';
+        $self->gatewayPaymentId = $request['payment_id'] ?? '';
+        $self->merchantPaymentId = $request['merchant_payment_id'] ?? '';
 
         return $self;
     }

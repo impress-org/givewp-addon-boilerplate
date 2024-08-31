@@ -29,7 +29,7 @@ class OffSiteGatewaysWebhookNotificationHandler
             return;
         }
 
-        switch (strtolower($webhookNotification->paymentStatus)) {
+        switch (strtolower($webhookNotification->gatewayPaymentStatus)) {
             case 'complete':
                 AsBackgroundJobs::enqueueAsyncAction(
                     'givewp_off-site_gateway_sample_event_donation_completed',
