@@ -4,6 +4,7 @@ namespace GiveAddon\OffSiteGateway\Webhooks;
 
 use Give\Framework\Support\Facades\ActionScheduler\AsBackgroundJobs;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotification;
+use GiveAddon\OffSiteGateway\Gateway\OffSiteGateway;
 
 /**
  * @unreleased
@@ -22,7 +23,7 @@ class OffSiteGatewaysWebhookNotificationHandler
          *
          * @param OffSiteGatewayWebhookNotification $webhookNotification
          */
-        do_action("givewp_off-site_gateway_sample_webhook_notification_handler", $webhookNotification);
+        do_action('givewp_' . OffSiteGateway::id() . '_webhook_notification_handler', $webhookNotification);
 
         // We will handle recurring donations in a separate submodule sample that will enable Subscription on the Off-site gateway sample.
         if ($this->isRecurringDonation($webhookNotification)) {
@@ -31,11 +32,44 @@ class OffSiteGatewaysWebhookNotificationHandler
 
         switch (strtolower($webhookNotification->gatewayPaymentStatus)) {
             case 'complete':
+                $asyncJobHookName = 'givewp_' . OffSiteGateway::id() . '_event_donation_completed';
                 AsBackgroundJobs::enqueueAsyncAction(
-                    'givewp_off-site_gateway_sample_event_donation_completed',
+                    $asyncJobHookName,
                     [$webhookNotification->gatewayPaymentId],
                     'ADDON_TEXTDOMAIN'
                 );
+
+                /**
+                 * The block below is not necessary for real-world integrations;
+                 * We are adding it here just for educational purposes.
+                 */
+                $asyncJobUrl = admin_url('tools.php?page=action-scheduler&s=' . $asyncJobHookName);
+                ?>
+                <style>
+                    .container {
+                        font-family: "Open Sans", Helvetica, Arial, sans-serif;
+                        max-width: 800px;
+                        margin: 60px auto;
+                    }
+
+                    a {
+                        font-weight: bold;
+                    }
+                </style>
+                <div class="container">
+                    <h1>Webhook Notification Handler</h1>
+                    <p>
+                        ✅ We schedule an async job in the server background to change the donation status to "complete"
+                        as
+                        soon as possible. This approach prevents overloading the server as the webhook notification will
+                        be handled only when the server has enough processing power available. You can check the
+                        background job status at the following link:
+                    </p>
+                    <a href="<?php
+                    echo $asyncJobUrl ?>"> <?php
+                        echo $asyncJobUrl ?></a>
+                </div>
+                <?php
                 break;
             case 'failed':
                 // Handle failed transactions here...

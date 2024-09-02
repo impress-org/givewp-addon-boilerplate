@@ -189,6 +189,7 @@ class OffSiteGateway extends PaymentGateway
     {
         return [
             'gatewayPaymentId' => $donation->gatewayTransactionId,
+            'merchantPaymentId' => $donation->id,
             'amount' => [
                 'value' => $donation->amount->formatToDecimal(),
                 'currency' => $donation->amount->getCurrency()->getCode(),
@@ -258,7 +259,7 @@ class OffSiteGateway extends PaymentGateway
     protected function webhookNotificationsListener()
     {
         try {
-            $webhookNotification = OffSiteGatewayWebhookNotification::fromRequest($_REQUEST);
+            $webhookNotification = OffSiteGatewayWebhookNotification::fromRequest(give_clean($_REQUEST));
             give(OffSiteGatewaysWebhookNotificationHandler::class)($webhookNotification);
         } catch (Exception $e) {
             esc_html_e('Off-site gateway Webhook Notification failed.', 'ADDON_TEXTDOMAIN');

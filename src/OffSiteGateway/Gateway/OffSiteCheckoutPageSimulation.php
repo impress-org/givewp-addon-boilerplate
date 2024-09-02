@@ -56,9 +56,8 @@ class OffSiteCheckoutPageSimulation
             .container {
                 font-family: "Open Sans", Helvetica, Arial, sans-serif;
                 max-width: 800px;
-                margin: 100px auto;
+                margin: 60px auto;
             }
-
             a {
                 font-size: 1.5rem;
             }
@@ -80,6 +79,21 @@ class OffSiteCheckoutPageSimulation
             <hr />
             <p>
                 <strong>Click on the links below to simulate off-site gateway actions:</strong>
+            </p>
+            <a style="color:#696969;font-weight:bold;font-size: 1.2rem" target="_blank" href="<?php
+            echo add_query_arg([
+                'notification_type' => 'one-time',
+                'payment_status' => 'complete',
+                'payment_id' => $_GET['gatewayPaymentId'],
+                'merchant_payment_id' => $_GET['merchantPaymentId'],
+            ],
+                $_GET['webhookUrl']) ?>">
+                Send Webhook Notification To Change Donation Status To Complete ⭷
+            </a>
+            <p>
+                🛈 Some gateways send webhook notifications to change the transaction status a few hours after the
+                payment process is finished, and others can send them even before the user is redirected back to the
+                referrer's website — the action above simulates this last scenario.
             </p>
             <a style="color:green;font-weight: bold;" href="<?php
             echo $_GET['returnUrl'] ?>">Success Payment</a> | <a style="color:red;font-weight: bold;" href="<?php
