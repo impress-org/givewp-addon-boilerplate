@@ -32,9 +32,8 @@ class OffSiteGatewaysWebhookNotificationHandler
 
         switch (strtolower($webhookNotification->gatewayPaymentStatus)) {
             case 'complete':
-                $asyncJobHookName = 'givewp_' . OffSiteGateway::id() . '_event_donation_completed';
                 AsBackgroundJobs::enqueueAsyncAction(
-                    $asyncJobHookName,
+                    'givewp_' . OffSiteGateway::id() . '_event_donation_completed',
                     [$webhookNotification->gatewayPaymentId],
                     'ADDON_TEXTDOMAIN'
                 );
@@ -43,7 +42,7 @@ class OffSiteGatewaysWebhookNotificationHandler
                  * The block below is not necessary for real-world integrations;
                  * We are adding it here just for educational purposes.
                  */
-                $asyncJobUrl = admin_url('tools.php?page=action-scheduler&s=' . $asyncJobHookName);
+                $asyncJobUrl = admin_url('tools.php?page=action-scheduler&s=' . $webhookNotification->gatewayPaymentId);
                 ?>
                 <style>
                     .container {
