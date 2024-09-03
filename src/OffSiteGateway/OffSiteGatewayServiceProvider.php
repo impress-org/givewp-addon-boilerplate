@@ -40,6 +40,6 @@ class OffSiteGatewayServiceProvider implements ServiceProvider
         Hooks::addAction('init', OffSiteCheckoutPageSimulation::class);
 
         // Add Async Event Handlers
-        Hooks::addAction('givewp_off-site_gateway_sample_event_donation_completed', DonationCompleted::class);
+        Hooks::addAction('givewp_' . OffSiteGateway::id() . '_event_donation_completed', DonationCompleted::class);
     }
 }
