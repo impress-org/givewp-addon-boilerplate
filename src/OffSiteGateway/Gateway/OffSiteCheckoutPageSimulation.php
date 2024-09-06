@@ -80,7 +80,8 @@ class OffSiteCheckoutPageSimulation
             <p>
                 <strong>Click on the links below to simulate off-site gateway actions:</strong>
             </p>
-            <a style="color:#696969;font-weight:bold;font-size: 1.2rem" target="_blank" href="<?php
+            <a style="color:#696969;font-weight:bold;font-size: 1.2rem" target="_blank" rel="noopener noreferrer"
+               href="<?php
             echo add_query_arg([
                 'notification_type' => 'one-time',
                 'payment_status' => 'complete',
