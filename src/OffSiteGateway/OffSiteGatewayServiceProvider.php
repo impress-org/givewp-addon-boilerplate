@@ -39,7 +39,7 @@ class OffSiteGatewayServiceProvider implements ServiceProvider
 
         /**
          * We are using the DonationCompleted event handler class provided by Give Core to process the
-         * async background event which is created on the OffSiteGatewaysWebhookNotificationHandler class.
+         * async background event which is created on the OffSiteGatewayWebhookNotificationHandler class.
          *
          * A full list of event handler classes can be found on the following link:
          * @see https://github.com/impress-org/givewp/tree/develop/src/Framework/PaymentGateways/Webhooks/EventHandlers

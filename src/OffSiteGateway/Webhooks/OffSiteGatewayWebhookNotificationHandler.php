@@ -9,7 +9,7 @@ use GiveAddon\OffSiteGateway\Gateway\OffSiteGateway;
 /**
  * @since 1.0.0
  */
-class OffSiteGatewaysWebhookNotificationHandler
+class OffSiteGatewayWebhookNotificationHandler
 {
     /**
      * @since 1.0.0

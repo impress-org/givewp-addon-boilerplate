@@ -14,7 +14,7 @@ use Give\Framework\PaymentGateways\PaymentGateway;
 use Give\Framework\Support\Facades\Scripts\ScriptAsset;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayPayment;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotification;
-use GiveAddon\OffSiteGateway\Webhooks\OffSiteGatewaysWebhookNotificationHandler;
+use GiveAddon\OffSiteGateway\Webhooks\OffSiteGatewayWebhookNotificationHandler;
 
 /**
  * @since 1.0.0
@@ -86,7 +86,7 @@ class OffSiteGateway extends PaymentGateway
         return sprintf(
             '<div style="text-align: center;"><img src="%s" alt="OffSite Gateway Logo" /><p>%s</p></div>',
             ADDON_CONSTANT_URL . 'src/OffSiteGateway/Gateway/resources/logo.svg',
-            __('You will be redirected to an Off-Site Gateway simulation where will be possible to complete the payment and trigger webhook notifications for test purposes.',
+            __('You will be redirected to an Off-Site Gateway simulation checkout page where will be possible to complete the payment and trigger webhook notifications for test purposes.',
                 'ADDON_TEXTDOMAIN')
         );
     }
@@ -260,11 +260,11 @@ class OffSiteGateway extends PaymentGateway
     {
         try {
             $webhookNotification = OffSiteGatewayWebhookNotification::fromRequest(give_clean($_REQUEST));
-            give(OffSiteGatewaysWebhookNotificationHandler::class)($webhookNotification);
+            give(OffSiteGatewayWebhookNotificationHandler::class)($webhookNotification);
         } catch (Exception $e) {
-            esc_html_e('Off-site gateway Webhook Notification failed.', 'ADDON_TEXTDOMAIN');
+            esc_html_e('ADDON_NAME - Webhook Notification failed.', 'ADDON_TEXTDOMAIN');
             PaymentGatewayLog::error(
-                'Off-site gateway Webhook Notification failed. Error: ' . $e->getMessage()
+                'ADDON_NAME - Webhook Notification failed. Error: ' . $e->getMessage()
             );
         }
 
