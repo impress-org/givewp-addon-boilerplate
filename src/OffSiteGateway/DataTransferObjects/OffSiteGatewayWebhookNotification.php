@@ -8,7 +8,7 @@ namespace GiveAddon\OffSiteGateway\DataTransferObjects;
  * notification to an object of this class is made. You should edit this method according to the gateway you
  * are integrating since the webhook notification attributes probably should differ.
  *
- * @unreleased
+ * @since 1.0.0
  */
 class OffSiteGatewayWebhookNotification
 {
@@ -33,7 +33,7 @@ class OffSiteGatewayWebhookNotification
     public $merchantPaymentId;
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public static function fromRequest(array $request): OffSiteGatewayWebhookNotification
     {

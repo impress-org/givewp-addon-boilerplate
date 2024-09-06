@@ -17,12 +17,12 @@ use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotificati
 use GiveAddon\OffSiteGateway\Webhooks\OffSiteGatewaysWebhookNotificationHandler;
 
 /**
- * @unreleased
+ * @since 1.0.0
  */
 class OffSiteGateway extends PaymentGateway
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public $secureRouteMethods = [
         'handleSuccessPaymentReturn',
@@ -30,14 +30,14 @@ class OffSiteGateway extends PaymentGateway
     ];
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public $routeMethods = [
         'webhookNotificationsListener',
     ];
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function getWebhookNotificationsListener(): string
     {
@@ -45,7 +45,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public static function id(): string
     {
@@ -53,7 +53,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function getId(): string
     {
@@ -61,7 +61,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function getName(): string
     {
@@ -69,7 +69,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function getPaymentMethodLabel(): string
     {
@@ -79,7 +79,7 @@ class OffSiteGateway extends PaymentGateway
     /**
      * Add support to v2 forms
      *
-     * @unreleased
+     * @since 1.0.0
      */
     public function getLegacyFormFieldMarkup(int $formId, array $args): string
     {
@@ -94,7 +94,7 @@ class OffSiteGateway extends PaymentGateway
     /**
      * Add support to v3 forms
      *
-     * @unreleased
+     * @since 1.0.0
      */
     public function enqueueScript(int $formId)
     {
@@ -117,7 +117,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @throws Exception
      */
@@ -175,7 +175,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function refundDonation(Donation $donation)
     {
@@ -183,7 +183,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function getPaymentParameters(Donation $donation, $gatewayData): array
     {
@@ -218,7 +218,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @throws Exception
      */
@@ -239,7 +239,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @throws Exception
      */
@@ -254,7 +254,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     protected function webhookNotificationsListener()
     {
@@ -272,7 +272,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function getPaymentsReturnURL(Donation $donation, $gatewayData): string
     {
@@ -291,7 +291,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function getPaymentsCancelURL(Donation $donation, $gatewayData): string
     {
@@ -310,7 +310,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function getPaymentsWebhookUrl(Donation $donation): string
     {

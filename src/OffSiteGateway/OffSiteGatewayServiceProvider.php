@@ -11,12 +11,12 @@ use GiveAddon\OffSiteGateway\Gateway\OffSiteCheckoutPageSimulation;
 use GiveAddon\OffSiteGateway\Gateway\OffSiteGateway;
 
 /**
- * @unreleased
+ * @since 1.0.0
  */
 class OffSiteGatewayServiceProvider implements ServiceProvider
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function register()
     {
@@ -24,7 +24,7 @@ class OffSiteGatewayServiceProvider implements ServiceProvider
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @throws Exception
      */

@@ -7,19 +7,19 @@ use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotificati
 use GiveAddon\OffSiteGateway\Gateway\OffSiteGateway;
 
 /**
- * @unreleased
+ * @since 1.0.0
  */
 class OffSiteGatewaysWebhookNotificationHandler
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function __invoke(OffSiteGatewayWebhookNotification $webhookNotification)
     {
         /**
          * Allow developers to handle the webhook notification.
          *
-         * @unreleased
+         * @since 1.0.0
          *
          * @param OffSiteGatewayWebhookNotification $webhookNotification
          */
@@ -82,7 +82,7 @@ class OffSiteGatewaysWebhookNotificationHandler
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function isRecurringDonation(OffSiteGatewayWebhookNotification $webhookNotification): bool
     {

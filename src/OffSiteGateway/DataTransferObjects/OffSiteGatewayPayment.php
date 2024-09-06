@@ -8,7 +8,7 @@ namespace GiveAddon\OffSiteGateway\DataTransferObjects;
  * the gateway API response to an object of this class is made. You should edit this method according to the
  * gateway you are integrating since the API response probably should differ.
  *
- * @unreleased
+ * @since 1.0.0
  */
 class OffSiteGatewayPayment
 {

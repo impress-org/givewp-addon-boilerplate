@@ -5,12 +5,12 @@ namespace GiveAddon\OffSiteGateway\Gateway;
 /**
  * IMPORTANT: you don't need to keep this file in your integration; this is just a sample to demonstrate how off-site gateway integrations should work.
  *
- * @unreleased
+ * @since 1.0.0
  */
 class OffSiteCheckoutPageSimulation
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function __invoke()
     {
@@ -37,7 +37,7 @@ class OffSiteCheckoutPageSimulation
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function isLegacyFormReferrer(): bool
     {
@@ -47,7 +47,7 @@ class OffSiteCheckoutPageSimulation
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     private function loadOffSiteGatewaySimulationMarkup()
     {
