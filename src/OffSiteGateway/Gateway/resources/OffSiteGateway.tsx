@@ -4,7 +4,7 @@ import {__} from '@wordpress/i18n';
 
 import './styles.scss';
 
-const mollieGateway: Gateway = {
+const GiveAddonOffSiteGateway: Gateway = {
     id: 'ADDON_ID-off-site-gateway',
     Fields() {
         return (
@@ -12,7 +12,7 @@ const mollieGateway: Gateway = {
                 <OffSiteGatewayLogo />
                 <p>
                     {__(
-                        'You will be redirected to an Off-Site Gateway simulation where will be possible to complete the payment and trigger webhook notifications for test purposes.',
+                        'You will be redirected to an Off-Site Gateway simulation checkout page where will be possible to complete the payment and trigger webhook notifications for test purposes.',
                         'ADDON_TEXTDOMAIN'
                     )}
                 </p>
@@ -21,4 +21,4 @@ const mollieGateway: Gateway = {
     },
 };
 
-window.givewp.gateways.register(mollieGateway);
+window.givewp.gateways.register(GiveAddonOffSiteGateway);
