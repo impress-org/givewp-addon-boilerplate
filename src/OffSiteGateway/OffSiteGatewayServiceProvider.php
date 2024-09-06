@@ -37,9 +37,18 @@ class OffSiteGatewayServiceProvider implements ServiceProvider
             }
         );
 
-        Hooks::addAction('init', OffSiteCheckoutPageSimulation::class);
-
-        // Add Async Event Handlers
+        /**
+         * We are using the DonationCompleted event handler class provided by Give Core to process the
+         * async background event which is created on the OffSiteGatewaysWebhookNotificationHandler class.
+         *
+         * A full list of event handler classes can be found on the following link:
+         * @see https://github.com/impress-org/givewp/tree/develop/src/Framework/PaymentGateways/Webhooks/EventHandlers
+         */
         Hooks::addAction('givewp_' . OffSiteGateway::id() . '_event_donation_completed', DonationCompleted::class);
+
+        /**
+         * IMPORTANT: remember to remove this hook when removing the OffSiteCheckoutPageSimulation class from your real-world gateway integration.
+         */
+        Hooks::addAction('init', OffSiteCheckoutPageSimulation::class);
     }
 }
