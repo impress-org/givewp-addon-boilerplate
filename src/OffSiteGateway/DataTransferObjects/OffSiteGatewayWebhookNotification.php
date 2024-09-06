@@ -3,6 +3,11 @@
 namespace GiveAddon\OffSiteGateway\DataTransferObjects;
 
 /**
+ * This Data Transfer Object class converts the gateway webhook notification to a local object where we know
+ * what properties can be accessed. The fromRequest() method is where the conversion from the gateway webhook
+ * notification to an object of this class is made. You should edit this method according to the gateway you
+ * are integrating since the webhook notification attributes probably should differ.
+ *
  * @unreleased
  */
 class OffSiteGatewayWebhookNotification
