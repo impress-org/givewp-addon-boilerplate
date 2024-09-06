@@ -176,10 +176,39 @@ class OffSiteGateway extends PaymentGateway
 
     /**
      * @since 1.0.0
+     *
+     * @throws Exception
      */
     public function refundDonation(Donation $donation)
     {
-        // TODO: Implement refundDonation() method.
+        try {
+            $this->refundGiveAddonOffSiteGatewayPaymentApi($donation);
+            $donation->status = DonationStatus::REFUNDED();
+            $donation->save();
+
+            DonationNote::create([
+                'donationId' => $donation->id,
+                'content' => sprintf(
+                    __('Donation refunded in %s for transaction ID: %s', 'ADDON_TEXTDOMAIN'),
+                    $this->getName(),
+                    $donation->gatewayTransactionId
+                ),
+            ]);
+        } catch (Exception $e) {
+            DonationNote::create([
+                'donationId' => $donation->id,
+                'content' => sprintf(
+                    __(
+                        'Error! Donation %s was NOT refunded. Find more details on the error in the logs at Donations > Tools > Logs. To refund the donation, use the %s dashboard.',
+                        'ADDON_TEXTDOMAIN'
+                    ),
+                    $donation->id,
+                    $this->getName()
+                ),
+            ]);
+
+            throw new PaymentGatewayException($e->getMessage());
+        }
     }
 
     /**
@@ -205,16 +234,53 @@ class OffSiteGateway extends PaymentGateway
      * @param Donation $donation
      *
      * @return OffSiteGatewayPayment
+     * @throws Exception
      */
     protected function createGiveAddonOffSiteGatewayPaymentApi(Donation $donation): OffSiteGatewayPayment
     {
-        /**
-         * We are mocking an external API call return and converting it to an OffSite Gateway Payment object.
-         */
-        return OffSiteGatewayPayment::fromArray([
-            'gatewayPaymentId' => 'off-site-sample-gateway-payment-id-' . rand(),
-            'merchantPaymentId' => $donation->id,
-        ]);
+        try {
+            /**
+             * We are mocking an external API call return and converting it to an OffSite Gateway Payment object.
+             */
+            return OffSiteGatewayPayment::fromArray([
+                'gatewayPaymentId' => 'off-site-sample-gateway-payment-id-' . rand(),
+                'merchantPaymentId' => $donation->id,
+            ]);
+        } catch (Exception $e) {
+            throw new PaymentGatewayException(
+                sprintf(
+                    __('[%s] Payment not created. API Error: %s', 'ADDON_TEXTDOMAIN'),
+                    $this->getName(),
+                    $e->getCode() . ' - ' . $e->getMessage()
+                )
+            );
+        }
+    }
+
+    /**
+     * @param Donation $donation
+     *
+     * @return bool
+     * @throws Exception
+     */
+    protected function refundGiveAddonOffSiteGatewayPaymentApi(Donation $donation): bool
+    {
+        try {
+            /**
+             * We are mocking an external API call return which is always a true boolean.
+             */
+            return true;
+        } catch (Exception $e) {
+            throw new PaymentGatewayException(
+                sprintf(
+                    __('[%s] Refund failed for donation %s. The refund can be initiated on the gateway side, or try again here. API Error: %s',
+                        'ADDON_TEXTDOMAIN'),
+                    $this->getName(),
+                    $donation->id,
+                    $e->getCode() . ' - ' . $e->getMessage()
+                )
+            );
+        }
     }
 
     /**
