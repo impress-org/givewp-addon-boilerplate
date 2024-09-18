@@ -77,7 +77,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * Add support to v2 forms
+     * Add support to forms built with Option-Based Form Editor
      *
      * @since 1.0.0
      */
@@ -92,7 +92,7 @@ class OffSiteGateway extends PaymentGateway
     }
 
     /**
-     * Add support to v3 forms
+     * Add support to forms built with Visual Form Builder
      *
      * @since 1.0.0
      */
