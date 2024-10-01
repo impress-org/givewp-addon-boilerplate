@@ -16,6 +16,7 @@ module.exports = {
     entry: {
         GiveAddonFormBuilderExtension: srcPath('FormExtension/FormBuilder/resources/js/index.tsx'),
         GiveAddonFormBuilderExtensionGlobalStyle: srcPath('FormExtension/FormBuilder/resources/css/index.scss'),
+        GiveAddonOffSiteGateway: srcPath('OffSiteGateway/Gateway/resources/OffSiteGateway.tsx'),
     },
 };
 
