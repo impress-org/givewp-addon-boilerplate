@@ -1,10 +1,9 @@
 <?php
 
-namespace GiveAddon\OffSiteGateway\Webhooks;
+namespace GiveAddon\OffSiteGateway\Gateway;
 
-use Give\Framework\Support\Facades\ActionScheduler\AsBackgroundJobs;
+use Give\Donations\ValueObjects\DonationStatus;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotification;
-use GiveAddon\OffSiteGateway\Gateway\OffSiteGateway;
 
 /**
  * @since 1.0.0
@@ -32,10 +31,10 @@ class OffSiteGatewayWebhookNotificationHandler
 
         switch (strtolower($webhookNotification->gatewayPaymentStatus)) {
             case 'complete':
-                AsBackgroundJobs::enqueueAsyncAction(
-                    'givewp_' . OffSiteGateway::id() . '_event_donation_completed',
-                    [$webhookNotification->gatewayPaymentId],
-                    'ADDON_TEXTDOMAIN'
+                // Handling completed transactions...
+                OffSiteGateway::webhookEvents()->setDonationStatus(
+                    DonationStatus::COMPLETE(),
+                    $webhookNotification->gatewayPaymentId
                 );
 
                 /**
@@ -71,10 +70,25 @@ class OffSiteGatewayWebhookNotificationHandler
                 <?php
                 break;
             case 'failed':
-                // Handle failed transactions here...
+                // Handling failed transactions...
+                OffSiteGateway::webhookEvents()->setDonationStatus(
+                    DonationStatus::FAILED(),
+                    $webhookNotification->gatewayPaymentId
+                );
                 break;
             case 'cancelled':
-                // Handle cancelled transactions here...
+                // Handling cancelled transactions...
+                OffSiteGateway::webhookEvents()->setDonationStatus(
+                    DonationStatus::CANCELLED(),
+                    $webhookNotification->gatewayPaymentId
+                );
+                break;
+            case 'refunded':
+                // Handling refunded transactions...
+                OffSiteGateway::webhookEvents()->setDonationStatus(
+                    DonationStatus::REFUNDED(),
+                    $webhookNotification->gatewayPaymentId
+                );
                 break;
             default:
                 break;

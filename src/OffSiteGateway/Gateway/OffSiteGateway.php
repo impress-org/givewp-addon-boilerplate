@@ -14,7 +14,6 @@ use Give\Framework\PaymentGateways\PaymentGateway;
 use Give\Framework\Support\Facades\Scripts\ScriptAsset;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayPayment;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotification;
-use GiveAddon\OffSiteGateway\Webhooks\OffSiteGatewayWebhookNotificationHandler;
 
 /**
  * @since 1.0.0
