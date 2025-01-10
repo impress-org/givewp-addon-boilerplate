@@ -10,5 +10,5 @@ jobs:
     build:
         uses: impress-org/givewp-github-actions/.github/workflows/addon-tests.yml@master
         with:
-            addon_slug: ADDON_ID
+            addon_slug: givewp-addon-boilerplate
             givewp_branch: develop
