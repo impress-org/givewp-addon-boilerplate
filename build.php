@@ -48,7 +48,7 @@ $domain = ucfirst( trim( readline(
 $files = array_filter( array_merge(
 	[
         __DIR__ . '/readme.txt',
-        __DIR__ . '/webpack.mix.js',
+        __DIR__ . '/webpack.config.js',
         __DIR__ . '/composer.json',
         __DIR__ . '/.github/workflows/pre-release.yml',
     ],
@@ -84,26 +84,6 @@ foreach ($files as $file) {
 rename(
     __DIR__ . '/give-addon-boilerplate.php',
     __DIR__ . "/$id.php"
-);
-
-rename(
-    __DIR__ . '/src/Domain/resources/js/admin/ADDON_ID-admin.ts',
-    __DIR__ . "/src/Domain/resources/js/admin/$id-admin.ts"
-);
-
-rename(
-    __DIR__ . '/src/Domain/resources/js/frontend/ADDON_ID-frontend.js',
-    __DIR__ . "/src/Domain/resources/js/frontend/$id-frontend.js"
-);
-
-rename(
-    __DIR__ . '/src/Domain/resources/css/admin/ADDON_ID-admin.scss',
-    __DIR__ . "/src/Domain/resources/css/admin/$id-admin.scss"
-);
-
-rename(
-    __DIR__ . '/src/Domain/resources/css/frontend/ADDON_ID-frontend.scss',
-    __DIR__ . "/src/Domain/resources/css/frontend/$id-frontend.scss"
 );
 
 rename(
