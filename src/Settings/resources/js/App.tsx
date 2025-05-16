@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import Button from './Components/Form/Button';
+import Button from './components/Form/Button';
 import {__} from '@wordpress/i18n';
-import Modal from './Components/Modal';
-import Form from './Components/Form/Form';
+import Modal from './components/Modal';
+import Form from './components/Form/Form';
+import '../css/index.scss';
+
 
 function App() {
     const [showModal, setShowModal] = useState(false);

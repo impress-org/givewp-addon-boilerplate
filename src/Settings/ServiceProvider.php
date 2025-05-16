@@ -1,16 +1,13 @@
 <?php
 
-namespace GiveAddon\Domain;
+namespace GiveAddon\Settings;
 
 use Give\Helpers\Hooks;
-use Give\ServiceProviders\ServiceProvider;
-use GiveAddon\Addon\Activation;
+use Give\ServiceProviders\ServiceProvider as ServiceProviderInterface;
 use GiveAddon\Addon\ActivationBanner;
-use GiveAddon\Addon\Language;
 use GiveAddon\Addon\License;
-use GiveAddon\Addon\Links;
-use GiveAddon\Domain\Helpers\SettingsPage;
-use GiveAddon\Domain\SettingsPage as AddonSettingsPage;
+use GiveAddon\Settings\Helpers\SettingsPage;
+use GiveAddon\Settings\SettingsPage as AddonSettingsPage;
 
 /**
  * Example of a service provider responsible for add-on initialization.
@@ -18,14 +15,14 @@ use GiveAddon\Domain\SettingsPage as AddonSettingsPage;
  * @package     GiveAddon\Addon
  * @copyright   Copyright (c) 2020, GiveWP
  */
-class AddonServiceProvider implements ServiceProvider
+class ServiceProvider implements ServiceProviderInterface
 {
     /**
      * @inheritDoc
      */
     public function register()
     {
-        give()->singleton(Activation::class);
+
     }
 
     /**
@@ -33,14 +30,9 @@ class AddonServiceProvider implements ServiceProvider
      */
     public function boot()
     {
-        // Load add-on translations.
-        Hooks::addAction('init', Language::class, 'load');
-        // Load add-on links.
-        Hooks::addFilter('plugin_action_links_' . ADDON_CONSTANT_BASENAME, Links::class);
-
-        is_admin()
-            ? $this->loadBackend()
-            : $this->loadFrontend();
+        if (is_admin()){
+            $this->loadBackend();
+        }
     }
 
     /**
@@ -59,8 +51,6 @@ class AddonServiceProvider implements ServiceProvider
          */
         SettingsPage::registerPage(SettingsPageApp::class);
 
-        Hooks::addAction('admin_init', License::class, 'check');
-        Hooks::addAction('admin_init', ActivationBanner::class, 'show', 20);
         // Load backend assets.
         Hooks::addAction('admin_enqueue_scripts', Assets::class, 'loadBackendAssets');
         /**
@@ -86,17 +76,5 @@ class AddonServiceProvider implements ServiceProvider
                 ],
             ]
         );
-    }
-
-    /**
-     * Load add-on front-end assets.
-     *
-     * @return void
-     * @since 1.0.0
-     */
-    private function loadFrontend()
-    {
-        // Load front-end assets.
-        Hooks::addAction('wp_enqueue_scripts', Assets::class, 'loadFrontendAssets');
     }
 }

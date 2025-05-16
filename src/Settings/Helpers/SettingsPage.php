@@ -1,6 +1,6 @@
 <?php
 
-namespace GiveAddon\Domain\Helpers;
+namespace GiveAddon\Settings\Helpers;
 
 use Give_Admin_Settings;
 use Give_Settings_Page;
@@ -9,7 +9,7 @@ use InvalidArgumentException;
 /**
  * Helper class responsible for adding settings pages.
  *
- * @package     GiveAddon\Addon\Helpers
+ * @package     GiveAddon\Settings\Helpers
  * @copyright   Copyright (c) 2020, GiveWP
  */
 class SettingsPage

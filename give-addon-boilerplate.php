@@ -3,9 +3,11 @@ namespace GiveAddon;
 
 use GiveAddon\Addon\Activation;
 use GiveAddon\Addon\Environment;
-use GiveAddon\Domain\AddonServiceProvider;
 use GiveAddon\FormExtension\FormExtensionServiceProvider;
 use GiveAddon\OffSiteGateway\OffSiteGatewayServiceProvider;
+use GiveAddon\Addon\ServiceProvider as AddonServiceProvider;
+use GiveAddon\Settings\ServiceProvider as SettingsServiceProvider;
+use GiveAddon\Domain\ServiceProvider as DomainServiceProvider;
 
 /**
  * Plugin Name:         ADDON_NAME
@@ -52,6 +54,8 @@ add_action(
         // Check Give min required version.
         if (Environment::giveMinRequiredVersionCheck()) {
             give()->registerServiceProvider(AddonServiceProvider::class);
+            give()->registerServiceProvider(SettingsServiceProvider::class);
+            give()->registerServiceProvider(DomainServiceProvider::class);
             give()->registerServiceProvider(FormExtensionServiceProvider::class);
             give()->registerServiceProvider(OffSiteGatewayServiceProvider::class);
         }
