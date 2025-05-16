@@ -20,6 +20,8 @@ module.exports = {
         settings: srcPath('Domain/resources/js/admin/settings-page-app/index.tsx'),
         adminJs: srcPath('Domain/resources/js/admin/index.tsx'),
         adminCss: srcPath('Domain/resources/css/admin/index.scss'),
+        frontendJs: srcPath('Domain/resources/js/frontend/index.tsx'),
+        frontendCss: srcPath('Domain/resources/css/frontend/index.scss'),
     },
 };
 

@@ -76,7 +76,7 @@ class Assets
 
         wp_enqueue_style(
             'ADDON_ID-style-frontend',
-            ADDON_CONSTANT_URL . 'public/css/frontendCss.css',
+            ADDON_CONSTANT_URL . 'build/frontendCss.css',
             [],
             ADDON_CONSTANT_VERSION
         );
