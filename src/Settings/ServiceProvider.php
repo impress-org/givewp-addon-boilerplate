@@ -4,15 +4,13 @@ namespace GiveAddon\Settings;
 
 use Give\Helpers\Hooks;
 use Give\ServiceProviders\ServiceProvider as ServiceProviderInterface;
-use GiveAddon\Addon\ActivationBanner;
-use GiveAddon\Addon\License;
 use GiveAddon\Settings\Helpers\SettingsPage;
 use GiveAddon\Settings\SettingsPage as AddonSettingsPage;
 
 /**
  * Example of a service provider responsible for add-on initialization.
  *
- * @package     GiveAddon\Addon
+ * @package     GiveAddon\Settings
  * @copyright   Copyright (c) 2020, GiveWP
  */
 class ServiceProvider implements ServiceProviderInterface
