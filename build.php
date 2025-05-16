@@ -58,7 +58,9 @@ $files = array_filter( array_merge(
     rglob(__DIR__ . '/src/*.php', GLOB_NOSORT),
     rglob(__DIR__ . '/src/*.js', GLOB_NOSORT),
     rglob(__DIR__ . '/src/*.ts', GLOB_NOSORT),
-    rglob(__DIR__ . '/src/*.tsx', GLOB_NOSORT)
+    rglob(__DIR__ . '/src/*.tsx', GLOB_NOSORT),
+    rglob(__DIR__ . '/src/*.scss', GLOB_NOSORT),
+    rglob(__DIR__ . '/src/*.css', GLOB_NOSORT),
 ), static function ( $file ) {
 	return $file !== __FILE__;
 } );
