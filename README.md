@@ -11,15 +11,15 @@ plugin for WordPress.
 6. Update this README (see below for a starting point)
 
 ### Asset Compilation
+Note: We use [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/).
+
 To compile your CSS & JS assets, run one of the following:
 
-- `npm run dev` — Compiles all assets (except Form Extension assets) for development one time
-- `npm run watch` — Compiles all assets (except Form Extension assets) for development one time and then watches for
-  changes, supporting [BrowserSync](https://laravel-mix.com/docs/5.0/browsersync)
-- `npm run dev:form-extension` — Compiles Form Extension assets for development one time
-- `npm run watch:form-extension` — Compiles Form Extension assets for development one time and then watches for changes,
-  supporting [BrowserSync](https://laravel-mix.com/docs/5.0/browsersync)
-- `npm run start` — Compiles all assets for development one time and then watches for changes
+| Command         | Description                                                             |
+|:----------------|:------------------------------------------------------------------------|
+| `npm run dev`   | Runs a one time build for development. No production files are created. |
+| `npm run watch` | Automatically re-builds as changes are made.                            |
+| `npm run build` | Builds the minified production files for release.
 
 ## Concepts
 
