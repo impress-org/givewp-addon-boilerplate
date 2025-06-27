@@ -1,6 +1,6 @@
 <?php
 
-namespace GiveAddon\Domain;
+namespace GiveAddon\Settings;
 
 use Give_Settings_Page;
 

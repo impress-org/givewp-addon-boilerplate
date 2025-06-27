@@ -1,13 +1,13 @@
 <?php
 
-namespace GiveAddon\Domain;
+namespace GiveAddon\Settings;
 
 use Give_Settings_Page;
 
 /**
  * Example code to show how to add setting page to give settings.
  *
- * @package     GiveAddon\Addon
+ * @package     GiveAddon\Settings
  * @subpackage  Classes/Give_BP_Admin_Settings
  * @copyright   Copyright (c) 2020, GiveWP
  */

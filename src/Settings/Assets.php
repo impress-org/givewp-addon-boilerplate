@@ -1,11 +1,11 @@
 <?php
 
-namespace GiveAddon\Domain;
+namespace GiveAddon\Settings;
 
 /**
  * Helper class responsible for loading add-on assets.
  *
- * @package     GiveAddon\Addon
+ * @package     GiveAddon\Settings
  * @copyright   Copyright (c) 2020, GiveWP
  */
 class Assets
@@ -22,15 +22,15 @@ class Assets
         wp_enqueue_style('givewp-design-system-foundation');
 
         wp_enqueue_style(
-            'ADDON_ID-style-backend',
-            ADDON_CONSTANT_URL . 'public/css/ADDON_ID-admin.css',
+            'ADDON_ID-settings-style',
+            ADDON_CONSTANT_URL . 'build/admin.css',
             [],
             ADDON_CONSTANT_VERSION
         );
 
         wp_enqueue_script(
-            'ADDON_ID-script-backend',
-            ADDON_CONSTANT_URL . 'public/js/ADDON_ID-admin.js',
+            'ADDON_ID-settings-script',
+            ADDON_CONSTANT_URL . 'build/admin.js',
             [],
             ADDON_CONSTANT_VERSION,
             true
@@ -42,7 +42,7 @@ class Assets
         ];
 
         wp_localize_script(
-            'ADDON_ID-script-backend',
+            'ADDON_ID-settings-script',
             'GiveAddon',
             $object
         );
@@ -50,7 +50,7 @@ class Assets
         if (isset($_GET['tab']) && 'ADDON_ID-settings-page-app' === $_GET['tab']) {
             wp_enqueue_script(
                 'ADDON_ID-settings-app',
-                ADDON_CONSTANT_URL . 'public/js/ADDON_ID-settings-page-app.js',
+                ADDON_CONSTANT_URL . 'build/settings.js',
                 [],
                 ADDON_CONSTANT_VERSION,
                 true
@@ -72,30 +72,7 @@ class Assets
      */
     public static function loadFrontendAssets()
     {
-        wp_enqueue_style('givewp-design-system-foundation');
 
-        wp_enqueue_style(
-            'ADDON_ID-style-frontend',
-            ADDON_CONSTANT_URL . 'public/css/ADDON_ID-frontend.css',
-            [],
-            ADDON_CONSTANT_VERSION
-        );
-
-        wp_enqueue_script(
-            'ADDON_ID-script-frontend',
-            ADDON_CONSTANT_URL . 'public/js/ADDON_ID-frontend.js',
-            [],
-            ADDON_CONSTANT_VERSION,
-            true
-        );
-
-        wp_localize_script(
-            'ADDON_ID-script-frontend',
-            'GiveAddon',
-            [
-                'locale' => str_replace('_', '-', get_locale()),
-                'imageUrl' => ADDON_CONSTANT_URL . 'public/images/',
-            ]
-        );
+        // Load frontend assets.
     }
 }

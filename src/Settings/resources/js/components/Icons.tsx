@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Icons.module.scss';
-import {imageUrl} from '../../../utils/helpers';
+import {imageUrl} from '../utils/helpers';
 
 export const InfoIcon = ({label}) => {
     return (
