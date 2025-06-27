@@ -8,6 +8,7 @@ use Give\Donations\Models\DonationNote;
 use Give\Donations\ValueObjects\DonationStatus;
 use Give\Framework\Http\Response\Types\RedirectResponse;
 use Give\Framework\PaymentGateways\Commands\RedirectOffsite;
+use Give\Framework\PaymentGateways\Contracts\WebhookNotificationsListener;
 use Give\Framework\PaymentGateways\Exceptions\PaymentGatewayException;
 use Give\Framework\PaymentGateways\Log\PaymentGatewayLog;
 use Give\Framework\PaymentGateways\PaymentGateway;
@@ -16,9 +17,10 @@ use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayPayment;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotification;
 
 /**
+ * @unreleased Use new WebhookNotificationsListener interface
  * @since 1.0.0
  */
-class OffSiteGateway extends PaymentGateway
+class OffSiteGateway extends PaymentGateway implements WebhookNotificationsListener
 {
     /**
      * @since 1.0.0
@@ -27,21 +29,6 @@ class OffSiteGateway extends PaymentGateway
         'handleSuccessPaymentReturn',
         'handleCanceledPaymentReturn',
     ];
-
-    /**
-     * @since 1.0.0
-     */
-    public $routeMethods = [
-        'webhookNotificationsListener',
-    ];
-
-    /**
-     * @since 1.0.0
-     */
-    public function getWebhookNotificationsListener(): string
-    {
-        return $this->routeMethods[0];
-    }
 
     /**
      * @since 1.0.0
@@ -321,7 +308,7 @@ class OffSiteGateway extends PaymentGateway
     /**
      * @since 1.0.0
      */
-    protected function webhookNotificationsListener()
+    public function webhookNotificationsListener()
     {
         try {
             $webhookNotification = OffSiteGatewayWebhookNotification::fromRequest(give_clean($_REQUEST));
@@ -376,18 +363,17 @@ class OffSiteGateway extends PaymentGateway
 
     /**
      * @since 1.0.0
+     *
+     * @throws Exception
      */
     private function getPaymentsWebhookUrl(Donation $donation): string
     {
         return urlencode(
             esc_url_raw(
-                $this->generateGatewayRouteUrl(
-                    $this->getWebhookNotificationsListener(),
-                    [
-                        'notification_type' => 'payments',
-                        'payment_id' => $donation->id,
-                    ]
-                )
+                $this->webhook->getNotificationUrl([
+                    'notification_type' => 'payments',
+                    'payment_id' => $donation->id,
+                ])            
             )
         );
     }

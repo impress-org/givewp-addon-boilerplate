@@ -2,7 +2,7 @@
 
 namespace GiveAddon\OffSiteGateway\Gateway;
 
-use Give\Donations\ValueObjects\DonationStatus;
+use Give\PaymentGateways\Gateways\TestGateway\TestGateway;
 use GiveAddon\OffSiteGateway\DataTransferObjects\OffSiteGatewayWebhookNotification;
 
 /**
@@ -18,6 +18,7 @@ class OffSiteGatewayWebhookNotificationHandler
         /**
          * Allow developers to handle the webhook notification.
          *
+         * @unreleased Use new webhook events API instead of the old one.
          * @since 1.0.0
          *
          * @param OffSiteGatewayWebhookNotification $webhookNotification
@@ -32,10 +33,7 @@ class OffSiteGatewayWebhookNotificationHandler
         switch (strtolower($webhookNotification->gatewayPaymentStatus)) {
             case 'complete':
                 // Handling completed transactions...
-                OffSiteGateway::webhookEvents()->setDonationStatus(
-                    DonationStatus::COMPLETE(),
-                    $webhookNotification->gatewayPaymentId
-                );
+                OffSiteGateway::webhook()->events->donationCompleted($webhookNotification->gatewayPaymentId);
 
                 /**
                  * The block below is not necessary for real-world integrations;
@@ -71,24 +69,15 @@ class OffSiteGatewayWebhookNotificationHandler
                 break;
             case 'failed':
                 // Handling failed transactions...
-                OffSiteGateway::webhookEvents()->setDonationStatus(
-                    DonationStatus::FAILED(),
-                    $webhookNotification->gatewayPaymentId
-                );
+                OffSiteGateway::webhook()->events->donationFailed($webhookNotification->gatewayPaymentId);
                 break;
             case 'cancelled':
                 // Handling cancelled transactions...
-                OffSiteGateway::webhookEvents()->setDonationStatus(
-                    DonationStatus::CANCELLED(),
-                    $webhookNotification->gatewayPaymentId
-                );
+                OffSiteGateway::webhook()->events->donationCancelled($webhookNotification->gatewayPaymentId);
                 break;
             case 'refunded':
                 // Handling refunded transactions...
-                OffSiteGateway::webhookEvents()->setDonationStatus(
-                    DonationStatus::REFUNDED(),
-                    $webhookNotification->gatewayPaymentId
-                );
+                OffSiteGateway::webhook()->events->donationRefunded($webhookNotification->gatewayPaymentId);
                 break;
             default:
                 break;
@@ -100,6 +89,7 @@ class OffSiteGatewayWebhookNotificationHandler
      */
     private function isRecurringDonation(OffSiteGatewayWebhookNotification $webhookNotification): bool
     {
+        TestGateway::webhook()->getNotificationUrl();
         return 'subscription' === $webhookNotification->gatewayNotificationType;
     }
 }
