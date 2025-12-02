@@ -1,13 +1,14 @@
 <?php
+
 namespace GiveAddon;
 
 use GiveAddon\Addon\Activation;
 use GiveAddon\Addon\Environment;
+use GiveAddon\Addon\ServiceProvider as AddonServiceProvider;
+use GiveAddon\Domain\ServiceProvider as DomainServiceProvider;
 use GiveAddon\FormExtension\FormExtensionServiceProvider;
 use GiveAddon\OffSiteGateway\OffSiteGatewayServiceProvider;
-use GiveAddon\Addon\ServiceProvider as AddonServiceProvider;
 use GiveAddon\Settings\ServiceProvider as SettingsServiceProvider;
-use GiveAddon\Domain\ServiceProvider as DomainServiceProvider;
 
 /**
  * Plugin Name:         ADDON_NAME
@@ -28,7 +29,7 @@ define('ADDON_CONSTANT_NAME', 'ADDON_NAME');
 
 // Versions
 define('ADDON_CONSTANT_VERSION', '1.0.0');
-define('ADDON_CONSTANT_MIN_GIVE_VERSION', '2.8.0');
+define('ADDON_CONSTANT_MIN_GIVE_VERSION', '4.5.0');
 
 // Add-on paths
 define('ADDON_CONSTANT_FILE', __FILE__);
