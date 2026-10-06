@@ -1,0 +1,21 @@
+name: Toolbox access test
+
+# Proof that a public repository in impress-org cannot use an action from
+# stellarwp/plugin-toolbox while the toolbox is private or internal.
+# GitHub resolves `uses:` before any step runs, so the job fails at setup with
+# "repository not found". The action itself is harmless: an empty `tags` input
+# moves nothing and succeeds.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  resolve-toolbox-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: stellarwp/plugin-toolbox/.github/actions/move-git-tags@a6f0f2b8710747e942b0f5bceceb0b2ec718119b
+        with:
+          tags: ''
